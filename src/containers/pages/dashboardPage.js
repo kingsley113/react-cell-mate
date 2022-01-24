@@ -8,12 +8,19 @@ class DashboardPage extends Component {
     return (
       <div>
         Dashboard Page
-        <SummaryChartTile />
+        <SummaryChartTile cells={this.props.cells} />
         <MapShortcutTile />
-        <RecentCellsTile />
+        <RecentCellsTile recentCells={this.props.recentCells} />
       </div>
     );
   }
 }
 
-export default DashboardPage;
+const mapStateToProps = (state) => {
+  return {
+    cells: state.cells.allCells,
+    recentCells: state.cells.recentCells,
+  };
+};
+
+export default connect(mapStateToProps)(DashboardPage);
