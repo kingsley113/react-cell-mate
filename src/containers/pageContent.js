@@ -39,3 +39,7 @@ class PageContent extends Component {
 
 // export default connect(mapStateToProps)(PageContent);
 export default PageContent;
+
+// TODO:
+// protected routes
+// redirect to home if already logged in
