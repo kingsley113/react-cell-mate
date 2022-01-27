@@ -13,6 +13,7 @@ class PageContent extends Component {
   }
 }
 
+// TODO:
 // const mapStateToProps = (state) => {
 //   return {
 //     currentUser: state.users,

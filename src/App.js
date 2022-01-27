@@ -1,12 +1,13 @@
 // import logo from './logo.svg';
 import { Component } from "react";
 import "./App.css";
-import { BrowerRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // TODO:Import pages here and add to router below
 //TODO: LoginPage Component
 //TODO: NewUserPage Component
 //TODO: PageContent Component
-//TODO: PageNotFound Component
+import PageContent from "./containers/pageContent";
+import PageNotFound from "./containers/pages/pageNotFound";
 
 class App extends Component {
   render() {
@@ -14,10 +15,10 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/login" /> //TODO: Page Component
-            <Route exact path="/signup" /> //TODO: Page Component
-            <Route path="/" component={PageContent} /> //TODO: Page Component
-            <Route component={PageNotFound} /> //TODO: Page Component
+            <Route exact path="/login" /> //TODO: login Component
+            <Route exact path="/signup" /> //TODO: signup Component
+            <Route path="/" component={PageContent} />
+            <Route component={PageNotFound} />
           </Switch>
         </Router>
       </div>
