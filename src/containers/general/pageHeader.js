@@ -13,7 +13,7 @@ class PageHeader extends Component {
           <Navbar.Collapse className="justify-content-center">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/map">Cell Map</Nav.Link>
-            <Nav.Link href="/cellList">Cell List</Nav.Link>
+            <Nav.Link href="/cells">Cell List</Nav.Link>
             <Nav.Link href="/quests">Quests</Nav.Link>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
