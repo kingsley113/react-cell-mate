@@ -12,6 +12,8 @@ class CellIndexPage extends Component {
   }
 }
 
+export default CellIndexPage;
+
 /* 
 TODO: columns:
 color

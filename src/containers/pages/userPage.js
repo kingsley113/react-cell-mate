@@ -6,6 +6,8 @@ class UserPage extends Component {
   }
 }
 
+export default UserPage;
+
 // TODO: password reset
 // TODO: admin panel - show if user has admin rights
 // TODO: admin panel - delete users
