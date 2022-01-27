@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //TODO: PageContent Component
 import PageContent from "./containers/pageContent";
 import PageNotFound from "./containers/pages/pageNotFound";
+import LoginPage from "./containers/pages/loginPage";
+import NewUserPage from "./containers/pages/newUserPage";
 
 class App extends Component {
   render() {
@@ -15,8 +17,9 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/login" /> //TODO: login Component
-            <Route exact path="/signup" /> //TODO: signup Component
+            <Route exact path="/login" component={LoginPage} />
+            Component
+            <Route exact path="/signup" component={NewUserPage} />
             <Route path="/" component={PageContent} />
             <Route component={PageNotFound} />
           </Switch>
