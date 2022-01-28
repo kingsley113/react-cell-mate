@@ -144,6 +144,15 @@ const CellTable = (props) => {
       <table {...getTableProps()}>
         {/* Table Head */}
         <thead>
+          <tr>
+            <th colSpan={visibleColumns.length} style={{ textAlign: "left" }}>
+              <GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+            </th>
+          </tr>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
@@ -160,15 +169,6 @@ const CellTable = (props) => {
               ))}
             </tr>
           ))}
-          <tr>
-            <th colSpan={visibleColumns.length} style={{ textAlign: "left" }}>
-              <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={state.globalFilter}
-                setGlobalFilter={setGlobalFilter}
-              />
-            </th>
-          </tr>
         </thead>
         {/* Table Body */}
         <tbody {...getTableBodyProps()}>
@@ -187,7 +187,7 @@ const CellTable = (props) => {
           })}
         </tbody>
       </table>
-      // Pagination
+      {/* // Pagination */}
       <div className="pagination">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {"<<"}
