@@ -7,6 +7,40 @@ import {
   usePagination,
 } from "react-table";
 
+// TODO: reference this for styles when the time comes
+// const Styles = styled.div`
+//   padding: 1rem;
+
+//   table {
+//     border-spacing: 0;
+//     border: 1px solid black;
+
+//     tr {
+//       :last-child {
+//         td {
+//           border-bottom: 0;
+//         }
+//       }
+//     }
+
+//     th,
+//     td {
+//       margin: 0;
+//       padding: 0.5rem;
+//       border-bottom: 1px solid black;
+//       border-right: 1px solid black;
+
+//       :last-child {
+//         border-right: 0;
+//       }
+//     }
+//   }
+
+//   .pagination {
+//     padding: 0.5rem;
+//   }
+// `;
+
 const CellTable = (props) => {
   // TODO: this data will need to connect to redux cells
   const data = React.useMemo(
@@ -191,7 +225,7 @@ const CellTable = (props) => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[20, 40, 60, 80.1].map((pageSize) => (
+          {[20, 40, 60, 80].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize} cells
             </option>
