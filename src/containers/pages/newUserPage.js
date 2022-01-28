@@ -1,7 +1,9 @@
+import RedirectIfLoggedIn from "../../components/auth/redirectIfLoggedIn";
+
 const NewUserPage = () => {
-  return <div>new user page TODO: new user form</div>;
+  return (
+    <RedirectIfLoggedIn>new user page TODO: new user form</RedirectIfLoggedIn>
+  );
 };
 
 export default NewUserPage;
-
-// TODO: redirect if logged in
