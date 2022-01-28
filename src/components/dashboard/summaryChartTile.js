@@ -4,7 +4,7 @@ class SummaryChartTile extends Component {
   render() {
     return (
       <div className="dashboard-tile" id="summary-chart-tile">
-        // TODO: Chart tile here
+        {/* TODO: Chart tile here */}
       </div>
     );
   }
