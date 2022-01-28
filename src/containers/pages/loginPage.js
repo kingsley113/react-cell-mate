@@ -1,4 +1,3 @@
-import { Redirect } from "react-router-dom";
 import RedirectIfLoggedIn from "../../components/auth/redirectIfLoggedIn";
 
 const LoginPage = () => {

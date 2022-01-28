@@ -7,6 +7,7 @@ import CellMapPage from "./pages/cellMapPage";
 import CellIndexPage from "./pages/cellIndexPage";
 import QuestIndexPage from "./pages/questIndexPage";
 import UserPage from "./pages/userPage";
+import FormPage from "./pages/formPage";
 
 class PageContent extends Component {
   render() {
@@ -21,6 +22,11 @@ class PageContent extends Component {
             <Route exact path="/" render={() => <DashboardPage />} />
             <Route exact path="/map" render={() => <CellMapPage />} />
             <Route exact path="/cells" render={() => <CellIndexPage />} />
+            <Route
+              exact
+              path="/cells/new"
+              render={() => <FormPage form="new-cell" />}
+            />
             <Route exact path="/quests" render={() => <QuestIndexPage />} />
             <Route exact path="/user" render={() => <UserPage />} />
           </Switch>
