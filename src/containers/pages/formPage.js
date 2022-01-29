@@ -1,14 +1,23 @@
-import NewCellForm from "../../components/forms/newCellForm";
+import { Container } from "react-bootstrap";
+import CellForm from "../../components/forms/newCellForm";
 
 const FormPage = (props) => {
+  let form;
   switch (props.form) {
     case "new-cell":
-      return <NewCellForm />;
+      form = <CellForm />;
+      break;
     case "edit-cell":
-    // TODO: connect to redux
+      // TODO: connect to redux
+      form = <CellForm />;
+      // TODO: pass in cell prop to this version
+      break;
     default:
-      return <div>No form to display</div>;
+      form = <div>No form to display</div>;
+      break;
   }
+
+  return <Container>{form}</Container>;
 };
 
 export default FormPage;
