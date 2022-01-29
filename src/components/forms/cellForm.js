@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class CellForm extends Component {
   state = {
@@ -29,7 +30,7 @@ class CellForm extends Component {
     }
 
     if (this.props.mode === "new") {
-      // TODO: random color generator
+      this.setState({ color: randomColorGenerator() });
     }
   }
 
@@ -203,8 +204,9 @@ class CellForm extends Component {
         </Form>
       </div>
     );
-    // TODO: build out form with bootstrap
   }
 }
 
 export default CellForm;
+
+// TODO: build out form with bootstrap

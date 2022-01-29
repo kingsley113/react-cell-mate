@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import CellForm from "../../components/forms/newCellForm";
+import CellForm from "../../components/forms/cellForm";
 
 const FormPage = (props) => {
   let form;
