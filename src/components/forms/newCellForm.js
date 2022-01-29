@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 
 class CellForm extends Component {
   state = {
@@ -14,7 +14,7 @@ class CellForm extends Component {
     worldspace: "",
     progress: 0,
     createDefaultTasks: true,
-    color: "TODO: random color generator",
+    color: "#555555",
   };
 
   handleOnChange = (event) => {
@@ -27,20 +27,30 @@ class CellForm extends Component {
       this.loadCellData(this.props.cell);
       this.setState({ formTitle: "Edit Cell" });
     }
+
+    if (this.props.mode === "new") {
+      // TODO: random color generator
+    }
   }
 
   loadCellData = (cell) => {
     for (let key in this.state.keys) {
       this.setState({ [key]: cell.key });
     }
-    // TODO: ***make sure that our saved redux keys match this form
+    // TODO: ***make sure that our saved redux keys match this form state keys
+  };
+
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+
+    // TODO: use redux action prop to create cell or edit cell
   };
 
   render() {
     return (
       <div>
         <h2>{this.state.formTitle}</h2>
-        <Form>
+        <Form onSubmit={this.handleOnSubmit}>
           {/* name */}
           <Form.Group className="mb-3" controlId="formCellName">
             <Form.Label>Name</Form.Label>
@@ -147,11 +157,6 @@ class CellForm extends Component {
             </Form.Select>
           </Form.Group>
           {/* % complete */}
-          {/* <Form.Group className="mb-3" controlId="formCellProgress">
-            <Form.Label>Progress (% complete)</Form.Label>
-            <Form.Control type="number" />
-          </Form.Group> */}
-          {/* TODO: display the current % complete */}
           <Form.Group className="mb-3" controlId="formCellProgress">
             <Form.Label>Progress</Form.Label>
             <InputGroup className="mb-3">
@@ -159,7 +164,6 @@ class CellForm extends Component {
                 {this.state.progress}%
               </InputGroup.Text>
               <Form.Range
-                // defaultValue="0"
                 name="progress"
                 value={this.state.progress}
                 onChange={this.handleOnChange}
@@ -177,27 +181,25 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
-          {/* interior? */}
-          {/* <Form.Group className="mb-3" controlId="formCellInterior">
-            <Form.Label>Interior?</Form.Label>
-            <Form.Check type="checkbox" onChange={this.handleOnChange} />
-          </Form.Group> */}
-
           {/* color - make this random */}
           <Form.Group className="mb-3" controlId="formCellColor">
-            <Form.Label>Display Color</Form.Label>
+            <Form.Label>Cell Display Color</Form.Label>
             <Form.Control
               type="color"
-              // defaultValue="#555555"
               title="Select a cell display color"
               name="color"
               value={this.state.color}
               onChange={this.handleOnChange}
             />
-            <Form.Text muted>Cell map display color</Form.Text>
+            {/* <Form.Text muted>Cell map display color</Form.Text> */}
           </Form.Group>
           {/* create cell submit button */}
-          {/* cancel - use window.back */}
+          <Button variant="success" type="submit">
+            Save Cell
+          </Button>
+          <Button variant="danger" onClick={() => window.history.back()}>
+            Cancel
+          </Button>
         </Form>
       </div>
     );
@@ -206,7 +208,3 @@ class CellForm extends Component {
 }
 
 export default CellForm;
-
-// TODO: make form controlled
-// TODO: add on change function
-// TODO: add submit and cancel buttons

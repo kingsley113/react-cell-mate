@@ -5,11 +5,11 @@ const FormPage = (props) => {
   let form;
   switch (props.form) {
     case "new-cell":
-      form = <CellForm />;
+      form = <CellForm mode="new" />;
       break;
     case "edit-cell":
       // TODO: connect to redux
-      form = <CellForm />;
+      form = <CellForm mode="edit" />;
       // TODO: pass in cell prop to this version
       break;
     default:
