@@ -59,6 +59,7 @@ class CellForm extends Component {
               type="text"
               placeholder="Enter cell description"
               name="description"
+              value={this.state.description}
               onChange={this.handleOnChange}
             />
           </Form.Group>
@@ -68,6 +69,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Priority"
               name="priority"
+              value={this.state.priority}
               onChange={this.handleOnChange}
             >
               <option value="low">Low</option>
@@ -82,6 +84,7 @@ class CellForm extends Component {
             <Form.Control
               type="number"
               name="coordinateX"
+              value={this.state.coordinateX}
               onChange={this.handleOnChange}
             />
           </Form.Group>
@@ -91,6 +94,7 @@ class CellForm extends Component {
             <Form.Control
               type="number"
               name="coordinateY"
+              value={this.state.coordinateY}
               onChange={this.handleOnChange}
             />
           </Form.Group>
@@ -101,6 +105,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Priority"
               name="user"
+              value={this.state.user}
               onChange={this.handleOnChange}
             >
               <option value="1">This will</option>
@@ -116,6 +121,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Priority"
               name="region"
+              value={this.state.region}
               onChange={this.handleOnChange}
             >
               <option value="low">This will</option>
@@ -130,6 +136,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Worldspace"
               name="worldspace"
+              value={this.state.worldspace}
               onChange={this.handleOnChange}
             >
               <option value="pacificWasteland">Pacific Wasteland</option>
@@ -152,8 +159,9 @@ class CellForm extends Component {
                 {this.state.progress}%
               </InputGroup.Text>
               <Form.Range
-                defaultValue="0"
+                // defaultValue="0"
                 name="progress"
+                value={this.state.progress}
                 onChange={this.handleOnChange}
                 aria-describedby="basic-addon-1"
               />
@@ -165,6 +173,7 @@ class CellForm extends Component {
             <Form.Check
               type="checkbox"
               name="createDefaultTasks"
+              value={this.state.createDefaultTasks}
               onChange={this.handleOnChange}
             />
           </Form.Group>
@@ -179,9 +188,10 @@ class CellForm extends Component {
             <Form.Label>Display Color</Form.Label>
             <Form.Control
               type="color"
-              defaultValue="#555555"
+              // defaultValue="#555555"
               title="Select a cell display color"
               name="color"
+              value={this.state.color}
               onChange={this.handleOnChange}
             />
             <Form.Text muted>Cell map display color</Form.Text>
