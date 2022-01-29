@@ -8,3 +8,5 @@ class CellMapPage extends Component {
 }
 
 export default CellMapPage;
+
+// TODO: use offCanvas panel for legend on map
