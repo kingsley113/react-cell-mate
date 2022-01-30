@@ -99,6 +99,10 @@ const CellTable = (props) => {
         Header: "Region",
         accessor: "col9",
       },
+      {
+        Header: "Worldspace",
+        accessor: "col10",
+      },
     ],
     []
   );
