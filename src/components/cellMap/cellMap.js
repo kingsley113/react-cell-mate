@@ -1,5 +1,5 @@
-const CellMap = (props) => {
-  return <div>cell map here</div>;
+const CellMap = ({ cells, colorMode }) => {
+  return <div id="cell-grid-container"></div>;
 };
 
 export default CellMap;
