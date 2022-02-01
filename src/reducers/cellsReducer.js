@@ -3,6 +3,7 @@ function cells(state = { cells: [] }, action) {
     // add cases here for manipulating cell states
     case "CREATE_CELL":
     case "LOAD_CELLS":
+      return { allCells: action.cells };
     case "EDIT_CELL":
     case "DELETE_CELL":
     case "SET_ACTIVE_CELL":

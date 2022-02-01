@@ -12,7 +12,7 @@ export const createCell = (cellObject) => {
       },
       body: JSON.stringify(cellObject),
     };
-    fetch(`${apiURL}/api/V1/cells`, configurationObject)
+    fetch(`${apiURL}/api/v1/cells`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -33,7 +33,7 @@ export const loadCells = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/V1/cells`, configurationObject)
+    fetch(`${apiURL}/api/v1/cells`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -55,7 +55,7 @@ export const editCell = (cellObject) => {
       },
       body: JSON.stringigfy(cellObject),
     };
-    fetch(`${apiURL}/api/V1/cells/${cellObject.cell.id}`, configurationObject)
+    fetch(`${apiURL}/api/v1/cells/${cellObject.cell.id}`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -69,25 +69,27 @@ export const editCell = (cellObject) => {
 };
 // delete cell
 export const deleteCell = (cellObject) => {
-  const configurationObject = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
-    },
-    body: JSON.stringify(cellObject),
+  return (dispatch) => {
+    const configurationObject = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
+      },
+      body: JSON.stringify(cellObject),
+    };
+    fetch(`${apiURL}/api/v1/cells/${cellObject.cell.id}`, configurationObject)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        dispatch({ type: "DELETE_CELL", cell: cellObject });
+      })
+      .catch((response) => {
+        console.log(response);
+      });
   };
-  fetch(`${apiURL}/api/V1/cells/${cellObject.cell.id}`, configurationObject)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      dispatch({ type: "DELETE_CELL", cell: cellObject });
-    })
-    .catch((response) => {
-      console.log(response);
-    });
 };
 
 // set active cell
