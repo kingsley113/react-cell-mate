@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useAsyncDebounce,
   useGlobalFilter,
@@ -43,23 +43,29 @@ import {
 
 const CellTable = (props) => {
   // TODO: this data will need to connect to redux cells
-  const data = React.useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "is cool!",
-      },
-      {
-        col1: "this is",
-        col6: "another row",
-      },
-    ],
-    []
-  );
+
+  console.log(props.cells);
+  // const data = React.useMemo(
+  //   () => [
+  //     {
+  //       col1: "Hello",
+  //       col2: "World",
+  //     },
+  //     {
+  //       col1: "react-table",
+  //       col2: "is cool!",
+  //     },
+  //     {
+  //       col1: "this is",
+  //       col6: "another row",
+  //     },
+  //   ],
+  //   []
+  // );
+  // let data;
+  // useEffect(() => {
+  const data = React.useMemo(() => prepareData(props.cells), []);
+  // });
 
   const columns = React.useMemo(
     () => [
@@ -115,12 +121,13 @@ const CellTable = (props) => {
   // );
 
   const tableInstance = useTable(
-    { columns, data, initialState: { pageIndex: 0 } },
+    { columns, data, initialState: { pageIndex: 0, pageSize: 25 } },
     useGlobalFilter,
     useSortBy,
     usePagination
   );
 
+  // if (data) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -229,7 +236,7 @@ const CellTable = (props) => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[20, 40, 60, 80].map((pageSize) => (
+          {[25, 50, 100, 99999].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize} cells
             </option>
@@ -238,6 +245,9 @@ const CellTable = (props) => {
       </div>
     </>
   );
+  // } else {
+  //   return <h2>Loading...</h2>;
+  // }
 };
 
 function GlobalFilter({
@@ -266,6 +276,26 @@ function GlobalFilter({
   );
 }
 
+const prepareData = (cellArray) => {
+  let preppedData = [];
+
+  for (const cell of cellArray) {
+    preppedData.push({
+      col1: cell.color,
+      col2: cell.name,
+      col3: cell.percent_complete,
+      // col4:
+      col5: cell.priority,
+      col6: cell.ck_coordinate_x,
+      col7: cell.ck_coordinate_y,
+      col8: cell.user_id,
+      col9: cell.region_id,
+      col10: cell.worldspace_id,
+    });
+  }
+  return preppedData;
+};
+
 export default CellTable;
 
 /* 
@@ -277,9 +307,13 @@ title
 priority
 x coordinate
 y coordinate
-assign region
 user
+region
+worldspace
 
 **This cell list component should be generic enough to reuse for other areas, pass in cells as prop**
 */
 // TODO: find better symbol for up and down sort arrows
+// TODO: set default number of cells to show = 20
+// TODO: set up user, region, and worlspace to show name instead of id
+// TODO: add opnen tasks to backend serializer

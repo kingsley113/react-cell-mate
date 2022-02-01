@@ -1,20 +1,25 @@
 import React, { Component } from "react";
+import { useSelector } from "react-redux";
 import CellTable from "../../components/cells/cellTable";
 
-class CellIndexPage extends Component {
-  render() {
+const CellIndexPage = () => {
+  const allCells = useSelector((state) => state.cells.allCells);
+
+  if (allCells) {
     return (
       <div>
-        the list of cells
-        <CellTable />
+        <h2>Cell Index</h2>
+        <CellTable cells={allCells} />
       </div>
-      // TODO: lets use reactTable for this one
-      // TODO: filter box
-      // TODO: sort list by columns
-      // TODO: new cell button
     );
+  } else {
+    return <h2>Loading...</h2>;
   }
-}
+  // TODO: lets use reactTable for this one
+  // TODO: filter box
+  // TODO: sort list by columns
+  // TODO: new cell button
+};
 
 export default CellIndexPage;
 
