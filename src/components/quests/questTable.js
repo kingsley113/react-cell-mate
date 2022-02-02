@@ -148,15 +148,13 @@ const QuestTable = ({ quests }) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {/* TODO: check this variable naming */}
                 {row.cells.map((cell) => {
-                  console.log();
                   if (cell.column.Header === "Title") {
                     return (
                       <td
                         {...cell.getCellProps()}
                         // TODO: figure out how to get the actual quest id and not row...
-                        onClick={() => handleRowClick(Number(row.id) + 1)}
+                        onClick={() => handleRowClick(row.original.id)}
                       >
                         {cell.render("Cell")}{" "}
                       </td>
@@ -253,6 +251,7 @@ const prepareData = (questArray) => {
 
   for (const quest of questArray) {
     preppedData.push({
+      id: quest.id,
       col1: quest.title,
       col2: quest.category,
       col3: quest.wiki_link,

@@ -178,7 +178,7 @@ const CellTable = (props) => {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        onClick={() => handleRowClick(row.id)}
+                        onClick={() => handleRowClick(row.original.id)}
                       >
                         {cell.render("Cell")}{" "}
                       </td>
@@ -275,10 +275,11 @@ const prepareData = (cellArray) => {
 
   for (const cell of cellArray) {
     preppedData.push({
+      id: cell.id,
       col1: cell.color,
       col2: cell.name,
       col3: cell.percent_complete,
-      // col4:
+      // col4: TODO:
       col5: cell.priority,
       col6: cell.ck_coordinate_x,
       col7: cell.ck_coordinate_y,
