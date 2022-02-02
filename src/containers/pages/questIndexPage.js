@@ -9,3 +9,4 @@ class QuestIndexPage extends Component {
 export default QuestIndexPage;
 
 // TODO:
+// TODO: load quests
