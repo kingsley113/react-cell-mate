@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { useSelector } from "react-redux";
 import CellTable from "../../components/cells/cellTable";
+import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const CellIndexPage = () => {
   const allCells = useSelector((state) => state.cells.allCells);
@@ -13,11 +14,8 @@ const CellIndexPage = () => {
       </div>
     );
   } else {
-    return <h2>Loading...</h2>;
+    return <LoadingSpinner />;
   }
-  // TODO: lets use reactTable for this one
-  // TODO: filter box
-  // TODO: sort list by columns
   // TODO: new cell button
 };
 

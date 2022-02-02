@@ -17,6 +17,7 @@ const PageContent = (props) => {
 
   useEffect(() => {
     dispatch(loadCells());
+    // load usernames
   }, []);
 
   return (
