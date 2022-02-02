@@ -9,6 +9,7 @@ import UserPage from "./pages/userPage";
 import FormPage from "./pages/formPage";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCells } from "../actions/cellActions";
+import CellDetailPage from "./pages/cellDetailPage";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -30,6 +31,12 @@ const PageContent = (props) => {
             exact
             path="/cells/new"
             render={() => <FormPage form="new-cell" />}
+          />
+          <Route
+            path="/cells/:id"
+            render={(routerProps) => (
+              <CellDetailPage {...routerProps} cells={cells} />
+            )}
           />
           <Route exact path="/quests" render={() => <QuestIndexPage />} />
           <Route exact path="/user" render={() => <UserPage />} />
