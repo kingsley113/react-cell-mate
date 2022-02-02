@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import BTable from "react-bootstrap/Table";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import {
   useAsyncDebounce,
   useGlobalFilter,
@@ -98,6 +98,10 @@ const CellTable = (props) => {
         Header: "Worldspace",
         accessor: "col10",
       },
+      {
+        Header: "",
+        accessor: "col11",
+      },
     ],
     []
   );
@@ -168,11 +172,22 @@ const CellTable = (props) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr onClick={() => handleRowClick(row.id)} {...row.getRowProps()}>
+              <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
+                  if (cell.column.Header === "Title") {
+                    return (
+                      <td
+                        {...cell.getCellProps()}
+                        onClick={() => handleRowClick(row.id)}
+                      >
+                        {cell.render("Cell")}{" "}
+                      </td>
+                    );
+                  } else {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    );
+                  }
                 })}
               </tr>
             );
@@ -227,9 +242,6 @@ const CellTable = (props) => {
       </div>
     </>
   );
-  // } else {
-  //   return <h2>Loading...</h2>;
-  // }
 };
 
 function GlobalFilter({
@@ -273,6 +285,7 @@ const prepareData = (cellArray) => {
       col8: cell.user_id,
       col9: cell.region_id,
       col10: cell.worldspace_id,
+      col11: <Link to={`/cells/${cell.id}/edit`}>Edit</Link>,
     });
   }
   return preppedData;
@@ -292,10 +305,10 @@ y coordinate
 user
 region
 worldspace
+edit
 
 **This cell list component should be generic enough to reuse for other areas, pass in cells as prop**
 */
 // TODO: find better symbol for up and down sort arrows
-// TODO: set default number of cells to show = 20
 // TODO: set up user, region, and worlspace to show name instead of id
-// TODO: add opnen tasks to backend serializer
+// TODO: add open tasks to backend serializer
