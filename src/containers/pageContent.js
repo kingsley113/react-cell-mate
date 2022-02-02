@@ -10,6 +10,7 @@ import FormPage from "./pages/formPage";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCells } from "../actions/cellActions";
 import CellDetailPage from "./pages/cellDetailPage";
+import QuestDetailPage from "./pages/questDetailPage";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -25,8 +26,10 @@ const PageContent = (props) => {
       <PageHeader />
       <div className="page-main">
         <Switch>
+          {/* Main */}
           <Route exact path="/" render={() => <DashboardPage />} />
           <Route exact path="/map" render={() => <CellMapPage />} />
+          {/* Cells */}
           <Route exact path="/cells" render={() => <CellIndexPage />} />
           <Route
             exact
@@ -39,7 +42,18 @@ const PageContent = (props) => {
               <CellDetailPage {...routerProps} cells={cells} />
             )}
           />
+          {/* Quests */}
           <Route exact path="/quests" render={() => <QuestIndexPage />} />
+          <Route
+            exact
+            path="/quests/new"
+            render={() => <FormPage form="new-quest" />}
+          />
+          <Route
+            path="/quests/:id"
+            render={(routerProps) => <QuestDetailPage {...routerProps} />}
+          />
+          {/* User */}
           <Route exact path="/user" render={() => <UserPage />} />
         </Switch>
       </div>
