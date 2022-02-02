@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
+import BTable from "react-bootstrap/Table";
+import { Redirect, useHistory } from "react-router-dom";
 import {
   useAsyncDebounce,
   useGlobalFilter,
@@ -42,31 +45,17 @@ import {
 // `;
 
 const CellTable = (props) => {
-  // TODO: this data will need to connect to redux cells
-
-  console.log(props.cells);
-  // const data = React.useMemo(
-  //   () => [
-  //     {
-  //       col1: "Hello",
-  //       col2: "World",
-  //     },
-  //     {
-  //       col1: "react-table",
-  //       col2: "is cool!",
-  //     },
-  //     {
-  //       col1: "this is",
-  //       col6: "another row",
-  //     },
-  //   ],
-  //   []
-  // );
-  // let data;
-  // useEffect(() => {
   const data = React.useMemo(() => prepareData(props.cells), []);
-  // });
 
+  // Navigate to cell page on row click
+  let history = useHistory();
+  const handleRowClick = (id) => {
+    console.log(id);
+    const path = `/cells/${id}`;
+    history.push(path);
+  };
+
+  // Table Columns
   const columns = React.useMemo(
     () => [
       {
@@ -113,13 +102,6 @@ const CellTable = (props) => {
     []
   );
 
-  // const defaultColumn = React.useMemo(
-  //   () => ({
-  //     Filter: DefaultColumnFilter,
-  //   }),
-  //   []
-  // );
-
   const tableInstance = useTable(
     { columns, data, initialState: { pageIndex: 0, pageSize: 25 } },
     useGlobalFilter,
@@ -127,7 +109,6 @@ const CellTable = (props) => {
     usePagination
   );
 
-  // if (data) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -152,7 +133,7 @@ const CellTable = (props) => {
 
   return (
     <>
-      <table {...getTableProps()}>
+      <BTable striped bordered hover size="sm" {...getTableProps()}>
         {/* Table Head */}
         <thead>
           <tr>
@@ -187,7 +168,7 @@ const CellTable = (props) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr onClick={() => handleRowClick(row.id)} {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -197,7 +178,8 @@ const CellTable = (props) => {
             );
           })}
         </tbody>
-      </table>
+      </BTable>
+
       {/* // Pagination */}
       <div className="pagination">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
