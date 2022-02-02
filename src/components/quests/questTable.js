@@ -50,7 +50,6 @@ const QuestTable = ({ quests }) => {
   // Navigate to cell page on row click
   let history = useHistory();
   const handleRowClick = (id) => {
-    console.log(id);
     const path = `/quests/${id}`;
     history.push(path);
   };
@@ -73,6 +72,10 @@ const QuestTable = ({ quests }) => {
       {
         Header: "",
         accessor: "col4",
+      },
+      {
+        Header: "ID",
+        accessor: "col5",
       },
     ],
     []
@@ -147,11 +150,13 @@ const QuestTable = ({ quests }) => {
               <tr {...row.getRowProps()}>
                 {/* TODO: check this variable naming */}
                 {row.cells.map((cell) => {
+                  console.log();
                   if (cell.column.Header === "Title") {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        onClick={() => handleRowClick(row.id)}
+                        // TODO: figure out how to get the actual quest id and not row...
+                        onClick={() => handleRowClick(Number(row.id) + 1)}
                       >
                         {cell.render("Cell")}{" "}
                       </td>
@@ -248,10 +253,11 @@ const prepareData = (questArray) => {
 
   for (const quest of questArray) {
     preppedData.push({
-      col1: quest.name,
+      col1: quest.title,
       col2: quest.category,
       col3: quest.wiki_link,
       col4: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
+      col5: quest.id,
     });
   }
   return preppedData;
@@ -260,11 +266,12 @@ const prepareData = (questArray) => {
 export default QuestTable;
 
 /* 
-TODO: columns:
+columns:
 title
 quest type
 wiki link
+edit
 
-**This cell list component should be generic enough to reuse for other areas, pass in cells as prop**
 */
 // TODO: find better symbol for up and down sort arrows
+// TODO: get real id of each quest and not the table row id
