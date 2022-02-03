@@ -50,4 +50,27 @@ export const completeTask = (task) => {
 };
 
 // delete task
+export const deleteTask = (task) => {
+  return (dispatch) => {
+    const configurationObject = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
+      },
+      body: JSON.stringify(task),
+    };
+    fetch(`${apiURL}/api/v1/tasks/${task.id}`, configurationObject)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        dispatch({ type: "EDIT_CELL", cell: json.cell });
+      })
+      .catch((response) => {
+        console.log(response);
+      });
+  };
+};
 // update task?
