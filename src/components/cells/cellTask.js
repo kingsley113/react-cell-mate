@@ -3,7 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { completeTask } from "../../actions/taskActions";
 import NewTaskForm from "../forms/newTaskForm";
 
-const CellTaskPanel = ({ tasks, markComplete }) => {
+const CellTaskPanel = ({ cell, markComplete }) => {
   const renderTasks = (tasks) => {
     let taskItems = [];
     tasks.sort((a, b) => a.id - b.id);
@@ -27,9 +27,9 @@ const CellTaskPanel = ({ tasks, markComplete }) => {
     <div>
       <h4>Tasks</h4>
       <ListGroup as="ul">
-        {renderTasks(tasks)}
+        {renderTasks(cell.tasks)}
         <ListGroup.Item as="li" key="new">
-          <NewTaskForm />
+          <NewTaskForm cell={cell} />
         </ListGroup.Item>
       </ListGroup>
       {/* TODO: add task form */}

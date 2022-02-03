@@ -12,7 +12,7 @@ const CellDetailPage = (props) => {
       <div>
         <h1>{cell.name}</h1>
         <CellDetailsPanel cell={cell} />
-        <CellTaskPanel tasks={cell.tasks} />
+        <CellTaskPanel cell={cell} />
       </div>
     );
     // TODO: cell details panel

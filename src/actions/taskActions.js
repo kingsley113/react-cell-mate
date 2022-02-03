@@ -17,7 +17,7 @@ export const createTask = (task) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "ADD_TASK", cell: json.task });
+        dispatch({ type: "EDIT_CELL", cell: json.cell });
       })
       .catch((response) => {
         console.log(response);
