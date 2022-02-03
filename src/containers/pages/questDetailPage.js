@@ -8,7 +8,6 @@ import QuestTable from "../../components/quests/questTable";
 
 const QuestDetailPage = (routerProps) => {
   const questId = routerProps.match.params.id;
-  console.log(questId);
   const quest = useSelector((state) => state.quests.currentQuest);
   const pageTitle = "Quest Detail Page";
 
@@ -18,7 +17,6 @@ const QuestDetailPage = (routerProps) => {
   }, []);
 
   if (quest) {
-    console.log(quest);
     return (
       <div>
         quest detail page
