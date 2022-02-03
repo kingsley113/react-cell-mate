@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CellDetailsPanel from "../../components/cells/cellDetailsPanel";
 import CellTaskPanel from "../../components/cells/cellTask";
+import QuestTable from "../../components/quests/questTable";
 
 const CellDetailPage = (props) => {
   if (props.cells) {
@@ -14,6 +15,9 @@ const CellDetailPage = (props) => {
         <div className="cell-details-container">
           <CellDetailsPanel cell={cell} />
           <CellTaskPanel cell={cell} />
+        </div>
+        <div>
+          <QuestTable quests={cell.quests} />
         </div>
       </div>
     );
