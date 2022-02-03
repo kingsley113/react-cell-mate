@@ -279,13 +279,13 @@ const prepareData = (cellArray) => {
       col1: cell.color,
       col2: cell.name,
       col3: cell.percent_complete,
-      // col4: TODO:
+      col4: cell.tasks.filter((task) => task.complete === false).length,
       col5: cell.priority,
       col6: cell.ck_coordinate_x,
       col7: cell.ck_coordinate_y,
-      col8: cell.user_id,
-      col9: cell.region_id,
-      col10: cell.worldspace_id,
+      col8: cell.user.display_name,
+      col9: cell.region.name,
+      col10: cell.worldspace.name,
       col11: <Link to={`/cells/${cell.id}/edit`}>Edit</Link>,
     });
   }
