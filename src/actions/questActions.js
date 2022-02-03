@@ -38,7 +38,7 @@ export const loadQuest = (id) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "LOAD_QUEST", quest: json.quest });
+        dispatch({ type: "LOAD_QUEST", quest: json });
       });
   };
 };
@@ -57,7 +57,7 @@ export const loadQuests = () => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "LOAD_QUESTS", quests: json.quests });
+        dispatch({ type: "LOAD_QUESTS", quests: json });
       });
   };
 };

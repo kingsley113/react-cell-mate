@@ -24,7 +24,7 @@ export const createCell = (cellObject) => {
       });
   };
 };
-// Load cell
+// Load cells
 export const loadCells = () => {
   return (dispatch) => {
     const configurationObject = {
@@ -38,7 +38,26 @@ export const loadCells = () => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "LOAD_CELLS", cells: json.cells });
+        dispatch({ type: "LOAD_CELLS", cells: json });
+      });
+  };
+};
+
+// Load cell
+export const loadCell = (id) => {
+  return (dispatch) => {
+    const configurationObject = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
+      },
+    };
+    fetch(`${apiURL}/api/v1/cells/${id}`, configurationObject)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        dispatch({ type: "LOAD_CELL", cell: json });
       });
   };
 };
