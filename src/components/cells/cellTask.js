@@ -32,7 +32,7 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
   };
 
   return (
-    <div>
+    <div id="cell-tasks-panel">
       <h4>Tasks</h4>
       <ListGroup as="ul">
         {renderTasks(cell.tasks)}

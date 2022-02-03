@@ -11,8 +11,10 @@ const CellDetailPage = (props) => {
     return (
       <div>
         <h1>{cell.name}</h1>
-        <CellDetailsPanel cell={cell} />
-        <CellTaskPanel cell={cell} />
+        <div className="cell-details-container">
+          <CellDetailsPanel cell={cell} />
+          <CellTaskPanel cell={cell} />
+        </div>
       </div>
     );
     // TODO: cell details panel
