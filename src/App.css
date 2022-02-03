@@ -82,3 +82,9 @@
   width: 100%;
   opacity: 1;
 }
+
+/* Tasks */
+.task-complete.list-group-item {
+  text-decoration: line-through;
+  color: green;
+}
