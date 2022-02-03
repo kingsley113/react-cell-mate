@@ -23,14 +23,22 @@ const NewTaskForm = ({ cell }) => {
 
   return (
     <Form onSubmit={(event) => handleOnSubmit(event)}>
-      <Form.Label htmlFor="taskTitle">New Task:</Form.Label>
+      <Form.Label htmlFor="taskTitle">
+        <h4>New Task:</h4>
+      </Form.Label>
       <Form.Control
         type="text"
         id="taskTitle"
         onChange={(event) => setTaskName(event.target.value)}
         value={taskName}
       />
-      <Button type="submit">Add Task</Button>
+      <Button
+        type="submit"
+        disabled={taskName === "" ? true : false}
+        variant={taskName === "" ? "secondary" : "primary"}
+      >
+        Add Task
+      </Button>
     </Form>
   );
 };

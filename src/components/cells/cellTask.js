@@ -1,9 +1,9 @@
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect, useDispatch } from "react-redux";
-import { completeTask } from "../../actions/taskActions";
+import { completeTask, deleteTask } from "../../actions/taskActions";
 import NewTaskForm from "../forms/newTaskForm";
 
-const CellTaskPanel = ({ cell, markComplete }) => {
+const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
   const renderTasks = (tasks) => {
     let taskItems = [];
     tasks.sort((a, b) => a.id - b.id);
@@ -15,8 +15,16 @@ const CellTaskPanel = ({ cell, markComplete }) => {
           key={task.id}
           onClick={() => markComplete(task)}
           className={task.complete ? "task-complete" : ""}
+          action
         >
           {task.name}
+          <Button
+            size="sm"
+            variant="outline-dark"
+            onClick={() => deleteTask(task)}
+          >
+            Delete
+          </Button>
         </ListGroup.Item>
       );
     }
@@ -40,6 +48,7 @@ const CellTaskPanel = ({ cell, markComplete }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     markComplete: (task) => dispatch(completeTask(task)),
+    deleteTask: (task) => dispatch(deleteTask(task)),
   };
 };
 
