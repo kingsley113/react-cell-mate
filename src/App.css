@@ -88,3 +88,8 @@
   text-decoration: line-through;
   color: green;
 }
+
+.task-complete.list-group-item:hover {
+  text-decoration: line-through;
+  color: green;
+}
