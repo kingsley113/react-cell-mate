@@ -37,17 +37,23 @@ const PageContent = (props) => {
             render={() => <FormPage form="new-cell" />}
           />
           <Route
+            exact
             path="/cells/:id"
             render={(routerProps) => (
               <CellDetailPage {...routerProps} cells={cells} />
             )}
+          />
+          <Route
+            exact
+            path="/cells/:id/edit"
+            render={() => <FormPage formType="edit-cell" cells={cells} />}
           />
           {/* Quests */}
           <Route exact path="/quests" render={() => <QuestIndexPage />} />
           <Route
             exact
             path="/quests/new"
-            render={() => <FormPage form="new-quest" />}
+            render={() => <FormPage formType="new-quest" />}
           />
           <Route
             path="/quests/:id"
