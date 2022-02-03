@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import CellDetailsPanel from "../../components/cells/cellDetailsPanel";
+import CellTaskPanel from "../../components/cells/cellTask";
 
 const CellDetailPage = (props) => {
-  // console.log(props.match.params.id);
   if (props.cells) {
     const cell = props.cells.filter((cell) => {
-      // console.log(cell.id);
       return cell.id === Number(props.match.params.id);
     })[0];
-    console.log(cell);
 
     return (
       <div>
         <h1>{cell.name}</h1>
         <CellDetailsPanel cell={cell} />
+        <CellTaskPanel tasks={cell.tasks} />
       </div>
     );
     // TODO: cell details panel
