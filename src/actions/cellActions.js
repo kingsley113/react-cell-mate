@@ -3,7 +3,6 @@ import { apiURL } from "./fetchConfig";
 
 // Create cell
 export const createCell = (cellObject) => {
-  console.log("create cell action!");
   return (dispatch) => {
     const configurationObject = {
       method: "POST",
@@ -19,12 +18,11 @@ export const createCell = (cellObject) => {
         return response.json();
       })
       .then((json) => {
-        // console.log("cell added! ", json);
-        // console.log(json.errors);
         if (json.errors) {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "ADD_CELL", cell: json });
+          dispatch({ type: "REDIRECT", url: `/cells/${json.id}` });
         }
       })
       .catch((response) => {
@@ -72,8 +70,6 @@ export const loadCell = (id) => {
 
 // edit cell
 export const editCell = (cellObject) => {
-  console.log("edit cell action!");
-  // console.log(cellObject);
   return (dispatch) => {
     const configurationObject = {
       method: "PATCH",
@@ -89,11 +85,11 @@ export const editCell = (cellObject) => {
         return response.json();
       })
       .then((json) => {
-        // console.log("Json response: ", json);
         if (json.errors) {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "EDIT_CELL", cell: json });
+          dispatch({ type: "REDIRECT", url: `/cells/${json.id}` });
         }
       })
       .catch((response) => {
