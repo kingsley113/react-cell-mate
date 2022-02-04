@@ -17,7 +17,8 @@ export const createQuest = (questObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "ADD_QUEST", quest: json.quest });
+        dispatch({ type: "ADD_QUEST", quest: json });
+        // TODO: add redirect
       })
       .catch((response) => {
         console.log(response);
@@ -82,7 +83,8 @@ export const editQuest = (questObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "EDIT_QUEST", quest: json.quest });
+        dispatch({ type: "EDIT_QUEST", quest: json });
+        // TODO: add redirect
       })
       .catch((response) => {
         console.log(response);
