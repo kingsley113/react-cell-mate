@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { loadQuest } from "../../actions/questActions";
 import CellTable from "../../components/cells/cellTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
@@ -10,6 +11,7 @@ const QuestDetailPage = (routerProps) => {
   const questId = routerProps.match.params.id;
   const quest = useSelector((state) => state.quests.currentQuest);
   const pageTitle = "Quest Detail Page";
+  const history = useHistory();
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,6 +23,12 @@ const QuestDetailPage = (routerProps) => {
       <div>
         quest detail page
         <h2>{quest.title}</h2>
+        <Button
+          variant="primary"
+          onClick={() => history.push(`/quests/${quest.id}/edit`)}
+        >
+          Edit Quest
+        </Button>
         <ListGroup>
           <ListGroup.Item>Title: {quest.title}</ListGroup.Item>
           <ListGroup.Item>Summary: {quest.summary}</ListGroup.Item>
