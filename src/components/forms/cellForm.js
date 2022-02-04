@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { connect } from "react-redux";
 import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class CellForm extends Component {
@@ -8,8 +9,8 @@ class CellForm extends Component {
     name: "",
     description: "",
     priority: "Low",
-    coordinateX: 0,
-    coordinateY: 0,
+    ck_coordinate_x: 0,
+    ck_coordinate_y: 0,
     user: "",
     region: "",
     worldspace: "",
@@ -19,11 +20,11 @@ class CellForm extends Component {
   };
 
   handleOnChange = (event) => {
-    console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value });
   };
 
   componentDidMount() {
+    // console.log(this.props.cell);
     if (this.props.cell) {
       this.loadCellData(this.props.cell);
       this.setState({ formTitle: "Edit Cell" });
@@ -35,9 +36,18 @@ class CellForm extends Component {
   }
 
   loadCellData = (cell) => {
-    for (let key in this.state.keys) {
-      this.setState({ [key]: cell.key });
-    }
+    this.setState({
+      name: cell.name,
+      description: cell.description,
+      priority: cell.priority,
+      ck_coordinate_x: cell.ck_coordinate_x,
+      ck_coordinate_y: cell.ck_coordinate_y,
+      user: cell.user.display_name,
+      region: cell.region.name,
+      worldspace: cell.worldspace.name,
+      progress: cell.percent_complete,
+      // color: "#555555",
+    });
     // TODO: ***make sure that our saved redux keys match this form state keys
   };
 
@@ -47,7 +57,20 @@ class CellForm extends Component {
     // TODO: use redux action prop to create cell or edit cell
   };
 
+  renderRegionItems = () => {
+    let items = [];
+    for (const region of this.props.allRegions) {
+      items.push(
+        <option value={region.name} key={region.id}>
+          {region.name}
+        </option>
+      );
+    }
+    return items;
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <h2>{this.state.formTitle}</h2>
@@ -95,7 +118,7 @@ class CellForm extends Component {
             <Form.Control
               type="number"
               name="coordinateX"
-              value={this.state.coordinateX}
+              value={this.state.ck_coordinate_x}
               onChange={this.handleOnChange}
             />
           </Form.Group>
@@ -105,24 +128,25 @@ class CellForm extends Component {
             <Form.Control
               type="number"
               name="coordinateY"
-              value={this.state.coordinateY}
+              value={this.state.ck_coordinate_y}
               onChange={this.handleOnChange}
             />
           </Form.Group>
           {/* user */}
           {/* TODO: use this to map all users */}
           <Form.Group className="mb-3" controlId="formCellPriority">
-            <Form.Label>Priority</Form.Label>
+            <Form.Label>Assigned User</Form.Label>
             <Form.Select
-              aria-label="Cell Priority"
+              aria-label="Cell User"
               name="user"
-              value={this.state.user}
+              value={this.state.user.display_name}
               onChange={this.handleOnChange}
             >
               <option value="1">This will</option>
               <option value="2">Be a</option>
               <option value="3">list of all</option>
               <option value="4">users eventually</option>
+              {/* TODO: import all of the usernames */}
             </Form.Select>
           </Form.Group>
           {/* region */}
@@ -132,13 +156,16 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Priority"
               name="region"
-              value={this.state.region}
+              value={this.state.region.name}
               onChange={this.handleOnChange}
             >
-              <option value="low">This will</option>
+              {this.renderRegionItems()}
+              {/* <option value="low">This will</option>
               <option value="medium">Be a list</option>
               <option value="high">of all regions</option>
-              <option value="critical">eventually</option>
+              <option value="critical">eventually</option> */}
+
+              {/* TODO: import all of the regions */}
             </Form.Select>
           </Form.Group>
           {/* worldspace */}
@@ -147,7 +174,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Worldspace"
               name="worldspace"
-              value={this.state.worldspace}
+              value={this.state.worldspace.name}
               onChange={this.handleOnChange}
             >
               <option value="pacificWasteland">Pacific Wasteland</option>
@@ -155,6 +182,7 @@ class CellForm extends Component {
               <option value="beargrass">Beargrass</option>
               <option value="cascade">Cascade</option>
               <option value="pikePlace">Pike Place</option>
+              {/* TODO: import all of the regions */}
             </Form.Select>
           </Form.Group>
           {/* % complete */}
@@ -207,6 +235,12 @@ class CellForm extends Component {
   }
 }
 
-export default CellForm;
+const mapStateToProps = (state) => {
+  return {
+    allRegions: state.regions.allRegions,
+  };
+};
+
+export default connect(mapStateToProps)(CellForm);
 
 // TODO: build out form with bootstrap
