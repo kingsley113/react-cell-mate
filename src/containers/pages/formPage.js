@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetRedirect } from "../../actions/redirectActions";
 import CellForm from "../../components/forms/cellForm";
+import QuestForm from "../../components/forms/questForm";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const FormPage = ({ router, formType, data }) => {
@@ -34,6 +35,9 @@ const FormPage = ({ router, formType, data }) => {
       }
       break;
     // New Quest TODO:
+    case "new-quest":
+      form = <QuestForm mode="new" />;
+      break;
     // Edit Quest TODO:
     default:
       form = <div>No form to display</div>;
