@@ -5,6 +5,7 @@ function cells(state = { cells: [] }, action) {
     case "LOAD_CELLS":
       return { allCells: action.cells };
     case "EDIT_CELL":
+      console.log(action.cell);
       const updatedCells = state.allCells.map((cell) => {
         return cell.id === action.cell.id ? action.cell : cell;
       });

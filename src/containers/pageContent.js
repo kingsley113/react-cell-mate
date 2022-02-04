@@ -40,7 +40,7 @@ const PageContent = (props) => {
           <Route
             exact
             path="/cells/new"
-            render={() => <FormPage form="new-cell" />}
+            render={() => <FormPage formType="new-cell" />}
           />
           <Route
             exact

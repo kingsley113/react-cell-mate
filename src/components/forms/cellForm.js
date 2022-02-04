@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
+import { createCell, editCell } from "../../actions/cellActions";
 import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class CellForm extends Component {
@@ -11,11 +12,11 @@ class CellForm extends Component {
     priority: "Low",
     ck_coordinate_x: 0,
     ck_coordinate_y: 0,
-    user_id: "",
-    region_id: "",
-    worldspace_id: "",
-    progress: 0,
-    createDefaultTasks: true,
+    user_id: 1,
+    region_id: 1,
+    worldspace_id: 1,
+    percent_complete: 0,
+    create_default_tasks: true,
     color: "#555555",
   };
 
@@ -24,8 +25,8 @@ class CellForm extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.cell);
-    if (this.props.cell) {
+    console.log(this.props);
+    if (this.props.mode === "edit") {
       this.loadCellData(this.props.cell);
       this.setState({ formTitle: "Edit Cell" });
     }
@@ -37,6 +38,7 @@ class CellForm extends Component {
 
   loadCellData = (cell) => {
     this.setState({
+      id: cell.id,
       name: cell.name,
       description: cell.description,
       priority: cell.priority,
@@ -45,51 +47,73 @@ class CellForm extends Component {
       user_id: cell.user.id,
       region_id: cell.region.id,
       worldspace_id: cell.worldspace.id,
-      progress: cell.percent_complete,
+      percent_complete: cell.percent_complete,
       // color: "#555555",
     });
-    // TODO: ***make sure that our saved redux keys match this form state keys
   };
 
   handleOnSubmit = (event) => {
     event.preventDefault();
 
+    if (this.props.mode === "new") {
+      this.props.createCell(this.state);
+    } else {
+      this.props.editCell(this.state);
+    }
     // TODO: use redux action prop to create cell or edit cell
   };
 
   renderOptionItems = (data) => {
     let items = [];
-    for (const item of data) {
-      items.push(
-        <option value={item.id} key={item.id}>
-          {item.name}
-        </option>
-      );
+    if (data) {
+      for (const item of data) {
+        items.push(
+          <option value={item.id} key={item.id}>
+            {item.name}
+          </option>
+        );
+      }
     }
     return items;
   };
 
   renderUserOptionItems = (data) => {
     let items = [];
-    console.log(data);
     items.push(
       <option value="" key={0}>
         None
       </option>
     );
-    for (const item of data) {
-      items.push(
-        <option value={item.id} key={item.id}>
-          {item.display_name}
-        </option>
-      );
+    if (data) {
+      for (const item of data) {
+        items.push(
+          <option value={item.id} key={item.id}>
+            {item.display_name}
+          </option>
+        );
+      }
     }
     return items;
   };
   // TODO: improve these two render item methods, DRY
 
+  // renderDefaultTaskCheckbox = () => {
+  //   if (this.props.mode === "new") {
+  //     return (
+  //       <Form.Group className="mb-3" controlId="formCellDefaultTasks">
+  //         <Form.Label>Create Default Tasks?</Form.Label>
+  //         <Form.Check
+  //           type="checkbox"
+  //           name="createDefaultTasks"
+  //           value={this.state.create_default_tasks}
+  //           onChange={this.handleOnChange}
+  //         />
+  //       </Form.Group>
+  //     );
+  //   }
+  // };
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <h2>{this.state.formTitle}</h2>
@@ -139,7 +163,7 @@ class CellForm extends Component {
             <Form.Label>CK Coordinate X</Form.Label>
             <Form.Control
               type="number"
-              name="coordinateX"
+              name="ck_coordinate_x"
               value={this.state.ck_coordinate_x}
               onChange={this.handleOnChange}
             />
@@ -150,39 +174,31 @@ class CellForm extends Component {
             <Form.Label>CK Coordinate Y</Form.Label>
             <Form.Control
               type="number"
-              name="coordinateY"
+              name="ck_coordinate_y"
               value={this.state.ck_coordinate_y}
               onChange={this.handleOnChange}
             />
           </Form.Group>
 
           {/* user */}
-          {/* TODO: use this to map all users */}
           <Form.Group className="mb-3" controlId="formCellPriority">
             <Form.Label>Assigned User</Form.Label>
             <Form.Select
               aria-label="Cell User"
-              name="user"
+              name="user_id"
               value={this.state.user_id}
               onChange={this.handleOnChange}
             >
               {this.renderUserOptionItems(this.props.allUsers)}
-
-              {/* <option value="1">This will</option>
-              <option value="2">Be a</option>
-              <option value="3">list of all</option>
-              <option value="4">users eventually</option> */}
-              {/* TODO: import all of the usernames */}
             </Form.Select>
           </Form.Group>
 
           {/* region */}
-          {/* TODO: use this to map through regions, need ability to enter new one */}
           <Form.Group className="mb-3" controlId="formCellPriority">
             <Form.Label>Region</Form.Label>
             <Form.Select
-              aria-label="Cell Priority"
-              name="region"
+              aria-label="Cell Region"
+              name="region_id"
               value={this.state.region_id}
               onChange={this.handleOnChange}
             >
@@ -195,7 +211,7 @@ class CellForm extends Component {
             <Form.Label>Worldspace</Form.Label>
             <Form.Select
               aria-label="Cell Worldspace"
-              name="worldspace"
+              name="worldspace_id"
               value={this.state.worldspace_id}
               onChange={this.handleOnChange}
             >
@@ -208,11 +224,11 @@ class CellForm extends Component {
             <Form.Label>Progress</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text id="basic-addon-1">
-                {this.state.progress}%
+                {this.state.percent_complete}%
               </InputGroup.Text>
               <Form.Range
-                name="progress"
-                value={this.state.progress}
+                name="percent_complete"
+                value={this.state.percent_complete}
                 onChange={this.handleOnChange}
                 aria-describedby="basic-addon-1"
               />
@@ -221,7 +237,8 @@ class CellForm extends Component {
 
           {/* create default tasks? */}
           {/* TODO: hide this if form is in edit mode */}
-          <Form.Group className="mb-3" controlId="formCellDefaultTasks">
+          {/* {this.renderDefaultTaskCheckbox()} */}
+          {/* <Form.Group className="mb-3" controlId="formCellDefaultTasks">
             <Form.Label>Create Default Tasks?</Form.Label>
             <Form.Check
               type="checkbox"
@@ -229,7 +246,7 @@ class CellForm extends Component {
               value={this.state.createDefaultTasks}
               onChange={this.handleOnChange}
             />
-          </Form.Group>
+          </Form.Group> */}
 
           {/* color */}
           <Form.Group className="mb-3" controlId="formCellColor">
@@ -264,6 +281,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CellForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createCell: (cell) => dispatch(createCell(cell)),
+    editCell: (cell) => dispatch(editCell(cell)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CellForm);
 
 // TODO: build out form with bootstrap

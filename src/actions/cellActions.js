@@ -1,7 +1,9 @@
+import renderErrors from "../helpers/renderErrors";
 import { apiURL } from "./fetchConfig";
 
 // Create cell
 export const createCell = (cellObject) => {
+  console.log("create cell action!");
   return (dispatch) => {
     const configurationObject = {
       method: "POST",
@@ -17,7 +19,13 @@ export const createCell = (cellObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "ADD_CELL", cell: json.cell });
+        // console.log("cell added! ", json);
+        // console.log(json.errors);
+        if (json.errors) {
+          renderErrors(json.errors);
+        } else {
+          dispatch({ type: "ADD_CELL", cell: json });
+        }
       })
       .catch((response) => {
         console.log(response);
@@ -64,6 +72,8 @@ export const loadCell = (id) => {
 
 // edit cell
 export const editCell = (cellObject) => {
+  console.log("edit cell action!");
+  // console.log(cellObject);
   return (dispatch) => {
     const configurationObject = {
       method: "PATCH",
@@ -72,14 +82,19 @@ export const editCell = (cellObject) => {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
-      body: JSON.stringigfy(cellObject),
+      body: JSON.stringify(cellObject),
     };
-    fetch(`${apiURL}/api/v1/cells/${cellObject.cell.id}`, configurationObject)
+    fetch(`${apiURL}/api/v1/cells/${cellObject.id}`, configurationObject)
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "EDIT_CELL", cell: json.cell });
+        // console.log("Json response: ", json);
+        if (json.errors) {
+          renderErrors(json.errors);
+        } else {
+          dispatch({ type: "EDIT_CELL", cell: json });
+        }
       })
       .catch((response) => {
         console.log(response);
@@ -98,7 +113,7 @@ export const deleteCell = (cellObject) => {
       },
       body: JSON.stringify(cellObject),
     };
-    fetch(`${apiURL}/api/v1/cells/${cellObject.cell.id}`, configurationObject)
+    fetch(`${apiURL}/api/v1/cells/${cellObject.id}`, configurationObject)
       .then((response) => {
         return response.json();
       })
