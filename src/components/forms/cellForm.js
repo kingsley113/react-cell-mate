@@ -25,7 +25,6 @@ class CellForm extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
     if (this.props.mode === "edit") {
       this.loadCellData(this.props.cell);
       this.setState({ formTitle: "Edit Cell" });
@@ -60,7 +59,6 @@ class CellForm extends Component {
     } else {
       this.props.editCell(this.state);
     }
-    // TODO: use redux action prop to create cell or edit cell
   };
 
   renderOptionItems = (data) => {
@@ -96,22 +94,6 @@ class CellForm extends Component {
     return items;
   };
   // TODO: improve these two render item methods, DRY
-
-  // renderDefaultTaskCheckbox = () => {
-  //   if (this.props.mode === "new") {
-  //     return (
-  //       <Form.Group className="mb-3" controlId="formCellDefaultTasks">
-  //         <Form.Label>Create Default Tasks?</Form.Label>
-  //         <Form.Check
-  //           type="checkbox"
-  //           name="createDefaultTasks"
-  //           value={this.state.create_default_tasks}
-  //           onChange={this.handleOnChange}
-  //         />
-  //       </Form.Group>
-  //     );
-  //   }
-  // };
 
   render() {
     return (
@@ -235,19 +217,6 @@ class CellForm extends Component {
             </InputGroup>
           </Form.Group>
 
-          {/* create default tasks? */}
-          {/* TODO: hide this if form is in edit mode */}
-          {/* {this.renderDefaultTaskCheckbox()} */}
-          {/* <Form.Group className="mb-3" controlId="formCellDefaultTasks">
-            <Form.Label>Create Default Tasks?</Form.Label>
-            <Form.Check
-              type="checkbox"
-              name="createDefaultTasks"
-              value={this.state.createDefaultTasks}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group> */}
-
           {/* color */}
           <Form.Group className="mb-3" controlId="formCellColor">
             <Form.Label>Cell Display Color</Form.Label>
@@ -289,5 +258,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CellForm);
-
-// TODO: build out form with bootstrap
