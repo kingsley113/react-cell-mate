@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCells } from "../actions/cellActions";
 import CellDetailPage from "./pages/cellDetailPage";
 import QuestDetailPage from "./pages/questDetailPage";
+import { loadRegions } from "../actions/regionActions";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ const PageContent = (props) => {
 
   useEffect(() => {
     dispatch(loadCells());
+    dispatch(loadRegions());
+    // dispatch(loadUsers());
+    // dispatch(loadWorldspaces());
     // load usernames
   }, []);
 
@@ -46,7 +50,13 @@ const PageContent = (props) => {
           <Route
             exact
             path="/cells/:id/edit"
-            render={() => <FormPage formType="edit-cell" cells={cells} />}
+            render={(routerProps) => (
+              <FormPage
+                formType="edit-cell"
+                data={cells}
+                router={routerProps}
+              />
+            )}
           />
           {/* Quests */}
           <Route exact path="/quests" render={() => <QuestIndexPage />} />
