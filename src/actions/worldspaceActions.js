@@ -15,6 +15,9 @@ export const loadWorldspaces = () => {
       })
       .then((json) => {
         dispatch({ type: "LOAD_WORLDSPACES", worldspaces: json });
+      })
+      .catch((response) => {
+        console.log(response);
       });
   };
 };
