@@ -1,11 +1,11 @@
 function cells(state = { cells: [] }, action) {
   switch (action.type) {
     // add cases here for manipulating cell states
-    case "CREATE_CELL":
+    case "ADD_CELL":
+      return { allCells: [...state.allCells, action.cell] };
     case "LOAD_CELLS":
       return { allCells: action.cells };
     case "EDIT_CELL":
-      console.log(action.cell);
       const updatedCells = state.allCells.map((cell) => {
         return cell.id === action.cell.id ? action.cell : cell;
       });
