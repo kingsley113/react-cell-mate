@@ -49,6 +49,7 @@ const CellTable = (props) => {
 
   // Navigate to cell page on row click
   let history = useHistory();
+
   const handleRowClick = (id) => {
     console.log(id);
     const path = `/cells/${id}`;

@@ -1,16 +1,21 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import CellTable from "../../components/cells/cellTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const CellIndexPage = () => {
   const allCells = useSelector((state) => state.cells.allCells);
   const pageTitle = "Cell Index";
-
+  const history = useHistory();
   if (allCells) {
     return (
       <div>
         <h2>{pageTitle}</h2>
+        <Button variant="primary" onClick={() => history.push("/cells/new")}>
+          New Cell
+        </Button>
         <CellTable cells={allCells} />
       </div>
     );
