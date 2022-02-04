@@ -5,6 +5,8 @@ import quests from "./questsReducer";
 import auth from "./authReducer";
 import maps from "./mapsReducer";
 import worldspaces from "./worldspacesReducer";
+import users from "./usersReducer";
+
 export default combineReducers({
   cells,
   regions,
@@ -12,4 +14,5 @@ export default combineReducers({
   auth,
   maps,
   worldspaces,
+  users,
 });

@@ -11,9 +11,9 @@ class CellForm extends Component {
     priority: "Low",
     ck_coordinate_x: 0,
     ck_coordinate_y: 0,
-    user: "",
-    region: "",
-    worldspace: "",
+    user_id: "",
+    region_id: "",
+    worldspace_id: "",
     progress: 0,
     createDefaultTasks: true,
     color: "#555555",
@@ -69,8 +69,24 @@ class CellForm extends Component {
     return items;
   };
 
-  // TODO: render worldspaces
-  // TODO: render users
+  renderUserOptionItems = (data) => {
+    let items = [];
+    console.log(data);
+    items.push(
+      <option value="" key={0}>
+        None
+      </option>
+    );
+    for (const item of data) {
+      items.push(
+        <option value={item.id} key={item.id}>
+          {item.display_name}
+        </option>
+      );
+    }
+    return items;
+  };
+  // TODO: improve these two render item methods, DRY
 
   render() {
     console.log(this.state);
@@ -147,13 +163,15 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell User"
               name="user"
-              value={this.state.user.display_name}
+              value={this.state.user_id}
               onChange={this.handleOnChange}
             >
-              <option value="1">This will</option>
+              {this.renderUserOptionItems(this.props.allUsers)}
+
+              {/* <option value="1">This will</option>
               <option value="2">Be a</option>
               <option value="3">list of all</option>
-              <option value="4">users eventually</option>
+              <option value="4">users eventually</option> */}
               {/* TODO: import all of the usernames */}
             </Form.Select>
           </Form.Group>
@@ -178,7 +196,7 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Worldspace"
               name="worldspace"
-              value={this.state.worldspace.name}
+              value={this.state.worldspace_id}
               onChange={this.handleOnChange}
             >
               {this.renderOptionItems(this.props.allWorldspaces)}
@@ -242,6 +260,7 @@ const mapStateToProps = (state) => {
   return {
     allRegions: state.regions.allRegions,
     allWorldspaces: state.worldspaces.allWorldspaces,
+    allUsers: state.users.allUsers,
   };
 };
 
