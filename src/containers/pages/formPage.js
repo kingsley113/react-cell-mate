@@ -1,41 +1,60 @@
 import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { resetRedirect } from "../../actions/redirectActions";
 import CellForm from "../../components/forms/cellForm";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const FormPage = ({ router, formType, data }) => {
   let id;
   let object;
-  // if ((formType = "edit-cell")) {
-  // console.log("Data: ", data);
-  // console.log("Object: ", object);
-  // }
+  const dispatch = useDispatch();
+  const redirectPath = useSelector((state) => state.redirects.redirectTo);
   let form = null;
 
+  const redirectAfterSuccess = () => {
+    if (redirectPath) {
+      dispatch(resetRedirect());
+      return <Redirect to={redirectPath} />;
+    }
+  };
+
+  // Determine which form to render
   switch (formType) {
+    // New Cell
     case "new-cell":
       form = <CellForm mode="new" />;
       break;
+    // Edit Cell
     case "edit-cell":
       id = router.match.params.id;
       object = filterDataById(data, id);
-      form = <CellForm mode="edit" cell={object} />;
+      if (object) {
+        form = <CellForm mode="edit" cell={object} />;
+      }
       break;
+    // New Quest TODO:
+    // Edit Quest TODO:
     default:
       form = <div>No form to display</div>;
       break;
   }
+
+  // Render the form or loading spinner
   if (form) {
-    return <Container>{form}</Container>;
+    return (
+      <Container>
+        {form}
+        {redirectAfterSuccess()}
+      </Container>
+    );
   } else {
     return <LoadingSpinner />;
   }
 };
 
 const filterDataById = (data, id) => {
-  // console.log(data);
-  // console.log("ID: ", id);
   if (data) {
-    // console.log("Id & Data: ", id, data);
     return data.filter((data) => Number(data.id) === Number(id))[0];
   }
 };
