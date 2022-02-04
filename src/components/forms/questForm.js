@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
 import { createQuest, editQuest } from "../../actions/questActions";
-import randomColorGenerator from "../../helpers/randomColorGenerator";
+// import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class QuestForm extends Component {
   state = {
@@ -111,113 +111,50 @@ class QuestForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
-          {/* TODO: updated to here */}
-          {/* priority */}
+
+          {/* details */}
+          <Form.Group className="mb-3" controlId="formQuestDetails">
+            <Form.Label>Details</Form.Label>
+            <Form.Control
+              type="textarea"
+              placeholder="Enter quest details"
+              name="details"
+              value={this.state.details}
+              onChange={this.handleOnChange}
+            />
+          </Form.Group>
+
+          {/* category */}
           <Form.Group className="mb-3" controlId="formCellPriority">
             <Form.Label>Priority</Form.Label>
             <Form.Select
-              aria-label="Cell Priority"
-              name="priority"
-              value={this.state.priority}
+              aria-label="Quest Category"
+              name="category"
+              value={this.state.category}
               onChange={this.handleOnChange}
             >
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-              <option value="critical">Critical</option>
+              <option value="Main">Main</option>
+              <option value="Side">Side</option>
+              <option value="Fetch">Fetch</option>
+              <option value="Other">Other</option>
             </Form.Select>
           </Form.Group>
 
-          {/* coordinate x */}
-          <Form.Group className="mb-3" controlId="formCellCoordX">
-            <Form.Label>CK Coordinate X</Form.Label>
+          {/* wiki link */}
+          <Form.Group className="mb-3" controlId="formQuestWikiLink">
+            <Form.Label>Wiki Link</Form.Label>
             <Form.Control
-              type="number"
-              name="ck_coordinate_x"
-              value={this.state.ck_coordinate_x}
+              type="text"
+              placeholder="Enter quest wiki url"
+              name="wiki_link"
+              value={this.state.wiki_link}
               onChange={this.handleOnChange}
             />
           </Form.Group>
 
-          {/* coordinate y */}
-          <Form.Group className="mb-3" controlId="formCellCoordY">
-            <Form.Label>CK Coordinate Y</Form.Label>
-            <Form.Control
-              type="number"
-              name="ck_coordinate_y"
-              value={this.state.ck_coordinate_y}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group>
+          {/* TODO: Cell list here with selection box */}
 
-          {/* user */}
-          <Form.Group className="mb-3" controlId="formCellPriority">
-            <Form.Label>Assigned User</Form.Label>
-            <Form.Select
-              aria-label="Cell User"
-              name="user_id"
-              value={this.state.user_id}
-              onChange={this.handleOnChange}
-            >
-              {this.renderUserOptionItems(this.props.allUsers)}
-            </Form.Select>
-          </Form.Group>
-
-          {/* region */}
-          <Form.Group className="mb-3" controlId="formCellPriority">
-            <Form.Label>Region</Form.Label>
-            <Form.Select
-              aria-label="Cell Region"
-              name="region_id"
-              value={this.state.region_id}
-              onChange={this.handleOnChange}
-            >
-              {this.renderOptionItems(this.props.allRegions)}
-            </Form.Select>
-          </Form.Group>
-
-          {/* worldspace */}
-          <Form.Group className="mb-3" controlId="formCellWorldspace">
-            <Form.Label>Worldspace</Form.Label>
-            <Form.Select
-              aria-label="Cell Worldspace"
-              name="worldspace_id"
-              value={this.state.worldspace_id}
-              onChange={this.handleOnChange}
-            >
-              {this.renderOptionItems(this.props.allWorldspaces)}
-            </Form.Select>
-          </Form.Group>
-
-          {/* % complete */}
-          <Form.Group className="mb-3" controlId="formCellProgress">
-            <Form.Label>Progress</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="basic-addon-1">
-                {this.state.percent_complete}%
-              </InputGroup.Text>
-              <Form.Range
-                name="percent_complete"
-                value={this.state.percent_complete}
-                onChange={this.handleOnChange}
-                aria-describedby="basic-addon-1"
-              />
-            </InputGroup>
-          </Form.Group>
-
-          {/* color */}
-          <Form.Group className="mb-3" controlId="formCellColor">
-            <Form.Label>Cell Display Color</Form.Label>
-            <Form.Control
-              type="color"
-              title="Select a cell display color"
-              name="color"
-              value={this.state.color}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group>
-
-          {/* create cell submit button */}
+          {/* submit & cancel button */}
           <Button variant="success" type="submit">
             Save Cell
           </Button>
