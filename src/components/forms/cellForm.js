@@ -42,9 +42,9 @@ class CellForm extends Component {
       priority: cell.priority,
       ck_coordinate_x: cell.ck_coordinate_x,
       ck_coordinate_y: cell.ck_coordinate_y,
-      user: cell.user.display_name,
-      region: cell.region.name,
-      worldspace: cell.worldspace.name,
+      user_id: cell.user.id,
+      region_id: cell.region.id,
+      worldspace_id: cell.worldspace.id,
       progress: cell.percent_complete,
       // color: "#555555",
     });
@@ -57,17 +57,20 @@ class CellForm extends Component {
     // TODO: use redux action prop to create cell or edit cell
   };
 
-  renderRegionItems = () => {
+  renderOptionItems = (data) => {
     let items = [];
-    for (const region of this.props.allRegions) {
+    for (const item of data) {
       items.push(
-        <option value={region.name} key={region.id}>
-          {region.name}
+        <option value={item.id} key={item.id}>
+          {item.name}
         </option>
       );
     }
     return items;
   };
+
+  // TODO: render worldspaces
+  // TODO: render users
 
   render() {
     console.log(this.state);
@@ -86,6 +89,7 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
+
           {/* description */}
           <Form.Group className="mb-3" controlId="formCellDescription">
             <Form.Label>Description</Form.Label>
@@ -97,6 +101,7 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
+
           {/* priority */}
           <Form.Group className="mb-3" controlId="formCellPriority">
             <Form.Label>Priority</Form.Label>
@@ -112,6 +117,7 @@ class CellForm extends Component {
               <option value="critical">Critical</option>
             </Form.Select>
           </Form.Group>
+
           {/* coordinate x */}
           <Form.Group className="mb-3" controlId="formCellCoordX">
             <Form.Label>CK Coordinate X</Form.Label>
@@ -122,6 +128,7 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
+
           {/* coordinate y */}
           <Form.Group className="mb-3" controlId="formCellCoordY">
             <Form.Label>CK Coordinate Y</Form.Label>
@@ -132,6 +139,7 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
+
           {/* user */}
           {/* TODO: use this to map all users */}
           <Form.Group className="mb-3" controlId="formCellPriority">
@@ -149,6 +157,7 @@ class CellForm extends Component {
               {/* TODO: import all of the usernames */}
             </Form.Select>
           </Form.Group>
+
           {/* region */}
           {/* TODO: use this to map through regions, need ability to enter new one */}
           <Form.Group className="mb-3" controlId="formCellPriority">
@@ -156,18 +165,13 @@ class CellForm extends Component {
             <Form.Select
               aria-label="Cell Priority"
               name="region"
-              value={this.state.region.name}
+              value={this.state.region_id}
               onChange={this.handleOnChange}
             >
-              {this.renderRegionItems()}
-              {/* <option value="low">This will</option>
-              <option value="medium">Be a list</option>
-              <option value="high">of all regions</option>
-              <option value="critical">eventually</option> */}
-
-              {/* TODO: import all of the regions */}
+              {this.renderOptionItems(this.props.allRegions)}
             </Form.Select>
           </Form.Group>
+
           {/* worldspace */}
           <Form.Group className="mb-3" controlId="formCellWorldspace">
             <Form.Label>Worldspace</Form.Label>
@@ -177,14 +181,10 @@ class CellForm extends Component {
               value={this.state.worldspace.name}
               onChange={this.handleOnChange}
             >
-              <option value="pacificWasteland">Pacific Wasteland</option>
-              <option value="interior">Interior</option>
-              <option value="beargrass">Beargrass</option>
-              <option value="cascade">Cascade</option>
-              <option value="pikePlace">Pike Place</option>
-              {/* TODO: import all of the regions */}
+              {this.renderOptionItems(this.props.allWorldspaces)}
             </Form.Select>
           </Form.Group>
+
           {/* % complete */}
           <Form.Group className="mb-3" controlId="formCellProgress">
             <Form.Label>Progress</Form.Label>
@@ -200,7 +200,9 @@ class CellForm extends Component {
               />
             </InputGroup>
           </Form.Group>
+
           {/* create default tasks? */}
+          {/* TODO: hide this if form is in edit mode */}
           <Form.Group className="mb-3" controlId="formCellDefaultTasks">
             <Form.Label>Create Default Tasks?</Form.Label>
             <Form.Check
@@ -210,7 +212,8 @@ class CellForm extends Component {
               onChange={this.handleOnChange}
             />
           </Form.Group>
-          {/* color - make this random */}
+
+          {/* color */}
           <Form.Group className="mb-3" controlId="formCellColor">
             <Form.Label>Cell Display Color</Form.Label>
             <Form.Control
@@ -220,8 +223,8 @@ class CellForm extends Component {
               value={this.state.color}
               onChange={this.handleOnChange}
             />
-            {/* <Form.Text muted>Cell map display color</Form.Text> */}
           </Form.Group>
+
           {/* create cell submit button */}
           <Button variant="success" type="submit">
             Save Cell
@@ -238,6 +241,7 @@ class CellForm extends Component {
 const mapStateToProps = (state) => {
   return {
     allRegions: state.regions.allRegions,
+    allWorldspaces: state.worldspaces.allWorldspaces,
   };
 };
 

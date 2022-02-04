@@ -12,6 +12,7 @@ import { loadCells } from "../actions/cellActions";
 import CellDetailPage from "./pages/cellDetailPage";
 import QuestDetailPage from "./pages/questDetailPage";
 import { loadRegions } from "../actions/regionActions";
+import { loadWorldspaces } from "../actions/worldspaceActions";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const PageContent = (props) => {
     dispatch(loadCells());
     dispatch(loadRegions());
     // dispatch(loadUsers());
-    // dispatch(loadWorldspaces());
+    dispatch(loadWorldspaces());
     // load usernames
   }, []);
 
