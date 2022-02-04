@@ -126,7 +126,7 @@ class QuestForm extends Component {
 
           {/* category */}
           <Form.Group className="mb-3" controlId="formCellPriority">
-            <Form.Label>Priority</Form.Label>
+            <Form.Label>Category</Form.Label>
             <Form.Select
               aria-label="Quest Category"
               name="category"
