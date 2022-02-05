@@ -14,16 +14,19 @@ import QuestDetailPage from "./pages/questDetailPage";
 import { loadRegions } from "../actions/regionActions";
 import { loadWorldspaces } from "../actions/worldspaceActions";
 import { loadUsers } from "../actions/userActions";
+import { loadQuests } from "../actions/questActions";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
   const cells = useSelector((state) => state.cells.allCells);
+  const quests = useSelector((state) => state.quests.allQuests);
 
   useEffect(() => {
     dispatch(loadCells());
     dispatch(loadRegions());
     dispatch(loadUsers());
     dispatch(loadWorldspaces());
+    dispatch(loadQuests());
     // load usernames
   }, []);
 
@@ -68,8 +71,22 @@ const PageContent = (props) => {
             render={() => <FormPage formType="new-quest" />}
           />
           <Route
+            exact
             path="/quests/:id"
-            render={(routerProps) => <QuestDetailPage {...routerProps} />}
+            render={(routerProps) => (
+              <QuestDetailPage {...routerProps} quests={quests} />
+            )}
+          />
+          <Route
+            exact
+            path="/quests/:id/edit"
+            render={(routerProps) => (
+              <FormPage
+                formType="edit-quest"
+                data={quests}
+                router={routerProps}
+              />
+            )}
           />
           {/* User */}
           <Route exact path="/user" render={() => <UserPage />} />
