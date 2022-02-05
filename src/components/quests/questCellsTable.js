@@ -65,20 +65,6 @@ const IndeterminateCheckbox = React.forwardRef(
 const QuestCellsTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
 
-  React.useEffect(() => {
-    // TODO: update state with selected row ids values
-  });
-
-  // Navigate to cell page on row click
-  // TODO: is this needed?
-  // let history = useHistory();
-
-  // const handleRowClick = (id) => {
-  //   console.log(id);
-  //   const path = `/cells/${id}`;
-  //   history.push(path);
-  // };
-
   // Table Columns
   const columns = React.useMemo(
     () => [
@@ -147,6 +133,14 @@ const QuestCellsTable = (props) => {
     setGlobalFilter,
   } = tableInstance;
 
+  React.useEffect(() => {
+    const ids = [];
+    for (const row of selectedFlatRows) {
+      ids.push(String(row.original.id));
+    }
+    props.setCellIds(ids);
+  }, [selectedFlatRows]);
+
   return (
     <>
       <BTable striped bordered hover size="sm" {...getTableProps()}>
@@ -188,12 +182,7 @@ const QuestCellsTable = (props) => {
                 {row.cells.map((cell) => {
                   if (cell.column.Header === "Title") {
                     return (
-                      <td
-                        {...cell.getCellProps()}
-                        // onClick={() => handleRowClick(row.original.id)}
-                      >
-                        {cell.render("Cell")}{" "}
-                      </td>
+                      <td {...cell.getCellProps()}>{cell.render("Cell")} </td>
                     );
                   } else {
                     return (
@@ -251,10 +240,6 @@ const QuestCellsTable = (props) => {
             </option>
           ))}
         </select>
-        {/* JSON Output sample */}
-        <pre>
-          <code>{console.log(selectedRowIds)}</code>
-        </pre>
       </div>
     </>
   );
@@ -288,7 +273,6 @@ function GlobalFilter({
 
 const prepareData = (cellArray) => {
   let preppedData = [];
-  // if (cellArray) {
   for (const cell of cellArray) {
     preppedData.push({
       id: cell.id,
@@ -297,28 +281,9 @@ const prepareData = (cellArray) => {
       col3: cell.worldspace.name,
     });
   }
-  // }
   return preppedData;
 };
 
 export default QuestCellsTable;
 
-/* 
-TODO: columns:
-color
-title
-% complete
-# of open tasks
-priority
-x coordinate
-y coordinate
-user
-region
-worldspace
-edit
-
-**This cell list component should be generic enough to reuse for other areas, pass in cells as prop**
-*/
 // TODO: find better symbol for up and down sort arrows
-// TODO: set up user, region, and worlspace to show name instead of id
-// TODO: add open tasks to backend serializer

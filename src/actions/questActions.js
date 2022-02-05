@@ -10,7 +10,7 @@ export const createQuest = (questObject) => {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
-      body: JSON.stringify(questObject),
+      body: JSON.stringify({ quest: questObject }),
     };
     fetch(`${apiURL}/api/v1/quests`, configurationObject)
       .then((response) => {
@@ -73,7 +73,7 @@ export const editQuest = (questObject) => {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
-      body: JSON.stringigfy(questObject),
+      body: JSON.stringigfy({ quest: questObject }),
     };
     fetch(
       `${apiURL}/api/v1/quests/${questObject.quest.id}`,

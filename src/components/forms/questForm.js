@@ -5,8 +5,6 @@ import { createQuest, editQuest } from "../../actions/questActions";
 import QuestCellsTable from "../quests/questCellsTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
-// import randomColorGenerator from "../../helpers/randomColorGenerator";
-
 class QuestForm extends Component {
   state = {
     formTitle: "New Quest",
@@ -14,7 +12,7 @@ class QuestForm extends Component {
     summary: "",
     details: "",
     wiki_link: "",
-    category: "",
+    category: "Main",
     cell_ids: [],
   };
 
@@ -53,47 +51,22 @@ class QuestForm extends Component {
 
   renderCellTable = () => {
     if (this.props.allCells) {
-      return <QuestCellsTable cells={this.props.allCells} />;
+      return (
+        <QuestCellsTable
+          cells={this.props.allCells}
+          setCellIds={this.recieveCellIds}
+        />
+      );
     } else {
       return <LoadingSpinner />;
     }
   };
 
-  // renderOptionItems = (data) => {
-  //   let items = [];
-  //   if (data) {
-  //     for (const item of data) {
-  //       items.push(
-  //         <option value={item.id} key={item.id}>
-  //           {item.name}
-  //         </option>
-  //       );
-  //     }
-  //   }
-  //   return items;
-  // };
+  recieveCellIds = (ids) => {
+    console.log("Ids: ", ids);
+    this.setState({ cell_ids: ids });
+  };
 
-  // renderUserOptionItems = (data) => {
-  //   let items = [];
-  //   items.push(
-  //     <option value="" key={0}>
-  //       None
-  //     </option>
-  //   );
-  //   if (data) {
-  //     for (const item of data) {
-  //       items.push(
-  //         <option value={item.id} key={item.id}>
-  //           {item.display_name}
-  //         </option>
-  //       );
-  //     }
-  //   }
-  //   return items;
-  // };
-  // TODO: improve these two render item methods, DRY
-
-  // TODO: update this to quest data
   render() {
     return (
       <div>
@@ -165,8 +138,6 @@ class QuestForm extends Component {
             />
           </Form.Group>
 
-          {/* TODO: Cell list here with selection box */}
-          {/* <QuestCellsTable cells={this.props.allCells} /> */}
           {this.renderCellTable()}
 
           {/* submit & cancel button */}
@@ -184,9 +155,6 @@ class QuestForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // allRegions: state.regions.allRegions,
-    // allWorldspaces: state.worldspaces.allWorldspaces,
-    // allUsers: state.users.allUsers,
     allCells: state.cells.allCells,
   };
 };

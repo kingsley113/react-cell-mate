@@ -18,6 +18,14 @@ const QuestDetailPage = (routerProps) => {
     dispatch(loadQuest(questId));
   }, []);
 
+  const renderCellTable = () => {
+    if (quest.cells) {
+      return <CellTable cells={quest.cells} />;
+    } else {
+      return <LoadingSpinner />;
+    }
+  };
+
   if (quest) {
     return (
       <div>
@@ -37,7 +45,9 @@ const QuestDetailPage = (routerProps) => {
           <ListGroup.Item>Wiki Link: {quest.wiki_link}</ListGroup.Item>
           <ListGroup.Item>
             <h4>Linked Cells:</h4>
-            <CellTable cells={quest.cells} />
+            {console.log(quest)}
+            {/* <CellTable cells={quest.cells} /> */}
+            {renderCellTable()}
           </ListGroup.Item>
         </ListGroup>
       </div>

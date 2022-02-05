@@ -9,6 +9,7 @@ import {
   useTable,
   usePagination,
 } from "react-table";
+import LoadingSpinner from "../general/loadingSpinner";
 
 // TODO: reference this for styles when the time comes
 // const Styles = styled.div`
@@ -135,7 +136,7 @@ const CellTable = (props) => {
     preGlobalFilteredRows,
     setGlobalFilter,
   } = tableInstance;
-
+  // if (props.cells) {
   return (
     <>
       <BTable striped bordered hover size="sm" {...getTableProps()}>
@@ -243,6 +244,9 @@ const CellTable = (props) => {
       </div>
     </>
   );
+  // } else {
+  //   return <LoadingSpinner />;
+  // }
 };
 
 function GlobalFilter({
