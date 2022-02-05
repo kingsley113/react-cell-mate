@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
-import { createQuest, editQuest } from "../../actions/questActions";
+import { createQuest, editQuest, loadQuest } from "../../actions/questActions";
 import QuestCellsTable from "../quests/questCellsTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
@@ -27,7 +27,7 @@ class QuestForm extends Component {
     }
   }
 
-  loadCellData = (quest) => {
+  loadQuestData = (quest) => {
     this.setState({
       id: quest.id,
       title: quest.title,
@@ -54,6 +54,7 @@ class QuestForm extends Component {
       return (
         <QuestCellsTable
           cells={this.props.allCells}
+          cellIds={this.state.cell_ids}
           setCellIds={this.recieveCellIds}
         />
       );
@@ -63,7 +64,6 @@ class QuestForm extends Component {
   };
 
   recieveCellIds = (ids) => {
-    console.log("Ids: ", ids);
     this.setState({ cell_ids: ids });
   };
 
@@ -156,6 +156,7 @@ class QuestForm extends Component {
 const mapStateToProps = (state) => {
   return {
     allCells: state.cells.allCells,
+    activeQuest: state.quests.activeQuest,
   };
 };
 
