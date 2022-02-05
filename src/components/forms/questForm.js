@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
 import { createQuest, editQuest } from "../../actions/questActions";
+import QuestCellsTable from "../quests/questCellsTable";
 // import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class QuestForm extends Component {
@@ -113,11 +114,13 @@ class QuestForm extends Component {
           </Form.Group>
 
           {/* details */}
+          {/* TODO: set the size for this */}
           <Form.Group className="mb-3" controlId="formQuestDetails">
             <Form.Label>Details</Form.Label>
             <Form.Control
-              type="textarea"
+              // type="textarea"
               placeholder="Enter quest details"
+              as="textarea"
               name="details"
               value={this.state.details}
               onChange={this.handleOnChange}
@@ -153,6 +156,7 @@ class QuestForm extends Component {
           </Form.Group>
 
           {/* TODO: Cell list here with selection box */}
+          <QuestCellsTable cells={this.props.allCells} />
 
           {/* submit & cancel button */}
           <Button variant="success" type="submit">
