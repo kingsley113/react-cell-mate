@@ -62,8 +62,14 @@ const IndeterminateCheckbox = React.forwardRef(
   }
 );
 
+// *****************MAIN FUNCTION*******************
 const QuestCellsTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
+  console.log(props);
+  const preSelectedRows = React.useMemo(
+    () => prepareSelectedRows(props.cellIds, data),
+    []
+  );
 
   // Table Columns
   const columns = React.useMemo(
@@ -85,7 +91,15 @@ const QuestCellsTable = (props) => {
   );
 
   const tableInstance = useTable(
-    { columns, data, initialState: { pageIndex: 0, pageSize: 25 } },
+    {
+      columns,
+      data,
+      initialState: {
+        pageIndex: 0,
+        pageSize: 25,
+        selectedRowIds: preSelectedRows,
+      },
+    },
     useGlobalFilter,
     useSortBy,
     usePagination,
@@ -141,10 +155,15 @@ const QuestCellsTable = (props) => {
     props.setCellIds(ids);
   }, [selectedFlatRows]);
 
+  // React.useEffect(() => {
+  //   selectedRowIds = props.cellIds;
+  // }, []);
+
   return (
     <>
       <BTable striped bordered hover size="sm" {...getTableProps()}>
         {/* Table Head */}
+        {console.log("table props: ", getTableProps())}
         <thead>
           <tr>
             <th colSpan={visibleColumns.length} style={{ textAlign: "left" }}>
@@ -177,18 +196,15 @@ const QuestCellsTable = (props) => {
           {/* {rows.map((row) => { */}
           {page.map((row, i) => {
             prepareRow(row);
+            // console.log(preSelectedRows);
+            // row.toggleRowSelected(true);
+            // console.log(row);
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  if (cell.column.Header === "Title") {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")} </td>
-                    );
-                  } else {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  }
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
                 })}
               </tr>
             );
@@ -282,6 +298,17 @@ const prepareData = (cellArray) => {
     });
   }
   return preppedData;
+};
+
+const prepareSelectedRows = (idArray) => {
+  let selectedRows = {};
+
+  for (const id of idArray) {
+    selectedRows[id] = true;
+  }
+
+  console.log("id object: ", selectedRows);
+  return selectedRows;
 };
 
 export default QuestCellsTable;

@@ -28,6 +28,7 @@ class QuestForm extends Component {
   }
 
   loadQuestData = (quest) => {
+    // console.log("Quest: ", quest);
     this.setState({
       id: quest.id,
       title: quest.title,
@@ -51,6 +52,7 @@ class QuestForm extends Component {
 
   renderCellTable = () => {
     if (this.props.allCells) {
+      // console.log(this.state.cell_ids);
       return (
         <QuestCellsTable
           cells={this.props.allCells}
@@ -64,6 +66,7 @@ class QuestForm extends Component {
   };
 
   recieveCellIds = (ids) => {
+    console.log("ids: ", ids);
     this.setState({ cell_ids: ids });
   };
 
