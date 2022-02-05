@@ -1,36 +1,29 @@
-import { useEffect } from "react";
 import { Button, ListGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { loadQuest } from "../../actions/questActions";
 import CellTable from "../../components/cells/cellTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
-import QuestTable from "../../components/quests/questTable";
 
-const QuestDetailPage = (routerProps) => {
-  const questId = routerProps.match.params.id;
-  const quest = useSelector((state) => state.quests.currentQuest);
-  const pageTitle = "Quest Detail Page";
+const QuestDetailPage = (props) => {
+  let pageTitle = "Quest Detail Page";
   const history = useHistory();
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadQuest(questId));
-  }, []);
+  if (props.quests) {
+    const quest = props.quests.filter((quest) => {
+      return quest.id === Number(props.match.params.id);
+    })[0];
+    pageTitle = quest.title;
 
-  const renderCellTable = () => {
-    if (quest.cells) {
-      return <CellTable cells={quest.cells} />;
-    } else {
-      return <LoadingSpinner />;
-    }
-  };
+    const renderCellTable = () => {
+      if (quest.cells) {
+        return <CellTable cells={quest.cells} />;
+      } else {
+        return <LoadingSpinner />;
+      }
+    };
 
-  if (quest) {
     return (
       <div>
-        quest detail page
-        <h2>{quest.title}</h2>
+        <h2>{pageTitle}</h2>
         <Button
           variant="primary"
           onClick={() => history.push(`/quests/${quest.id}/edit`)}
@@ -45,8 +38,6 @@ const QuestDetailPage = (routerProps) => {
           <ListGroup.Item>Wiki Link: {quest.wiki_link}</ListGroup.Item>
           <ListGroup.Item>
             <h4>Linked Cells:</h4>
-            {console.log(quest)}
-            {/* <CellTable cells={quest.cells} /> */}
             {renderCellTable()}
           </ListGroup.Item>
         </ListGroup>
@@ -63,5 +54,3 @@ const QuestDetailPage = (routerProps) => {
 };
 
 export default QuestDetailPage;
-
-// TODO: decide best way to handle loading single quests, probably just load the single quest from backend?
