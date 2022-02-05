@@ -65,6 +65,10 @@ const IndeterminateCheckbox = React.forwardRef(
 const QuestCellsTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
 
+  React.useEffect(() => {
+    // TODO: update state with selected row ids values
+  });
+
   // Navigate to cell page on row click
   // TODO: is this needed?
   // let history = useHistory();
@@ -249,7 +253,7 @@ const QuestCellsTable = (props) => {
         </select>
         {/* JSON Output sample */}
         <pre>
-          <code>{console.log(selectedRowIds.keys())}</code>
+          <code>{console.log(selectedRowIds)}</code>
         </pre>
       </div>
     </>
@@ -284,7 +288,7 @@ function GlobalFilter({
 
 const prepareData = (cellArray) => {
   let preppedData = [];
-
+  // if (cellArray) {
   for (const cell of cellArray) {
     preppedData.push({
       id: cell.id,
@@ -293,6 +297,7 @@ const prepareData = (cellArray) => {
       col3: cell.worldspace.name,
     });
   }
+  // }
   return preppedData;
 };
 

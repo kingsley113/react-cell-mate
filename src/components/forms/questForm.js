@@ -3,6 +3,8 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
 import { createQuest, editQuest } from "../../actions/questActions";
 import QuestCellsTable from "../quests/questCellsTable";
+import LoadingSpinner from "../../components/general/loadingSpinner";
+
 // import randomColorGenerator from "../../helpers/randomColorGenerator";
 
 class QuestForm extends Component {
@@ -46,6 +48,14 @@ class QuestForm extends Component {
       this.props.createQuest(this.state);
     } else {
       this.props.editQuest(this.state);
+    }
+  };
+
+  renderCellTable = () => {
+    if (this.props.allCells) {
+      return <QuestCellsTable cells={this.props.allCells} />;
+    } else {
+      return <LoadingSpinner />;
     }
   };
 
@@ -156,7 +166,8 @@ class QuestForm extends Component {
           </Form.Group>
 
           {/* TODO: Cell list here with selection box */}
-          <QuestCellsTable cells={this.props.allCells} />
+          {/* <QuestCellsTable cells={this.props.allCells} /> */}
+          {this.renderCellTable()}
 
           {/* submit & cancel button */}
           <Button variant="success" type="submit">
