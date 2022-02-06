@@ -14,6 +14,8 @@ const CellMap = ({ cells, colorMode }) => {
             X: {cell.ck_coordinate_x}
             Y: {cell.ck_coordinate_y}
             Color: {cell.color}
+            Region: {cell.region.name}
+            User: {cell.user.display_name}
           </Popover.Body>
         </Popover>
       );
@@ -21,13 +23,6 @@ const CellMap = ({ cells, colorMode }) => {
 
     if (cells) {
       for (const cell of cells) {
-        // console.log(
-        //   cell.name,
-        //   " X: ",
-        //   cell.coordinate_x,
-        //   "Y: ",
-        //   cell.coordinate_y
-        // );
         cellObjects.push(
           <OverlayTrigger
             key={cell.id}
@@ -42,6 +37,7 @@ const CellMap = ({ cells, colorMode }) => {
                 gridRowStart: cell.coordinate_y,
                 backgroundColor: cell.color,
               }}
+              // TODO: create function to change color modes
               onClick={() => history.push(`/cells/${cell.id}`)}
             ></div>
           </OverlayTrigger>
@@ -56,8 +52,5 @@ const CellMap = ({ cells, colorMode }) => {
 
 export default CellMap;
 
-// TODO: set up grid layout
-// TODO: get background image
 // TODO: make map responsive to size?
-// TODO: add tooltips on hover to each cell
 // TODO: add legend for each color mode, this should be on cell map page?
