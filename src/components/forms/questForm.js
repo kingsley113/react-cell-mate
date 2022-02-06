@@ -43,7 +43,11 @@ class QuestForm extends Component {
 
   renderCellTable = () => {
     if (this.props.allCells) {
-      if (this.state.cell_ids.length > 0 || this.state.noLinkedCells === true) {
+      if (
+        this.state.cell_ids.length > 0 ||
+        this.state.noLinkedCells === true ||
+        this.props.mode === "new"
+      ) {
         return (
           <QuestCellsTable
             cells={this.props.allCells}
