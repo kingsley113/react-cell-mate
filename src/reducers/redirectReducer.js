@@ -3,7 +3,7 @@ function redirects(state = { redirects: [] }, action) {
     case "REDIRECT":
       return { redirectTo: action.url };
     case "REDIRECT_RESET":
-      return state;
+      return { redirects: [] };
     default:
       return state;
   }
