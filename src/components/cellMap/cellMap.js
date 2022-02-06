@@ -1,6 +1,8 @@
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 const CellMap = ({ cells, colorMode }) => {
+  const history = useHistory();
   const renderCells = (cells, mode) => {
     let cellObjects = [];
 
@@ -40,6 +42,7 @@ const CellMap = ({ cells, colorMode }) => {
                 gridRowStart: cell.coordinate_y,
                 backgroundColor: cell.color,
               }}
+              onClick={() => history.push(`/cells/${cell.id}`)}
             ></div>
           </OverlayTrigger>
         );
