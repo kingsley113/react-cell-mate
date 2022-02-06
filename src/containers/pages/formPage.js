@@ -7,12 +7,11 @@ import QuestForm from "../../components/forms/questForm";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const FormPage = ({ router, formType, data }) => {
-  // let id;
-  const id = router.match.params.id;
-  const object = filterDataById(data, id);
   const dispatch = useDispatch();
   const redirectPath = useSelector((state) => state.redirects.redirectTo);
   let form = null;
+  let id;
+  let object;
 
   const redirectAfterSuccess = () => {
     if (redirectPath) {
@@ -20,6 +19,12 @@ const FormPage = ({ router, formType, data }) => {
       return <Redirect to={redirectPath} />;
     }
   };
+
+  if (router) {
+    id = router.match.params.id;
+    object = filterDataById(data, id);
+  }
+
   // Determine which form to render
   switch (formType) {
     // New Cell
@@ -35,7 +40,6 @@ const FormPage = ({ router, formType, data }) => {
     case "new-quest":
       form = <QuestForm mode="new" />;
       break;
-    // Edit Quest TODO:
     case "edit-quest":
       if (object) {
         form = <QuestForm mode="edit" quest={object} />;

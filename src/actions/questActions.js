@@ -17,8 +17,8 @@ export const createQuest = (questObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "ADD_QUEST", quest: json });
-        // TODO: add redirect
+        dispatch({ type: "ADD_QUEST", quest: json.quest });
+        dispatch({ type: "REDIRECT", url: `/quests/${json.quest.id}` });
       })
       .catch((response) => {
         console.log(response);
@@ -73,18 +73,15 @@ export const editQuest = (questObject) => {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
-      body: JSON.stringigfy({ quest: questObject }),
+      body: JSON.stringify({ quest: questObject }),
     };
-    fetch(
-      `${apiURL}/api/v1/quests/${questObject.quest.id}`,
-      configurationObject
-    )
+    fetch(`${apiURL}/api/v1/quests/${questObject.id}`, configurationObject)
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "EDIT_QUEST", quest: json });
-        // TODO: add redirect
+        dispatch({ type: "EDIT_QUEST", quest: json.quest });
+        dispatch({ type: "REDIRECT", url: `/quests/${json.quest.id}` });
       })
       .catch((response) => {
         console.log(response);

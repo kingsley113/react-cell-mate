@@ -8,6 +8,7 @@ import LoadingSpinner from "../../components/general/loadingSpinner";
 class QuestForm extends Component {
   state = {
     formTitle: "New Quest",
+    noLinkedCells: false,
     title: "",
     summary: "",
     details: "",
@@ -28,7 +29,6 @@ class QuestForm extends Component {
   }
 
   loadQuestData = (quest) => {
-    // console.log("Quest: ", quest);
     this.setState({
       id: quest.id,
       title: quest.title,
@@ -38,35 +38,29 @@ class QuestForm extends Component {
       category: quest.category,
       cell_ids: quest.cell_ids,
     });
-  };
-
-  handleOnSubmit = (event) => {
-    event.preventDefault();
-
-    if (this.props.mode === "new") {
-      this.props.createQuest(this.state);
-    } else {
-      this.props.editQuest(this.state);
-    }
+    if (quest.cell_ids.length === 0) this.setState({ noLinkedCells: true });
   };
 
   renderCellTable = () => {
     if (this.props.allCells) {
-      // console.log(this.state.cell_ids);
-      return (
-        <QuestCellsTable
-          cells={this.props.allCells}
-          cellIds={this.state.cell_ids}
-          setCellIds={this.recieveCellIds}
-        />
-      );
+      if (this.state.cell_ids.length > 0 || this.state.noLinkedCells === true) {
+        return (
+          <QuestCellsTable
+            cells={this.props.allCells}
+            cellIds={this.state.cell_ids}
+            setCellIds={this.recieveCellIds}
+          />
+        );
+      }
     } else {
       return <LoadingSpinner />;
     }
   };
 
   recieveCellIds = (ids) => {
-    console.log("ids: ", ids);
+    this.setState(() =>
+      ids.length === 0 ? { noLinkedCells: true } : { noLinkedCells: false }
+    );
     this.setState({ cell_ids: ids });
   };
 
@@ -145,7 +139,7 @@ class QuestForm extends Component {
 
           {/* submit & cancel button */}
           <Button variant="success" type="submit">
-            Save Cell
+            Save Quest
           </Button>
           <Button variant="danger" onClick={() => window.history.back()}>
             Cancel
@@ -154,6 +148,16 @@ class QuestForm extends Component {
       </div>
     );
   }
+
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+
+    if (this.props.mode === "new") {
+      this.props.createQuest(this.state);
+    } else {
+      this.props.editQuest(this.state);
+    }
+  };
 }
 
 const mapStateToProps = (state) => {

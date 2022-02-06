@@ -65,7 +65,6 @@ const IndeterminateCheckbox = React.forwardRef(
 // *****************MAIN FUNCTION*******************
 const QuestCellsTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
-  console.log(props);
   const preSelectedRows = React.useMemo(
     () => prepareSelectedRows(props.cellIds, data),
     []
@@ -94,6 +93,7 @@ const QuestCellsTable = (props) => {
     {
       columns,
       data,
+      manualRowSelectedKey: "selected",
       initialState: {
         pageIndex: 0,
         pageSize: 25,
@@ -155,15 +155,10 @@ const QuestCellsTable = (props) => {
     props.setCellIds(ids);
   }, [selectedFlatRows]);
 
-  // React.useEffect(() => {
-  //   selectedRowIds = props.cellIds;
-  // }, []);
-
   return (
     <>
       <BTable striped bordered hover size="sm" {...getTableProps()}>
         {/* Table Head */}
-        {console.log("table props: ", getTableProps())}
         <thead>
           <tr>
             <th colSpan={visibleColumns.length} style={{ textAlign: "left" }}>
@@ -193,12 +188,8 @@ const QuestCellsTable = (props) => {
         </thead>
         {/* Table Body */}
         <tbody {...getTableBodyProps()}>
-          {/* {rows.map((row) => { */}
           {page.map((row, i) => {
             prepareRow(row);
-            // console.log(preSelectedRows);
-            // row.toggleRowSelected(true);
-            // console.log(row);
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
@@ -300,14 +291,13 @@ const prepareData = (cellArray) => {
   return preppedData;
 };
 
-const prepareSelectedRows = (idArray) => {
+const prepareSelectedRows = (cellIds, data) => {
   let selectedRows = {};
-
-  for (const id of idArray) {
-    selectedRows[id] = true;
+  for (let i = 0; i < data.length; i++) {
+    if (cellIds.includes(data[i].id)) {
+      selectedRows[i] = true;
+    }
   }
-
-  console.log("id object: ", selectedRows);
   return selectedRows;
 };
 
