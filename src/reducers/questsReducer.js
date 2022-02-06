@@ -1,7 +1,6 @@
 function quests(state = { quests: [] }, action) {
   switch (action.type) {
     case "ADD_QUEST":
-      // console.log("add quest action: ", action.quest);
       return { allQuests: [...state.allQuests, action.quest] };
     case "LOAD_QUEST":
       return { currentQuest: action.quest };
