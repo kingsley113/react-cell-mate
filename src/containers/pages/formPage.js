@@ -15,7 +15,9 @@ const FormPage = ({ router, formType, data }) => {
 
   const redirectAfterSuccess = () => {
     if (redirectPath) {
-      dispatch(resetRedirect());
+      setTimeout(() => {
+        dispatch(resetRedirect());
+      }, 50);
       return <Redirect to={redirectPath} />;
     }
   };
