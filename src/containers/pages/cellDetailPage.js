@@ -24,6 +24,10 @@ const CellDetailPage = (props) => {
         >
           Edit Cell
         </Button>
+        <Button variant="secondary" onClick={() => history.push(`/cells`)}>
+          Back to Index
+        </Button>
+
         <div className="cell-details-container">
           <CellDetailsPanel cell={cell} />
           <CellTaskPanel cell={cell} />

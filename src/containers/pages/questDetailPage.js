@@ -30,6 +30,9 @@ const QuestDetailPage = (props) => {
         >
           Edit Quest
         </Button>
+        <Button variant="secondary" onClick={() => history.push(`/quests`)}>
+          Back to Index
+        </Button>
         <ListGroup>
           <ListGroup.Item>Title: {quest.title}</ListGroup.Item>
           <ListGroup.Item>Summary: {quest.summary}</ListGroup.Item>
