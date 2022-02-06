@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import CellMap from "../../components/cellMap/cellMap";
 
-class CellMapPage extends Component {
-  render() {
-    return (
-      <div>
-        this will be the cell map page
-        <CellMap />
-      </div>
-    );
-    // TODO: will need a header, selector for color mode, and the map, and show color scale and user legend when on the respective modes
-  }
-}
+const CellMapPage = (props) => {
+	const [colorMode, setColorMode] = useState("cell-color")
+
+  return (
+    <div>
+      this will be the cell map page
+			
+      <CellMap colorMode={}/>
+    </div>
+  );
+  // TODO: will need a header, selector for color mode, and the map, and show color scale and user legend when on the respective modes
+};
 
 export default CellMapPage;
 
