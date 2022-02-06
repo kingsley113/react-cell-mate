@@ -1,3 +1,4 @@
+import renderErrors from "../helpers/renderErrors";
 import { apiURL } from "./fetchConfig";
 
 // Create quest
@@ -17,8 +18,12 @@ export const createQuest = (questObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "ADD_QUEST", quest: json.quest });
-        dispatch({ type: "REDIRECT", url: `/quests/${json.quest.id}` });
+        if (json.errors) {
+          renderErrors(json.errors);
+        } else {
+          dispatch({ type: "ADD_QUEST", quest: json });
+          dispatch({ type: "REDIRECT", url: `/quests/${json.id}` });
+        }
       })
       .catch((response) => {
         console.log(response);
@@ -80,8 +85,12 @@ export const editQuest = (questObject) => {
         return response.json();
       })
       .then((json) => {
-        dispatch({ type: "EDIT_QUEST", quest: json.quest });
-        dispatch({ type: "REDIRECT", url: `/quests/${json.quest.id}` });
+        if (json.errors) {
+          renderErrors(json.errors);
+        } else {
+          dispatch({ type: "EDIT_QUEST", quest: json });
+          dispatch({ type: "REDIRECT", url: `/quests/${json.id}` });
+        }
       })
       .catch((response) => {
         console.log(response);
