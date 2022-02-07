@@ -6,6 +6,17 @@ const CellMap = ({ cells, colorMode }) => {
   const renderCells = (cells, mode) => {
     let cellObjects = [];
 
+    const generateCellColor = (cell, colorMode) => {
+      switch (colorMode) {
+        case "cell_color":
+          return cell.color;
+        case "user_color":
+          return cell.user.color;
+        case "cell_progress":
+          return generateProgressColor(cell.percent_complete);
+      }
+    };
+
     const cellInfoPanel = (cell) => {
       return (
         <Popover id="popover-basic">
@@ -14,8 +25,8 @@ const CellMap = ({ cells, colorMode }) => {
             X: {cell.ck_coordinate_x}
             Y: {cell.ck_coordinate_y}
             Color: {cell.color}
-            Region: {cell.region.name}
             User: {cell.user.display_name}
+            Progress: {cell.percent_complete}% Complete
           </Popover.Body>
         </Popover>
       );
@@ -35,9 +46,8 @@ const CellMap = ({ cells, colorMode }) => {
               style={{
                 gridColumnStart: cell.coordinate_x,
                 gridRowStart: cell.coordinate_y,
-                backgroundColor: cell.color,
+                backgroundColor: generateCellColor(cell, colorMode),
               }}
-              // TODO: create function to change color modes
               onClick={() => history.push(`/cells/${cell.id}`)}
             ></div>
           </OverlayTrigger>
@@ -48,6 +58,34 @@ const CellMap = ({ cells, colorMode }) => {
   };
 
   return <div id="cell-grid-container">{renderCells(cells, colorMode)}</div>;
+};
+
+const generateProgressColor = (percentComplete) => {
+  const value = Math.ceil(percentComplete / 10) * 10;
+  switch (value) {
+    case 0:
+      return "#FF3300";
+    case 10:
+      return "#ff6600";
+    case 20:
+      return "#ff9900";
+    case 30:
+      return "#FFCC00";
+    case 40:
+      return "#FFFF00";
+    case 50:
+      return "#ccff00";
+    case 60:
+      return "#99ff00";
+    case 70:
+      return "#66ff00";
+    case 80:
+      return "#33ff00";
+    case 90:
+      return "#00FF00";
+    case 100:
+      return "#00FF00";
+  }
 };
 
 export default CellMap;
