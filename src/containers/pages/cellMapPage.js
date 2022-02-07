@@ -1,11 +1,14 @@
 import React, { Component, useState } from "react";
+import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import CellMap from "../../components/cellMap/cellMap";
 import ColorModeSelector from "../../components/cellMap/colorModeSelector";
 
 const CellMapPage = (props) => {
   const [colorMode, setColorMode] = useState("cell_color");
   const cells = useSelector((state) => state.cells.allCells);
+  const history = useHistory();
 
   const renderColorMode = () => {
     switch (colorMode) {
@@ -23,14 +26,13 @@ const CellMapPage = (props) => {
   return (
     <div>
       <h2>Cell Map - {renderColorMode()}</h2>
+      <Button variant="primary" onClick={() => history.push(`/cells`)}>
+        Cell Index
+      </Button>
       <ColorModeSelector getModeInput={setColorMode} />
       <CellMap colorMode={colorMode} cells={cells} />
     </div>
   );
-  // TODO: will need a header, and the map, and show color scale and user legend when on the respective modes
 };
 
 export default CellMapPage;
-
-// TODO: use offCanvas panel for legend on map
-// TODO: color mode selection, pass in prop to CellMap component for color mode
