@@ -89,7 +89,7 @@ const PageContent = (props) => {
             )}
           />
           {/* User */}
-          <Route exact path="/user" render={() => <UserPage />} />
+          <Route exact path="/users/profile" render={() => <UserPage />} />
         </Switch>
       </div>
     </div>
