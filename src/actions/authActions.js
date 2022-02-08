@@ -26,8 +26,8 @@ export const authenticateDiscord = () => {
 
 export const logout = () => {
   return (dispatch) => {
-    localStorage.removeItem("cellmate_jwt");
-    localStorage.removeItem("cellmate_current_user");
+    localStorage.removeItem("cellMateJWT");
+    localStorage.removeItem("cellMateCurrentUser");
     dispatch({ type: "LOGOUT" });
   };
 };
