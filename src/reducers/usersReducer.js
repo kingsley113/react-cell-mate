@@ -5,6 +5,8 @@ function users(state = { users: [] }, action) {
       return { allUsers: action.users };
     case "EDIT_USER":
     case "DELETE_USER":
+    case "SET_CURRENT_USER":
+      return { currentUser: action.currentUser };
     default:
       return state;
   }
