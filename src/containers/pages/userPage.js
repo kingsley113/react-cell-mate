@@ -1,13 +1,28 @@
-import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { logout } from "../../actions/authActions";
 
-class UserPage extends Component {
-  render() {
-    return <div>this will be the user account page</div>;
-  }
-}
+const UserPage = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClick = () => {
+    // delete tokens and current user
+    dispatch(logout());
+    // redirect to login
+    history.push("/login");
+  };
+  return (
+    <div>
+      <Button variant="danger" onClick={handleClick}>
+        Logout
+      </Button>
+    </div>
+  );
+};
 
 export default UserPage;
 
-// TODO: password reset
 // TODO: admin panel - show if user has admin rights
 // TODO: admin panel - delete users
