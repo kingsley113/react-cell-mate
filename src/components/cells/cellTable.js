@@ -279,7 +279,7 @@ const prepareData = (cellArray) => {
   let preppedData = [];
 
   for (const cell of cellArray) {
-    preppedData.push({
+    let dataObj = {
       id: cell.id,
       col1: cell.color,
       col2: cell.name,
@@ -288,11 +288,16 @@ const prepareData = (cellArray) => {
       col5: cell.priority,
       col6: cell.ck_coordinate_x,
       col7: cell.ck_coordinate_y,
-      col8: cell.user.display_name,
+      col8: "",
       col9: cell.region.name,
       col10: cell.worldspace.name,
       col11: <Link to={`/cells/${cell.id}/edit`}>Edit</Link>,
-    });
+    };
+    if (cell.user) {
+      dataObj.col8 = cell.user.display_name;
+    }
+
+    preppedData.push(dataObj);
   }
   return preppedData;
 };
