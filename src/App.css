@@ -99,3 +99,10 @@
   display: flex;
   flex-direction: row;
 }
+
+/* Header */
+#avatar-img {
+  height: 40px;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
