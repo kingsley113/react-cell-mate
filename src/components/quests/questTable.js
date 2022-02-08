@@ -246,6 +246,11 @@ function GlobalFilter({
   );
 }
 
+// Open Wiki link in new tab
+const openNewTab = (link) => {
+  window.open(link, "_blank");
+};
+
 const prepareData = (questArray) => {
   let preppedData = [];
 
@@ -254,7 +259,12 @@ const prepareData = (questArray) => {
       id: quest.id,
       col1: quest.title,
       col2: quest.category,
-      col3: quest.wiki_link,
+      col3:
+        quest.wiki_link !== "" ? (
+          <Button size="sm" onClick={() => openNewTab(quest.wiki_link)}>
+            Wiki Link
+          </Button>
+        ) : null,
       col4: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
       col5: quest.id,
     });
