@@ -25,7 +25,7 @@ const CellMap = ({ cells, colorMode }) => {
             X: {cell.ck_coordinate_x}
             Y: {cell.ck_coordinate_y}
             Color: {cell.color}
-            User: {cell.user.display_name}
+            User: {cell.user ? cell.user.display_name : ""}
             Progress: {cell.percent_complete}% Complete
           </Popover.Body>
         </Popover>
@@ -33,26 +33,29 @@ const CellMap = ({ cells, colorMode }) => {
     };
 
     if (cells) {
-      for (const cell of cells) {
-        cellObjects.push(
-          <OverlayTrigger
-            key={cell.id}
-            trigger={["hover", "focus"]}
-            placement="top"
-            overlay={cellInfoPanel(cell)}
-          >
-            <div
-              className="cell-block"
-              style={{
-                gridColumnStart: cell.coordinate_x,
-                gridRowStart: cell.coordinate_y,
-                backgroundColor: generateCellColor(cell, colorMode),
-              }}
-              onClick={() => history.push(`/cells/${cell.id}`)}
-            ></div>
-          </OverlayTrigger>
-        );
-      }
+      const cellObjects = cells.map((cell) => {
+        if (cell.worldspace.name === "Pacific Wasteland") {
+          return (
+            <OverlayTrigger
+              key={cell.id}
+              trigger={["hover", "focus"]}
+              placement="top"
+              overlay={cellInfoPanel(cell)}
+            >
+              <div
+                className="cell-block"
+                style={{
+                  gridColumnStart: cell.coordinate_x,
+                  gridRowStart: cell.coordinate_y,
+                  backgroundColor: generateCellColor(cell, colorMode),
+                }}
+                onClick={() => history.push(`/cells/${cell.id}`)}
+              ></div>
+            </OverlayTrigger>
+          );
+        }
+      });
+
       return cellObjects;
     }
   };
