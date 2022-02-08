@@ -23,8 +23,6 @@ class App extends Component {
               render={(routerProps) => <CallbackPage {...routerProps} />}
             />
             <Route exact path="/login" component={LoginPage} />
-            Component
-            <Route exact path="/signup" component={NewUserPage} />
             <Route path="/" component={PageContent} />
             <Route component={PageNotFound} />
           </Switch>
