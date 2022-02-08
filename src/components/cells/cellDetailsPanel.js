@@ -13,9 +13,9 @@ const CellDetailsPanel = ({ cell }) => {
         />
       </ListGroup.Item>
       <ListGroup.Item>Priority: {cell.priority}</ListGroup.Item>
-      <ListGroup.Item>Region: {cell.region_id}</ListGroup.Item>
-      <ListGroup.Item>User: {cell.user_id}</ListGroup.Item>
-      <ListGroup.Item>Worldspace: {cell.worldspace_id}</ListGroup.Item>
+      <ListGroup.Item>Region: {cell.region.name}</ListGroup.Item>
+      <ListGroup.Item>User: {cell.user.display_name}</ListGroup.Item>
+      <ListGroup.Item>Worldspace: {cell.worldspace.name}</ListGroup.Item>
     </ListGroup>
   );
 };
