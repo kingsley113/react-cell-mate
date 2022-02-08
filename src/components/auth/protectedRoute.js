@@ -1,10 +1,10 @@
 import { Redirect } from "react-router";
 
 const ProtectedRoute = (props) => {
-  if (localStorage.getItem("jwt")) {
+  if (localStorage.getItem("cellMateJWT")) {
     return props.children;
   } else {
-    console.log("======Redirecting Due to not logged in=======");
+    console.log("======Redirecting Due to Unauthorized Access=======");
     // alert("You must be logged in to continue");
     return <Redirect to="/login" />;
   }

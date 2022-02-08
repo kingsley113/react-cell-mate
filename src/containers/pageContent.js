@@ -15,6 +15,8 @@ import { loadRegions } from "../actions/regionActions";
 import { loadWorldspaces } from "../actions/worldspaceActions";
 import { loadCurrentUser, loadUsers } from "../actions/userActions";
 import { loadQuests } from "../actions/questActions";
+import ProtectedRoute from "../components/auth/protectedRoute";
+import PageNotFound from "./pages/pageNotFound";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -32,66 +34,69 @@ const PageContent = (props) => {
 
   return (
     <div>
-      <PageHeader />
-      <div className="page-main">
-        <Switch>
-          {/* Main */}
-          <Route exact path="/" render={() => <DashboardPage />} />
-          <Route exact path="/map" render={() => <CellMapPage />} />
-          {/* Cells */}
-          <Route exact path="/cells" render={() => <CellIndexPage />} />
-          <Route
-            exact
-            path="/cells/new"
-            render={() => <FormPage formType="new-cell" />}
-          />
-          <Route
-            exact
-            path="/cells/:id"
-            render={(routerProps) => (
-              <CellDetailPage {...routerProps} cells={cells} />
-            )}
-          />
-          <Route
-            exact
-            path="/cells/:id/edit"
-            render={(routerProps) => (
-              <FormPage
-                formType="edit-cell"
-                data={cells}
-                router={routerProps}
-              />
-            )}
-          />
-          {/* Quests */}
-          <Route exact path="/quests" render={() => <QuestIndexPage />} />
-          <Route
-            exact
-            path="/quests/new"
-            render={() => <FormPage formType="new-quest" />}
-          />
-          <Route
-            exact
-            path="/quests/:id"
-            render={(routerProps) => (
-              <QuestDetailPage {...routerProps} quests={quests} />
-            )}
-          />
-          <Route
-            exact
-            path="/quests/:id/edit"
-            render={(routerProps) => (
-              <FormPage
-                formType="edit-quest"
-                data={quests}
-                router={routerProps}
-              />
-            )}
-          />
-          {/* User */}
-          <Route exact path="/users/profile" render={() => <UserPage />} />
-        </Switch>
-      </div>
+      <ProtectedRoute>
+        <PageHeader />
+        <div className="page-main">
+          <Switch>
+            {/* Main */}
+            <Route exact path="/" render={() => <DashboardPage />} />
+            <Route exact path="/map" render={() => <CellMapPage />} />
+            {/* Cells */}
+            <Route exact path="/cells" render={() => <CellIndexPage />} />
+            <Route
+              exact
+              path="/cells/new"
+              render={() => <FormPage formType="new-cell" />}
+            />
+            <Route
+              exact
+              path="/cells/:id"
+              render={(routerProps) => (
+                <CellDetailPage {...routerProps} cells={cells} />
+              )}
+            />
+            <Route
+              exact
+              path="/cells/:id/edit"
+              render={(routerProps) => (
+                <FormPage
+                  formType="edit-cell"
+                  data={cells}
+                  router={routerProps}
+                />
+              )}
+            />
+            {/* Quests */}
+            <Route exact path="/quests" render={() => <QuestIndexPage />} />
+            <Route
+              exact
+              path="/quests/new"
+              render={() => <FormPage formType="new-quest" />}
+            />
+            <Route
+              exact
+              path="/quests/:id"
+              render={(routerProps) => (
+                <QuestDetailPage {...routerProps} quests={quests} />
+              )}
+            />
+            <Route
+              exact
+              path="/quests/:id/edit"
+              render={(routerProps) => (
+                <FormPage
+                  formType="edit-quest"
+                  data={quests}
+                  router={routerProps}
+                />
+              )}
+            />
+            {/* User */}
+            <Route exact path="/users/profile" render={() => <UserPage />} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </div>
+      </ProtectedRoute>
     </div>
   );
 };
