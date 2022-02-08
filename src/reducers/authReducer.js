@@ -6,12 +6,10 @@ function auth(state = { auth: [] }, action) {
         redirectToDashboard: true,
         redirectToLogin: false,
       };
-    case "LOGOUT":
-      return {
-        currentUser: null,
-        redirectToDashboard: false,
-        redirectToLogin: true,
-      };
+    // case "LOGOUT":
+    //   return {
+    //     currentUser: null,
+    //   };
     default:
       return state;
   }
