@@ -1,5 +1,7 @@
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { loadCell } from "../../actions/cellActions";
 import CellDetailsPanel from "../../components/cells/cellDetailsPanel";
 import CellTaskPanel from "../../components/cells/cellTask";
 import LoadingSpinner from "../../components/general/loadingSpinner";
@@ -8,6 +10,10 @@ import QuestTable from "../../components/quests/questTable";
 const CellDetailPage = (props) => {
   let pageTitle = "Cell Details";
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  // Trigger dispatch in order to record the cell visit on backend
+  dispatch(loadCell(props.match.params.id));
 
   if (props.cells) {
     const cell = props.cells.filter((cell) => {
@@ -37,13 +43,12 @@ const CellDetailPage = (props) => {
         </div>
       </div>
     );
-    // TODO: return to index button
     // TODO: url should be slug of title
   } else {
     return (
       <div>
         <h1>{pageTitle}</h1>
-        <LoadingSpinner />;
+        <LoadingSpinner />
       </div>
     );
   }
