@@ -10,6 +10,7 @@ import PageContent from "./containers/pageContent";
 import PageNotFound from "./containers/pages/pageNotFound";
 import LoginPage from "./containers/pages/loginPage";
 import NewUserPage from "./containers/pages/newUserPage";
+import CallbackPage from "./containers/pages/callbackPage";
 
 class App extends Component {
   render() {
@@ -21,6 +22,10 @@ class App extends Component {
             Component
             <Route exact path="/signup" component={NewUserPage} />
             <Route path="/" component={PageContent} />
+            <Route
+              path="/auth/accepted"
+              render={(routerProps) => <CallbackPage {...routerProps} />}
+            />
             <Route component={PageNotFound} />
           </Switch>
         </Router>
