@@ -9,7 +9,9 @@ const RecentCellsTile = () => {
 
   const renderRecentCells = () => {
     if (currentUser && cells) {
-      const recentCells = currentUser.recent_cells.split(",");
+      const recentCells = currentUser.recent_cells
+        ? currentUser.recent_cells.split(",")
+        : [];
       const cellItems = recentCells.map((cellId) => {
         const cell = cells.filter((cell) => cell.id === Number(cellId))[0];
         return <RecentCellListItem cell={cell} key={cell.id} />;
