@@ -36,7 +36,7 @@ const PageContent = (props) => {
     <div>
       <ProtectedRoute>
         <PageHeader />
-        <div className="page-main">
+        <div id="page-main">
           <Switch>
             {/* Main */}
             <Route exact path="/" render={() => <DashboardPage />} />

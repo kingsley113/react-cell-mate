@@ -7,7 +7,7 @@ class PageHeader extends Component {
   render() {
     return (
       <div id="page-header">
-        <Navbar bg="dark" variant="dark">
+        <Navbar variant="dark">
           <Navbar.Brand href="/">
             <Logo />
           </Navbar.Brand>

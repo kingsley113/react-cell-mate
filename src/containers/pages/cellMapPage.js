@@ -26,9 +26,9 @@ const CellMapPage = (props) => {
   return (
     <div>
       <h2>Cell Map - {renderColorMode()}</h2>
-      <Button variant="primary" onClick={() => history.push(`/cells`)}>
+      {/* <Button variant="primary" onClick={() => history.push(`/cells`)}>
         Cell Index
-      </Button>
+      </Button> */}
       <ColorModeSelector getModeInput={setColorMode} />
       <CellMap colorMode={colorMode} cells={cells} />
     </div>

@@ -60,7 +60,11 @@ const CellMap = ({ cells, colorMode }) => {
     }
   };
 
-  return <div id="cell-grid-container">{renderCells(cells, colorMode)}</div>;
+  return (
+    <div className="centered-container">
+      <div id="cell-grid-container">{renderCells(cells, colorMode)}</div>
+    </div>
+  );
 };
 
 const generateProgressColor = (percentComplete) => {

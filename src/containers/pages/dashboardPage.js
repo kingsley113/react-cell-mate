@@ -8,9 +8,9 @@ class DashboardPage extends Component {
   render() {
     return (
       <div>
-        Dashboard Page
-        <SummaryChartTile cells={this.props.cells} />
+        <h2>WELCOME TO THE PACIFIC WASTELAND</h2>
         <MapShortcutTile />
+        <SummaryChartTile cells={this.props.cells} />
         <RecentCellsTile recentCells={this.props.recentCells} />
       </div>
     );

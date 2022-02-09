@@ -42,7 +42,7 @@
   --main-accent-color: hotpink;
   --header-background-color: rgb(53, 53, 53);
   --input-field-background-color: rgb(185, 185, 185);
-  --background-color: rgb(27, 27, 27);
+  --background-color: #22201a;
   --primary-accent-color: #cdb47d;
   --text-accent-color: #cdb47d;
   /* Buttons */
@@ -51,13 +51,43 @@
   --primary-button-bg-color: #22201a;
 }
 
+/* Body & Site Wide Styles */
+body #bootstrap-override {
+  color: var(--text-accent-color);
+}
+
+#page-main {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Site Header */
+#avatar-img {
+  height: 40px;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+
+#bootstrap-override #page-header {
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--primary-accent-color);
+  /* color: var(--text-accent-color); */
+  text-decoration: none;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+}
 /* Map Grid */
 #cell-grid-container {
   --grid-width: 1200px;
   --grid-height: 1015px;
   --aspect-ratio: 0.84583;
   /* --aspect-ratio: calc(var(--grid-width) / var(--grid-height)); */
-  --width: 95vw;
+  --width: 95%;
   --min-width: 1100px;
   display: grid;
   grid-template: repeat(77, 1fr) / repeat(91, 1fr);
@@ -106,13 +136,6 @@
   flex-direction: row;
 }
 
-/* Header */
-#avatar-img {
-  height: 40px;
-  border-radius: 50%;
-  margin: 0px 10px;
-}
-
 /* Button */
 .btn.btn-primary {
   background-color: var(--primary-button-bg-color);
@@ -129,9 +152,4 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-#bootstrap-override .bg-dark {
-  background-color: brown;
-  filter: drop-shadow(10px black);
 }
