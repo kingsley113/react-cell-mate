@@ -106,3 +106,20 @@
   border-radius: 50%;
   margin: 0px 10px;
 }
+
+/* Button */
+.btn.btn-primary {
+  background-color: rgba(6, 134, 12, 0.397);
+  border: 1px solid rgb(0, 255, 0);
+  color: rgb(0, 255, 0);
+}
+
+.dashbaord-tile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navbar.bg-dark.navbar-dark {
+  background-color: brown;
+}
