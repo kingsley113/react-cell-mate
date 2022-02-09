@@ -7,21 +7,21 @@ const MapShortcutTile = () => {
   return (
     <div className="dashboard-tile" id="map-shortcut-tile">
       <Button size="lg" variant="primary" onClick={() => history.push(`/map`)}>
-        Cell Map
+        CELL MAP
       </Button>
       <Button
         size="lg"
         variant="primary"
         onClick={() => history.push(`/cells`)}
       >
-        Cell Index
+        CELL INDEX
       </Button>
       <Button
         size="lg"
         variant="primary"
         onClick={() => history.push(`/cells/new`)}
       >
-        New Cell
+        NEW CELL
       </Button>
     </div>
   );

@@ -15,7 +15,7 @@ import CallbackPage from "./containers/pages/callbackPage";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App" id="bootstrap-override">
         <Router>
           <Switch>
             <Route

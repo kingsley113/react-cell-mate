@@ -28,10 +28,10 @@ const CellDetailPage = (props) => {
           variant="primary"
           onClick={() => history.push(`/cells/${cell.id}/edit`)}
         >
-          Edit Cell
+          EDIT CELL
         </Button>
-        <Button variant="secondary" onClick={() => history.push(`/cells`)}>
-          Back to Index
+        <Button variant="primary" onClick={() => history.push(`/cells`)}>
+          BACK TO INDEX
         </Button>
 
         <div className="cell-details-container">
