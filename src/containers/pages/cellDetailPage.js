@@ -23,7 +23,7 @@ const CellDetailPage = (props) => {
 
     return (
       <div>
-        <h1>{cell.name}</h1>
+        <h1>{pageTitle}</h1>
         <Button
           size="sm"
           variant="primary"
@@ -39,7 +39,7 @@ const CellDetailPage = (props) => {
           BACK TO INDEX
         </Button>
 
-        <div className="cell-details-container">
+        <div className="details-container">
           <CellDetailsPanel cell={cell} />
           <CellTaskPanel cell={cell} />
         </div>
