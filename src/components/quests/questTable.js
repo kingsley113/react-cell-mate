@@ -230,7 +230,7 @@ const QuestTable = ({ quests }) => {
         />{" "}
         <Form.Select
           value={pageSize}
-          className="input-width-200"
+          className="input-width-200 "
           onChange={(e) => {
             setPageSize(Number(e.target.value));
           }}

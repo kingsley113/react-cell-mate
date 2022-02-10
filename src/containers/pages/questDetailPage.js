@@ -26,24 +26,48 @@ const QuestDetailPage = (props) => {
         <h2>{pageTitle}</h2>
         <Button
           variant="primary"
+          size="sm"
           onClick={() => history.push(`/quests/${quest.id}/edit`)}
         >
-          Edit Quest
+          EDIT QUEST
         </Button>
-        <Button variant="secondary" onClick={() => history.push(`/quests`)}>
-          Back to Index
+        <Button
+          size="sm"
+          variant="primary"
+          onClick={() => history.push(`/quests`)}
+        >
+          BACK TO INDEX
         </Button>
-        <ListGroup>
-          <ListGroup.Item>Title: {quest.title}</ListGroup.Item>
-          <ListGroup.Item>Summary: {quest.summary}</ListGroup.Item>
-          <ListGroup.Item>Details: {quest.details}</ListGroup.Item>
-          <ListGroup.Item>Category: {quest.category}</ListGroup.Item>
-          <ListGroup.Item>Wiki Link: {quest.wiki_link}</ListGroup.Item>
-          <ListGroup.Item>
-            <h4>Linked Cells:</h4>
-            {renderCellTable()}
-          </ListGroup.Item>
-        </ListGroup>
+        <div className="details-container">
+          <ListGroup>
+            <ListGroup.Item>
+              <span>Title: </span>
+              <span>{quest.title}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>Summary: </span>
+              <span>{quest.summary}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>Details: </span>
+              <span>{quest.details}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>Category: </span>
+              <span>{quest.category}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>Wiki Link: </span>
+              <span>{quest.wiki_link}</span>
+            </ListGroup.Item>
+          </ListGroup>
+        </div>
+        {/* <ListGroup.Item> */}
+        <div>
+          <h4>Linked Cells:</h4>
+          {renderCellTable()}
+        </div>
+        {/* </ListGroup.Item> */}
       </div>
     );
   } else {
