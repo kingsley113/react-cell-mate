@@ -70,11 +70,11 @@ const QuestTable = ({ quests }) => {
         accessor: "col3",
       },
       {
-        Header: "",
+        Header: "Linked Cells",
         accessor: "col4",
       },
       {
-        Header: "ID",
+        Header: "",
         accessor: "col5",
       },
     ],
@@ -156,7 +156,7 @@ const QuestTable = ({ quests }) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  if (cell.column.Header === "Title") {
+                  if (cell.column.Header !== "") {
                     return (
                       <td
                         {...cell.getCellProps()}
@@ -292,8 +292,8 @@ const prepareData = (questArray) => {
             Wiki Link
           </Button>
         ) : null,
-      col4: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
-      col5: quest.id,
+      col4: quest.cells.length,
+      col5: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
     });
   }
   return preppedData;

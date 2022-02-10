@@ -19,10 +19,18 @@ const QuestIndexPage = () => {
   if (quests) {
     return (
       <div>
-        <h2>{pageTitle}</h2>
-        <Button variant="primary" onClick={() => history.push("/quests/new")}>
-          New Quest
-        </Button>
+        <div className="index-page-header">
+          <h2>{pageTitle}</h2>
+          <div>
+            <Button
+              size="sm"
+              variant="primary"
+              onClick={() => history.push("/quests/new")}
+            >
+              New Quest
+            </Button>
+          </div>
+        </div>
         <QuestTable quests={quests} />
       </div>
     );
