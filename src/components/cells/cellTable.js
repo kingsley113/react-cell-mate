@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import BTable from "react-bootstrap/Table";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import {
@@ -248,19 +248,19 @@ const CellTable = (props) => {
             {pageIndex + 1} of {pageOptions.length}
           </strong>{" "}
         </span>
-        <span>
-          | Go to page:{" "}
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              gotoPage(page);
-            }}
-            style={{ width: "100px" }}
-          />
-        </span>{" "}
-        <select
+        <span className="padded-left padded-right"> | Go to page: </span>
+        <Form.Select
+          type="number"
+          defaultValue={pageIndex + 1}
+          onChange={(e) => {
+            const page = e.target.value ? Number(e.target.value) - 1 : 0;
+            gotoPage(page);
+          }}
+          style={{ width: "100px" }}
+        />{" "}
+        <Form.Select
+          // <select
+          className="input-width-200"
           value={pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));
@@ -271,7 +271,8 @@ const CellTable = (props) => {
               Show {pageSize} cells
             </option>
           ))}
-        </select>
+          {/* </select> */}
+        </Form.Select>
       </div>
     </>
   );
@@ -292,9 +293,11 @@ function GlobalFilter({
   }, 200);
 
   return (
-    <span>
+    <span className="flex-horizontal input-width-500">
       Search:{" "}
-      <input
+      <Form.Control
+        type="text"
+        // <input
         value={value || ""}
         onChange={(e) => {
           setValue(e.target.value);

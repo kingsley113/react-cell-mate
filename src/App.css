@@ -106,6 +106,13 @@ body {
   width: 100%;
 }
 
+.flex-left {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  width: 100%;
+}
+
 /* Headers */
 #avatar-img {
   height: 40px;
@@ -168,6 +175,14 @@ body {
 
 .padded-left {
   padding: 0 0 0 5px;
+}
+
+.input-width-500 {
+  width: 500px;
+}
+
+#bootstrap-override .input-width-200 {
+  width: 200px;
 }
 
 /* Map Grid */
