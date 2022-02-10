@@ -247,11 +247,19 @@ body {
   color: var(--primary-button-color);
 }
 
+/* Dashboard */
 .dashboard-tile {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
+#map-shortcut-tile {
+  flex-direction: row;
+}
+/* #recent-cells-list {
+  flex-direction: column;
+} */
 
 /* Tables */
 #bootstrap-override .table-dark {

@@ -20,8 +20,11 @@ const RecentCellsTile = () => {
     }
   };
   return (
-    <div className="dashboard-tile" id="recent-cells-list">
-      <ListGroup>{renderRecentCells()}</ListGroup>
+    <div className="dashboard-tile details-container" id="recent-cells-list">
+      <ListGroup>
+        <h3>Recent Cells</h3>
+        {renderRecentCells()}
+      </ListGroup>
     </div>
   );
 };
