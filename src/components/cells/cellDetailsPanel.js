@@ -2,10 +2,17 @@ import { ListGroup, ProgressBar } from "react-bootstrap";
 
 const CellDetailsPanel = ({ cell }) => {
   return (
-    <ListGroup id="cell-details-panel">
+    <ListGroup id="cell-details-panel" variant="flush">
       <h4>Details</h4>
       <ListGroup.Item>
         <span>Description:</span> <span>{cell.description}</span>
+      </ListGroup.Item>
+      <ListGroup.Item>
+        <ProgressBar
+          id="cell-progress"
+          now={cell.percent_complete}
+          label={`${cell.percent_complete}% Complete`}
+        />
       </ListGroup.Item>
       <ListGroup.Item>
         <span>XY Coordinates: </span>
@@ -14,13 +21,6 @@ const CellDetailsPanel = ({ cell }) => {
         </span>
       </ListGroup.Item>
       {/* <ListGroup.Item>Y Coord: </ListGroup.Item> */}
-      <ListGroup.Item>
-        <ProgressBar
-          id="cell-progress"
-          now={cell.percent_complete}
-          label={`${cell.percent_complete}% Complete`}
-        />
-      </ListGroup.Item>
       <ListGroup.Item>
         <span>Priority:</span>
         <span>{cell.priority}</span>
