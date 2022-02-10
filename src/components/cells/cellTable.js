@@ -210,18 +210,38 @@ const CellTable = (props) => {
 
       {/* // Pagination */}
       <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        >
           {"<<"}
-        </button>{" "}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        </Button>{" "}
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
           {"<"}
-        </button>{" "}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
+        </Button>{" "}
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
           {">"}
-        </button>{" "}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+        </Button>{" "}
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
           {">>"}
-        </button>{" "}
+        </Button>{" "}
         <span>
           Page{" "}
           <strong>

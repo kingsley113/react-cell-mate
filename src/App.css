@@ -220,12 +220,19 @@ body {
   color: var(--primary-button-bg-color);
 }
 
+.btn.btn-primary:disabled {
+  background-color: var(--primary-button-bg-color);
+  border: 1px solid var(--primary-button-border);
+  color: var(--primary-button-color);
+}
+
 .dashboard-tile {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
+/* Tables */
 #bootstrap-override .table-dark {
   --bs-table-bg: var(--background-color);
   --bs-table-striped-bg: var(--table-stripe-color);
@@ -234,6 +241,12 @@ body {
 
   --bs-table-hover-bg: var(--table-hover-bg-color);
   --bs-table-hover-color: var(--table-text-hover-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Cell Details Page */
