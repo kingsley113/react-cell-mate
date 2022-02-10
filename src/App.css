@@ -82,7 +82,7 @@ body {
   margin: 0px 5px 0px 5px;
 }
 
-/* Site Header */
+/* Headers */
 #avatar-img {
   height: 40px;
   border-radius: 50%;
@@ -94,6 +94,12 @@ body {
   border-bottom: 1px solid var(--primary-accent-color);
   /* color: var(--text-accent-color); */
   text-decoration: none;
+}
+
+#bootstrap-override .index-page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .centered-container {
@@ -204,7 +210,8 @@ body {
   width: 100%;
 }
 
-#new-task-submit-btn {
+#new-task-submit-btn,
+#new-task-submit-btn.btn.btn-primary {
   margin: 10px auto 0px auto;
 }
 

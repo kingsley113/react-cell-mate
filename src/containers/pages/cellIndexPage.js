@@ -12,10 +12,18 @@ const CellIndexPage = () => {
   if (allCells) {
     return (
       <div>
-        <h2>{pageTitle}</h2>
-        <Button variant="primary" onClick={() => history.push("/cells/new")}>
-          New Cell
-        </Button>
+        <div className="index-page-header">
+          <h2>{pageTitle}</h2>
+          <div>
+            <Button
+              size="sm"
+              variant="primary"
+              onClick={() => history.push("/cells/new")}
+            >
+              New Cell
+            </Button>
+          </div>
+        </div>
         <CellTable cells={allCells} />
       </div>
     );
