@@ -223,6 +223,12 @@ body {
   opacity: 1;
 }
 
+.tooltip-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Button */
 .btn.btn-primary {
   background-color: var(--primary-button-bg-color);

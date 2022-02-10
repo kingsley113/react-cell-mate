@@ -1,4 +1,4 @@
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 const CellMap = ({ cells, colorMode }) => {
@@ -19,16 +19,20 @@ const CellMap = ({ cells, colorMode }) => {
 
     const cellInfoPanel = (cell) => {
       return (
-        <Popover id="popover-basic">
-          <Popover.Header as="h3">{cell.name}</Popover.Header>
-          <Popover.Body>
-            X: {cell.ck_coordinate_x}
-            Y: {cell.ck_coordinate_y}
-            Color: {cell.color}
-            User: {cell.user ? cell.user.display_name : ""}
-            Progress: {cell.percent_complete}% Complete
-          </Popover.Body>
-        </Popover>
+        <Tooltip id="tooltip-basic">
+          {/* <Popover.Header as="h3">{cell.name}</Popover.Header> */}
+          {/* <Popover.Body className="popover-body"> */}
+          <div className="tooltip-body">
+            <div>{cell.name}</div>
+            <div>
+              X: {cell.ck_coordinate_x} Y: {cell.ck_coordinate_y}
+            </div>
+            {/* Color: {cell.color} */}
+            <div>User: {cell.user ? cell.user.display_name : ""}</div>
+            <div>Progress: {cell.percent_complete}% Complete</div>
+          </div>
+          {/* </Popover.Body> */}
+        </Tooltip>
       );
     };
 
@@ -41,6 +45,7 @@ const CellMap = ({ cells, colorMode }) => {
               trigger={["hover", "focus"]}
               placement="top"
               overlay={cellInfoPanel(cell)}
+              id="tooltip-basic"
             >
               <div
                 className="cell-block"
@@ -96,6 +101,3 @@ const generateProgressColor = (percentComplete) => {
 };
 
 export default CellMap;
-
-// TODO: make map responsive to size?
-// TODO: add legend for each color mode, this should be on cell map page?
