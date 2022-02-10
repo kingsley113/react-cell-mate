@@ -124,46 +124,73 @@ class CellForm extends Component {
             />
           </Form.Group>
 
-          {/* priority */}
-          <Form.Group className="mb-3" controlId="formCellPriority">
-            <Form.Label>Priority</Form.Label>
-            <Form.Select
-              aria-label="Cell Priority"
-              name="priority"
-              value={this.state.priority}
-              onChange={this.handleOnChange}
-            >
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-              <option value="critical">Critical</option>
-            </Form.Select>
-          </Form.Group>
-
           {/* coordinate x */}
-          <Form.Group className="mb-3" controlId="formCellCoordX">
-            <Form.Label>CK Coordinate X</Form.Label>
-            <Form.Control
-              type="number"
-              name="ck_coordinate_x"
-              value={this.state.ck_coordinate_x}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group>
+          <div className="flex-horizontal">
+            <Form.Group
+              className="mb-3 col-25 padded-right"
+              controlId="formCellCoordX"
+            >
+              <Form.Label>CK Coordinate X</Form.Label>
+              <Form.Control
+                type="number"
+                name="ck_coordinate_x"
+                value={this.state.ck_coordinate_x}
+                onChange={this.handleOnChange}
+              />
+            </Form.Group>
 
-          {/* coordinate y */}
-          <Form.Group className="mb-3" controlId="formCellCoordY">
-            <Form.Label>CK Coordinate Y</Form.Label>
-            <Form.Control
-              type="number"
-              name="ck_coordinate_y"
-              value={this.state.ck_coordinate_y}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group>
+            {/* coordinate y */}
+            <Form.Group
+              className="mb-3 col-25 padded-right padded-left"
+              controlId="formCellCoordY"
+            >
+              <Form.Label>CK Coordinate Y</Form.Label>
+              <Form.Control
+                type="number"
+                name="ck_coordinate_y"
+                value={this.state.ck_coordinate_y}
+                onChange={this.handleOnChange}
+              />
+            </Form.Group>
+
+            {/* priority */}
+            <Form.Group
+              className="mb-3 col-25 padded-right padded-left"
+              controlId="formCellPriority"
+            >
+              <Form.Label>Priority</Form.Label>
+              <Form.Select
+                aria-label="Cell Priority"
+                name="priority"
+                value={this.state.priority}
+                onChange={this.handleOnChange}
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </Form.Select>
+            </Form.Group>
+
+            {/* color */}
+            <Form.Group
+              className="mb-3 col-25 padded-left"
+              controlId="formCellColor"
+              id="cell-form-color-input"
+            >
+              <Form.Label>Cell Display Color</Form.Label>
+              <Form.Control
+                type="color"
+                title="Select a cell display color"
+                name="color"
+                value={this.state.color}
+                onChange={this.handleOnChange}
+              />
+            </Form.Group>
+          </div>
 
           {/* user */}
-          <Form.Group className="mb-3" controlId="formCellPriority">
+          <Form.Group className="mb-3" controlId="formCellUser">
             <Form.Label>Assigned User</Form.Label>
             <Form.Select
               aria-label="Cell User"
@@ -176,7 +203,7 @@ class CellForm extends Component {
           </Form.Group>
 
           {/* region */}
-          <Form.Group className="mb-3" controlId="formCellPriority">
+          <Form.Group className="mb-3" controlId="formCellRegion">
             <Form.Label>Region</Form.Label>
             <Form.Select
               aria-label="Cell Region"
@@ -202,35 +229,26 @@ class CellForm extends Component {
           </Form.Group>
 
           {/* % complete */}
+
           <Form.Group className="mb-3" controlId="formCellProgress">
             <Form.Label>Progress</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="basic-addon-1">
-                {this.state.percent_complete}%
-              </InputGroup.Text>
-              <Form.Range
-                name="percent_complete"
-                value={this.state.percent_complete}
-                onChange={this.handleOnChange}
-                aria-describedby="basic-addon-1"
-              />
+              <div className="flex-horizontal">
+                <InputGroup.Text id="basic-addon-1">
+                  {this.state.percent_complete}%
+                </InputGroup.Text>
+                <Form.Range
+                  name="percent_complete"
+                  value={this.state.percent_complete}
+                  onChange={this.handleOnChange}
+                  aria-describedby="basic-addon-1"
+                />
+              </div>
             </InputGroup>
           </Form.Group>
 
-          {/* color */}
-          <Form.Group className="mb-3" controlId="formCellColor">
-            <Form.Label>Cell Display Color</Form.Label>
-            <Form.Control
-              type="color"
-              title="Select a cell display color"
-              name="color"
-              value={this.state.color}
-              onChange={this.handleOnChange}
-            />
-          </Form.Group>
-
           {/* create cell submit button */}
-          <Button variant="success" type="submit">
+          <Button variant="primary" type="submit">
             Save Cell
           </Button>
           <Button variant="danger" onClick={() => window.history.back()}>
