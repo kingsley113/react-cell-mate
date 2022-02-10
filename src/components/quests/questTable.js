@@ -292,7 +292,7 @@ const prepareData = (questArray) => {
             Wiki Link
           </Button>
         ) : null,
-      col4: quest.cells.length,
+      col4: quest.cells ? quest.cells.length : 0,
       col5: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
     });
   }
