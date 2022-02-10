@@ -21,6 +21,3 @@ const CellDetailsPanel = ({ cell }) => {
 };
 
 export default CellDetailsPanel;
-
-// TODO: load tasks from backend
-// TODO: load quests from redux
