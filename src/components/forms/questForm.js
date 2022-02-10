@@ -142,7 +142,7 @@ class QuestForm extends Component {
           {this.renderCellTable()}
 
           {/* submit & cancel button */}
-          <Button variant="success" type="submit">
+          <Button variant="primary" type="submit">
             Save Quest
           </Button>
           <Button variant="danger" onClick={() => window.history.back()}>
