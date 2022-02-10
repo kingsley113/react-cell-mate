@@ -33,7 +33,7 @@ const PageContent = (props) => {
   }, []);
 
   return (
-    <div>
+    <div id="page-content">
       <ProtectedRoute>
         <PageHeader />
         <div id="page-main">

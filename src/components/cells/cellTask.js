@@ -1,4 +1,4 @@
-import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, ListGroup, ListGroupItem, Nav } from "react-bootstrap";
 import { connect, useDispatch } from "react-redux";
 import { completeTask, deleteTask } from "../../actions/taskActions";
 import NewTaskForm from "../forms/newTaskForm";
@@ -18,9 +18,11 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
           action
         >
           {task.name}
-          <Button size="sm" variant="primary" onClick={() => deleteTask(task)}>
+          <div onClick={() => deleteTask(task)}>
+            {/* <Button size="sm" variant="primary" onClick={() => deleteTask(task)}> */}
             Delete
-          </Button>
+            {/* </Button> */}
+          </div>
         </ListGroup.Item>
       );
     }
@@ -31,7 +33,7 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
     // <div>
     // <h4>Tasks</h4>
     // {/* <ListGroup as="ul"> */}
-    <ListGroup id="cell-tasks-panel">
+    <ListGroup id="cell-tasks-panel" variant="flush">
       <h4>Tasks</h4>
 
       {renderTasks(cell.tasks)}

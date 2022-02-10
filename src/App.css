@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* display: flex; */
 }
 
 /* .App-logo {
@@ -70,6 +71,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  max-width: 1400px;
+  min-width: 800px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #bootstrap-override a {
@@ -82,6 +94,18 @@ body {
   margin: 0px 5px 0px 5px;
 }
 
+.centered-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
 /* Headers */
 #avatar-img {
   height: 40px;
@@ -92,7 +116,6 @@ body {
 #bootstrap-override #page-header {
   background-color: var(--background-color);
   border-bottom: 1px solid var(--primary-accent-color);
-  /* color: var(--text-accent-color); */
   text-decoration: none;
 }
 
@@ -102,10 +125,51 @@ body {
   align-items: center;
 }
 
-.centered-container {
+/* Forms */
+#bootstrap-override input[type="text"],
+#bootstrap-override input[type="number"],
+#bootstrap-override select,
+#bootstrap-override input[type="color"],
+#bootstrap-override textarea {
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-accent-color);
+  color: var(--text-accent-color);
+}
+
+#bootstrap-override .input-group-text {
+  background-color: var(--background-color);
+  color: var(--text-accent-color);
+  border: 1px solid var(--primary-accent-color);
+  width: 80px;
+}
+
+#bootstrap-override #formCellProgress {
+  width: 100%;
+  padding: 0 10px;
+}
+
+#bootstrap-override #cell-form-color-input {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
+#bootstrap-override #formCellColor {
+  margin: 0 auto;
+}
+
+.col-25 {
+  width: 25%;
+  /* padding: 0 5px; */
+}
+
+.padded-right {
+  padding: 0 5px 0 0;
+}
+
+.padded-left {
+  padding: 0 0 0 5px;
+}
+
 /* Map Grid */
 #cell-grid-container {
   --grid-width: 1200px;
@@ -223,4 +287,16 @@ body {
 #bootstrap-override .task-item:hover {
   background-color: var(--table-hover-bg-color);
   color: var(--table-text-hover-color);
+}
+
+#bootstrap-override .progress-bar {
+  color: var(--background-color);
+  background-color: var(--primary-accent-color);
+}
+
+#bootstrap-override .progress {
+  /* color: var(--background-color); */
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-accent-color);
+  height: 24px;
 }
