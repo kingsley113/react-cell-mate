@@ -8,16 +8,16 @@ const SummaryChartTile = () => {
   if (cells) {
     const data = prepData(cells);
     return (
-      <div className="dashboard-tile" id="summary-chart-tile">
-        <h4>Cell Progress Summary</h4>
-        <Chart
-          chartType="Histogram"
-          data={data}
-          width="600px"
-          height="400px"
-          legendToggle
-          options={options}
-        />
+      <div className="dashboard-tile details-container" id="summary-chart-tile">
+        <div>
+          <h4>Cell Progress Summary</h4>
+          <Chart
+            chartType="Histogram"
+            data={data}
+            legendToggle
+            options={options}
+          />
+        </div>
       </div>
     );
   } else {
@@ -51,8 +51,11 @@ const options = {
     // "#00FF00",
   ],
   histogram: {
-    bucketSize: 10,
+    bucketSize: 5,
   },
+  backgroundColor: "none",
+  width: "900px",
+  height: "400px",
 };
 
 export default SummaryChartTile;
