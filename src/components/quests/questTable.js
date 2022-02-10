@@ -112,7 +112,14 @@ const QuestTable = ({ quests }) => {
 
   return (
     <>
-      <BTable striped bordered hover size="sm" {...getTableProps()}>
+      <BTable
+        striped
+        bordered
+        hover
+        variant="dark"
+        size="sm"
+        {...getTableProps()}
+      >
         {/* Table Head */}
         <thead>
           <tr>

@@ -139,7 +139,14 @@ const CellTable = (props) => {
   // if (props.cells) {
   return (
     <>
-      <BTable striped bordered hover size="sm" {...getTableProps()}>
+      <BTable
+        striped
+        bordered
+        hover
+        variant="dark"
+        size="sm"
+        {...getTableProps()}
+      >
         {/* Table Head */}
         <thead>
           <tr>
@@ -174,9 +181,13 @@ const CellTable = (props) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                // onClick={() => handleRowClick(row.original.id)}
+                {...row.getRowProps()}
+              >
                 {row.cells.map((cell) => {
-                  if (cell.column.Header === "Title") {
+                  // if (cell.column.Header === "Title") {
+                  if (cell.column.Header !== "") {
                     return (
                       <td
                         {...cell.getCellProps()}

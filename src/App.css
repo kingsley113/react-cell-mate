@@ -39,8 +39,8 @@
 
 /* Root Styles and Variables */
 :root {
-  --main-accent-color: hotpink;
-  --header-background-color: rgb(53, 53, 53);
+  /* --main-accent-color: hotpink; */
+  /* --header-background-color: rgb(53, 53, 53); */
   --input-field-background-color: rgb(185, 185, 185);
   --background-color: #22201a;
   --primary-accent-color: #cdb47d;
@@ -49,11 +49,18 @@
   --primary-button-color: #cdb47d;
   --primary-button-border: #cdb47d;
   --primary-button-bg-color: #22201a;
+
+  --table-stripe-color: #38352a;
+  --table-text-accent-color: #f0d292;
+
+  --table-hover-bg-color: #5a5544;
+  --table-text-hover-color: #ffdf9b;
 }
 
 /* Body & Site Wide Styles */
-body #bootstrap-override {
-  color: var(--text-accent-color);
+body {
+  --bs-body-color: var(--text-accent-color);
+  --bs-body-bg: var(--background-color);
 }
 
 #page-main {
@@ -61,6 +68,12 @@ body #bootstrap-override {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#bootstrap-override a {
+  text-decoration: none;
+  color: var(--text-accent-color);
+  font-weight: bold;
 }
 
 /* Site Header */
@@ -148,8 +161,54 @@ body #bootstrap-override {
   color: var(--primary-button-bg-color);
 }
 
-.dashbaord-tile {
+.dashboard-tile {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+/* Tables */
+/* #bootstrap-override table {
+  border-spacing: 0;
+  border: 1px solid var(--primary-accent-color);
+}
+
+#bootstrap-override tr :last-child {
+  td {
+    border-bottom: 0;
+  }
+}
+
+#bootstrap-override th,
+#bootstrap-override td {
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--primary-accent-color);
+  border-right: 1px solid var(--primary-accent-color);
+}
+
+#bootstrap-override th,
+#bootstrap-override td :last-child {
+  border-right: 0;
+}
+
+#bootstrap-override .pagination {
+  padding: 0.5rem;
+} */
+
+#bootstrap-override .table-dark {
+  --bs-table-bg: var(--background-color);
+  --bs-table-striped-bg: var(--table-stripe-color);
+  color: var(--text-accent-color);
+  --bs-table-striped-color: var(--table-text-accent-color);
+
+  --bs-table-hover-bg: var(--table-hover-bg-color);
+  --bs-table-hover-color: var(--table-text-hover-color);
+}
+
+/* List Groups */
+#bootstrap-override .list-group-item {
+  background-color: var(--background-color);
+  color: var(--text-accent-color);
+  border: 1px solid var(--primary-accent-color);
 }
