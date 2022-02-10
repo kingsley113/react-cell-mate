@@ -22,9 +22,13 @@ const NewTaskForm = ({ cell }) => {
   };
 
   return (
-    <Form onSubmit={(event) => handleOnSubmit(event)}>
+    <Form
+      onSubmit={(event) => handleOnSubmit(event)}
+      className="centered-container"
+      id="new-task-form"
+    >
       <Form.Label htmlFor="taskTitle">
-        <h4>New Task:</h4>
+        <h4>New Task</h4>
       </Form.Label>
       <Form.Control
         type="text"
@@ -35,7 +39,9 @@ const NewTaskForm = ({ cell }) => {
       <Button
         type="submit"
         disabled={taskName === "" ? true : false}
-        variant={taskName === "" ? "secondary" : "primary"}
+        variant={taskName === "" ? "outline-secondary" : "primary"}
+        id="new-task-submit-btn"
+        // variant="primary"
       >
         Add Task
       </Button>

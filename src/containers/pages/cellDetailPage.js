@@ -25,12 +25,17 @@ const CellDetailPage = (props) => {
       <div>
         <h1>{cell.name}</h1>
         <Button
+          size="sm"
           variant="primary"
           onClick={() => history.push(`/cells/${cell.id}/edit`)}
         >
           EDIT CELL
         </Button>
-        <Button variant="primary" onClick={() => history.push(`/cells`)}>
+        <Button
+          size="sm"
+          variant="primary"
+          onClick={() => history.push(`/cells`)}
+        >
           BACK TO INDEX
         </Button>
 

@@ -55,6 +55,8 @@
 
   --table-hover-bg-color: #5a5544;
   --table-text-hover-color: #ffdf9b;
+
+  --task-complete-color: #cdb47d55;
 }
 
 /* Body & Site Wide Styles */
@@ -74,6 +76,10 @@ body {
   text-decoration: none;
   color: var(--text-accent-color);
   font-weight: bold;
+}
+
+#bootstrap-override .btn-primary {
+  margin: 0px 5px 0px 5px;
 }
 
 /* Site Header */
@@ -132,23 +138,6 @@ body {
   opacity: 1;
 }
 
-/* Tasks */
-.task-complete.list-group-item {
-  text-decoration: line-through;
-  color: green;
-}
-
-.task-complete.list-group-item:hover {
-  text-decoration: line-through;
-  color: green;
-}
-
-/* Cell Details Page */
-.cell-details-container {
-  display: flex;
-  flex-direction: row;
-}
-
 /* Button */
 .btn.btn-primary {
   background-color: var(--primary-button-bg-color);
@@ -167,35 +156,6 @@ body {
   flex-direction: column;
 }
 
-/* Tables */
-/* #bootstrap-override table {
-  border-spacing: 0;
-  border: 1px solid var(--primary-accent-color);
-}
-
-#bootstrap-override tr :last-child {
-  td {
-    border-bottom: 0;
-  }
-}
-
-#bootstrap-override th,
-#bootstrap-override td {
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--primary-accent-color);
-  border-right: 1px solid var(--primary-accent-color);
-}
-
-#bootstrap-override th,
-#bootstrap-override td :last-child {
-  border-right: 0;
-}
-
-#bootstrap-override .pagination {
-  padding: 0.5rem;
-} */
-
 #bootstrap-override .table-dark {
   --bs-table-bg: var(--background-color);
   --bs-table-striped-bg: var(--table-stripe-color);
@@ -206,9 +166,54 @@ body {
   --bs-table-hover-color: var(--table-text-hover-color);
 }
 
+/* Cell Details Page */
+.cell-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 /* List Groups */
 #bootstrap-override .list-group-item {
   background-color: var(--background-color);
   color: var(--text-accent-color);
-  border: 1px solid var(--primary-accent-color);
+  /* border: 1px solid var(--primary-accent-color); */
+  /* border-top-width: 0; */
+  border-color: var(--primary-accent-color);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/* #bootstrap-override .list-group .list-group-item:first-child {
+  border-top-width: 1px;
+  color: violet;
+} */
+
+#bootstrap-override .list-group {
+  width: 50%;
+  padding: 5px;
+}
+
+#cell-progress {
+  width: 100%;
+}
+
+#new-task-form {
+  flex-direction: column;
+  width: 100%;
+}
+
+#new-task-submit-btn {
+  margin: 10px auto 0px auto;
+}
+
+#bootstrap-override .task-complete {
+  color: var(--task-complete-color);
+  text-decoration: line-through;
+}
+
+#bootstrap-override .task-item:hover {
+  background-color: var(--table-hover-bg-color);
+  color: var(--table-text-hover-color);
 }

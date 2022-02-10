@@ -11,18 +11,14 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
     for (const task of tasks) {
       taskItems.push(
         <ListGroup.Item
-          as="li"
+          // as="li"
           key={task.id}
           onClick={() => markComplete(task)}
-          className={task.complete ? "task-complete" : ""}
+          className={task.complete ? "task-complete task-item" : "task-item"}
           action
         >
           {task.name}
-          <Button
-            size="sm"
-            variant="outline-dark"
-            onClick={() => deleteTask(task)}
-          >
+          <Button size="sm" variant="primary" onClick={() => deleteTask(task)}>
             Delete
           </Button>
         </ListGroup.Item>
@@ -32,16 +28,20 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
   };
 
   return (
-    <div id="cell-tasks-panel">
+    // <div>
+    // <h4>Tasks</h4>
+    // {/* <ListGroup as="ul"> */}
+    <ListGroup id="cell-tasks-panel">
       <h4>Tasks</h4>
-      <ListGroup as="ul">
-        {renderTasks(cell.tasks)}
-        <ListGroup.Item as="li" key="new">
-          <NewTaskForm cell={cell} />
-        </ListGroup.Item>
-      </ListGroup>
-      {/* TODO: add task form */}
-    </div>
+
+      {renderTasks(cell.tasks)}
+      <ListGroup.Item key="new">
+        {/* <ListGroup.Item as="li" key="new"> */}
+        <NewTaskForm cell={cell} />
+      </ListGroup.Item>
+    </ListGroup>
+    // {/* TODO: add task form */}
+    // </div>
   );
 };
 
