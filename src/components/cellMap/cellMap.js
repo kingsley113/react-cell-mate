@@ -11,7 +11,7 @@ const CellMap = ({ cells, colorMode }) => {
         case "cell_color":
           return cell.color;
         case "user_color":
-          return cell.user.color;
+          return cell.user ? cell.user.color : "";
         case "cell_progress":
           return generateProgressColor(cell.percent_complete);
       }
