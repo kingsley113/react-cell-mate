@@ -75,14 +75,14 @@ const PageContent = (props) => {
             />
             <Route
               exact
-              path="/quests/:id"
+              path="/quests/:slug"
               render={(routerProps) => (
                 <QuestDetailPage {...routerProps} quests={quests} />
               )}
             />
             <Route
               exact
-              path="/quests/:id/edit"
+              path="/quests/:slug/edit"
               render={(routerProps) => (
                 <FormPage
                   formType="edit-quest"

@@ -14,7 +14,7 @@ const QuestDetailPage = (props) => {
 
   if (props.quests) {
     const quest = props.quests.filter((quest) => {
-      return quest.id === Number(props.match.params.id);
+      return quest.slug === props.match.params.slug;
     })[0];
     pageTitle = quest.title;
 
@@ -28,13 +28,16 @@ const QuestDetailPage = (props) => {
 
     document.title = pageTitle;
 
+    const handleOnClick = (url) => {
+      window.open(url, "_blank");
+    };
     return (
       <div>
         <h2>{pageTitle}</h2>
         <Button
           variant="primary"
           size="sm"
-          onClick={() => history.push(`/quests/${quest.id}/edit`)}
+          onClick={() => history.push(`/quests/${quest.slug}/edit`)}
         >
           EDIT QUEST
         </Button>
@@ -65,7 +68,9 @@ const QuestDetailPage = (props) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <span>Wiki Link: </span>
-              <span>{quest.wiki_link}</span>
+              <span onClick={() => handleOnClick(quest.wiki_link)}>
+                {quest.wiki_link}
+              </span>
             </ListGroup.Item>
           </ListGroup>
         </div>

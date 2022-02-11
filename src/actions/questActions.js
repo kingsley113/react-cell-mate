@@ -22,7 +22,7 @@ export const createQuest = (questObject) => {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "ADD_QUEST", quest: json });
-          dispatch({ type: "REDIRECT", url: `/quests/${json.id}` });
+          dispatch({ type: "REDIRECT", url: `/quests/${json.slug}` });
         }
       })
       .catch((response) => {
@@ -89,7 +89,7 @@ export const editQuest = (questObject) => {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "EDIT_QUEST", quest: json });
-          dispatch({ type: "REDIRECT", url: `/quests/${json.id}` });
+          dispatch({ type: "REDIRECT", url: `/quests/${json.slug}` });
         }
       })
       .catch((response) => {

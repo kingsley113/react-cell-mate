@@ -10,47 +10,13 @@ import {
   usePagination,
 } from "react-table";
 
-// TODO: reference this for styles when the time comes
-// const Styles = styled.div`
-//   padding: 1rem;
-
-//   table {
-//     border-spacing: 0;
-//     border: 1px solid black;
-
-//     tr {
-//       :last-child {
-//         td {
-//           border-bottom: 0;
-//         }
-//       }
-//     }
-
-//     th,
-//     td {
-//       margin: 0;
-//       padding: 0.5rem;
-//       border-bottom: 1px solid black;
-//       border-right: 1px solid black;
-
-//       :last-child {
-//         border-right: 0;
-//       }
-//     }
-//   }
-
-//   .pagination {
-//     padding: 0.5rem;
-//   }
-// `;
-
 const QuestTable = ({ quests }) => {
   const data = React.useMemo(() => prepareData(quests), []);
 
   // Navigate to cell page on row click
   let history = useHistory();
-  const handleRowClick = (id) => {
-    const path = `/quests/${id}`;
+  const handleRowClick = (slug) => {
+    const path = `/quests/${slug}`;
     history.push(path);
   };
 
@@ -160,10 +126,9 @@ const QuestTable = ({ quests }) => {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        // TODO: figure out how to get the actual quest id and not row...
-                        onClick={() => handleRowClick(row.original.id)}
+                        onClick={() => handleRowClick(row.original.slug)}
                       >
-                        {cell.render("Cell")}{" "}
+                        {cell.render("Cell")}
                       </td>
                     );
                   } else {
@@ -284,6 +249,7 @@ const prepareData = (questArray) => {
   for (const quest of questArray) {
     preppedData.push({
       id: quest.id,
+      slug: quest.slug,
       col1: quest.title,
       col2: quest.category,
       col3:
@@ -293,7 +259,7 @@ const prepareData = (questArray) => {
           </Button>
         ) : null,
       col4: quest.cells ? quest.cells.length : 0,
-      col5: <Link to={`/quests/${quest.id}/edit`}>Edit</Link>,
+      col5: <Link to={`/quests/${quest.slug}/edit`}>Edit</Link>,
     });
   }
   return preppedData;
