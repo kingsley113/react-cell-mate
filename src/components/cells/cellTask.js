@@ -14,7 +14,9 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
           // as="li"
           key={task.id}
           onClick={() => markComplete(task)}
-          className={task.complete ? "task-complete task-item" : "task-item"}
+          className={
+            task.complete ? "task-complete list-group-item" : "tlist-group-item"
+          }
           action
         >
           {task.name}
