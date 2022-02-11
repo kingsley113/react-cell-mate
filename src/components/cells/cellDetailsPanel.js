@@ -31,7 +31,7 @@ const CellDetailsPanel = ({ cell }) => {
       </ListGroup.Item>
       <ListGroup.Item>
         <span>User:</span>
-        <span>{cell.user.display_name}</span>
+        <span>{cell.user ? cell.user.display_name : "---"}</span>
       </ListGroup.Item>
       <ListGroup.Item>
         <span>Worldspace:</span>

@@ -11,40 +11,6 @@ import {
 } from "react-table";
 import LoadingSpinner from "../general/loadingSpinner";
 
-// TODO: reference this for styles when the time comes
-// const Styles = styled.div`
-//   padding: 1rem;
-
-//   table {
-//     border-spacing: 0;
-//     border: 1px solid black;
-
-//     tr {
-//       :last-child {
-//         td {
-//           border-bottom: 0;
-//         }
-//       }
-//     }
-
-//     th,
-//     td {
-//       margin: 0;
-//       padding: 0.5rem;
-//       border-bottom: 1px solid black;
-//       border-right: 1px solid black;
-
-//       :last-child {
-//         border-right: 0;
-//       }
-//     }
-//   }
-
-//   .pagination {
-//     padding: 0.5rem;
-//   }
-// `;
-
 const CellTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
 
@@ -52,7 +18,6 @@ const CellTable = (props) => {
   let history = useHistory();
 
   const handleRowClick = (id) => {
-    console.log(id);
     const path = `/cells/${id}`;
     history.push(path);
   };
@@ -335,14 +300,11 @@ const prepareData = (cellArray) => {
       col5: cell.priority,
       col6: cell.ck_coordinate_x,
       col7: cell.ck_coordinate_y,
-      col8: "",
+      col8: cell.user ? cell.user.display_name : "",
       col9: cell.region.name,
       col10: cell.worldspace.name,
-      col11: <Link to={`/cells/${cell.id}/edit`}>Edit</Link>,
+      col11: <Link to={`/cells/${cell.slug}/edit`}>Edit</Link>,
     };
-    if (cell.user) {
-      dataObj.col8 = cell.user.display_name;
-    }
 
     preppedData.push(dataObj);
   }
@@ -351,22 +313,4 @@ const prepareData = (cellArray) => {
 
 export default CellTable;
 
-/* 
-TODO: columns:
-color
-title
-% complete
-# of open tasks
-priority
-x coordinate
-y coordinate
-user
-region
-worldspace
-edit
-
-**This cell list component should be generic enough to reuse for other areas, pass in cells as prop**
-*/
 // TODO: find better symbol for up and down sort arrows
-// TODO: set up user, region, and worlspace to show name instead of id
-// TODO: add open tasks to backend serializer
