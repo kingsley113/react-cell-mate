@@ -48,7 +48,7 @@ class CellForm extends Component {
       region_id: cell.region ? cell.region.id : "",
       worldspace_id: cell.worldspace ? cell.worldspace.id : "",
       percent_complete: cell.percent_complete,
-      // color: "#555555",
+      color: cell.color,
     });
   };
 
