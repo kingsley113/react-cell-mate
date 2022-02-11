@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../actions/authActions";
@@ -18,11 +18,28 @@ const UserPage = () => {
     // redirect to login
     history.push("/login");
   };
+
+  const handleLightModeClick = () => {
+    alert("No. Just no.");
+  };
+
   return (
-    <div>
-      <Button variant="danger" onClick={handleClick}>
-        Logout
-      </Button>
+    <div className="flex-vert margin-top width-full" id="user-info-panel">
+      <h3>User Options</h3>
+      <div>
+        <Button variant="danger" onClick={handleClick} className="width-200">
+          Logout
+        </Button>
+      </div>
+      <div className="centered-container">
+        <Form.Check
+          type="switch"
+          id="light-mode-switch"
+          onClick={() => handleLightModeClick()}
+          label="Light Mode"
+          className="width-200"
+        />
+      </div>
     </div>
   );
 };

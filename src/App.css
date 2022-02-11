@@ -99,6 +99,12 @@ body {
   justify-content: center;
 }
 
+.flex-vert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .flex-horizontal {
   display: flex;
   flex-direction: row;
@@ -342,4 +348,15 @@ body {
   background-color: var(--background-color);
   border: 1px solid var(--primary-accent-color);
   height: 24px;
+}
+
+.width-200 {
+  width: 150px;
+}
+
+#bootstrap-override .width-full {
+  width: 100%;
+}
+#user-info-panel {
+  width: 400px;
 }
