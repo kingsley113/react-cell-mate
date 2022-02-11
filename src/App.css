@@ -286,6 +286,12 @@ body {
   align-items: center;
 }
 
+#bootstrap-override .table-color-box {
+  --size: 24px;
+  width: var(--size);
+  height: var(--size);
+}
+
 /* Cell Details Page */
 .details-container {
   display: flex;

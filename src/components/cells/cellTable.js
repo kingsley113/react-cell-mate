@@ -177,23 +177,32 @@ const CellTable = (props) => {
         </thead>
         {/* Table Body */}
         <tbody {...getTableBodyProps()}>
-          {/* {rows.map((row) => { */}
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr
-                // onClick={() => handleRowClick(row.original.id)}
-                {...row.getRowProps()}
-              >
+              <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  // if (cell.column.Header === "Title") {
-                  if (cell.column.Header !== "") {
+                  if (cell.column.Header === "Color") {
+                    console.log(row.original.col1);
                     return (
                       <td
                         {...cell.getCellProps()}
                         onClick={() => handleRowClick(row.original.id)}
                       >
-                        {cell.render("Cell")}{" "}
+                        {/* {cell.render("Cell")} */}
+                        <div
+                          style={{ backgroundColor: `${row.original.col1}` }}
+                          className="table-color-box"
+                        ></div>
+                      </td>
+                    );
+                  } else if (cell.column.Header !== "") {
+                    return (
+                      <td
+                        {...cell.getCellProps()}
+                        onClick={() => handleRowClick(row.original.id)}
+                      >
+                        {cell.render("Cell")}
                       </td>
                     );
                   } else {
