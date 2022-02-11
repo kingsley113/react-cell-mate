@@ -5,6 +5,7 @@ import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const SummaryChartTile = () => {
   const cells = useSelector((state) => state.cells.allCells);
+	
   if (cells) {
     const data = prepData(cells);
     return (
