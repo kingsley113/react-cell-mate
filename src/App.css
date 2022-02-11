@@ -399,4 +399,5 @@ body {
   fill: var(--primary-accent-color);
   filter: invert(79%) sepia(21%) saturate(590%) hue-rotate(3deg) brightness(90%)
     contrast(87%);
+  margin-left: 20px;
 }
