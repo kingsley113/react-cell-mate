@@ -54,7 +54,7 @@ const CellMap = ({ cells, colorMode }) => {
                   gridRowStart: cell.coordinate_y,
                   backgroundColor: generateCellColor(cell, colorMode),
                 }}
-                onClick={() => history.push(`/cells/${cell.id}`)}
+                onClick={() => history.push(`/cells/${cell.slug}`)}
               ></div>
             </OverlayTrigger>
           );
