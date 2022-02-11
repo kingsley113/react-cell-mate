@@ -392,3 +392,11 @@ body {
 .width-300 {
   width: 300px;
 }
+
+/* Header */
+.cellmate-logo-header {
+  width: 200px;
+  fill: var(--primary-accent-color);
+  filter: invert(79%) sepia(21%) saturate(590%) hue-rotate(3deg) brightness(90%)
+    contrast(87%);
+}
