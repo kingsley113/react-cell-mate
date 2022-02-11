@@ -143,6 +143,7 @@ body {
 #bootstrap-override input[type="number"],
 #bootstrap-override select,
 #bootstrap-override input[type="color"],
+#bootstrap-override input[type="password"],
 #bootstrap-override textarea {
   background-color: var(--background-color);
   border: 1px solid var(--primary-accent-color);
@@ -350,6 +351,7 @@ body {
   height: 24px;
 }
 
+/* User Info */
 .width-200 {
   width: 150px;
 }
@@ -359,4 +361,28 @@ body {
 }
 #user-info-panel {
   width: 400px;
+}
+
+/* Login Screen */
+.cellmate-logo {
+  width: 400px;
+  fill: var(--primary-accent-color);
+  filter: invert(79%) sepia(21%) saturate(590%) hue-rotate(3deg) brightness(90%)
+    contrast(87%);
+}
+
+#bootstrap-override .gateway-password-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 300px; */
+}
+
+#gateway-password {
+  justify-content: center;
+  width: 300px;
+}
+
+.width-300 {
+  width: 300px;
 }
