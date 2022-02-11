@@ -50,14 +50,14 @@ const PageContent = (props) => {
             />
             <Route
               exact
-              path="/cells/:id"
+              path="/cells/:slug"
               render={(routerProps) => (
                 <CellDetailPage {...routerProps} cells={cells} />
               )}
             />
             <Route
               exact
-              path="/cells/:id/edit"
+              path="/cells/:slug/edit"
               render={(routerProps) => (
                 <FormPage
                   formType="edit-cell"

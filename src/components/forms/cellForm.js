@@ -38,14 +38,15 @@ class CellForm extends Component {
   loadCellData = (cell) => {
     this.setState({
       id: cell.id,
+      slug: cell.slug,
       name: cell.name,
       description: cell.description,
       priority: cell.priority,
       ck_coordinate_x: cell.ck_coordinate_x,
       ck_coordinate_y: cell.ck_coordinate_y,
-      user_id: cell.user.id,
-      region_id: cell.region.id,
-      worldspace_id: cell.worldspace.id,
+      user_id: cell.user ? cell.user.id : "",
+      region_id: cell.region ? cell.region.id : "",
+      worldspace_id: cell.worldspace ? cell.worldspace.id : "",
       percent_complete: cell.percent_complete,
       // color: "#555555",
     });

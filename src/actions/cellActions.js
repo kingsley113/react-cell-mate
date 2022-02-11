@@ -22,7 +22,7 @@ export const createCell = (cellObject) => {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "ADD_CELL", cell: json });
-          dispatch({ type: "REDIRECT", url: `/cells/${json.id}` });
+          dispatch({ type: "REDIRECT", url: `/cells/${json.slug}` });
         }
       })
       .catch((response) => {
@@ -89,7 +89,7 @@ export const editCell = (cellObject) => {
           renderErrors(json.errors);
         } else {
           dispatch({ type: "EDIT_CELL", cell: json });
-          dispatch({ type: "REDIRECT", url: `/cells/${json.id}` });
+          dispatch({ type: "REDIRECT", url: `/cells/${json.slug}` });
         }
       })
       .catch((response) => {

@@ -10,7 +10,7 @@ const FormPage = ({ router, formType, data }) => {
   const dispatch = useDispatch();
   const redirectPath = useSelector((state) => state.redirects.redirectTo);
   let form = null;
-  let id;
+  let slug;
   let object;
 
   const redirectAfterSuccess = () => {
@@ -23,8 +23,8 @@ const FormPage = ({ router, formType, data }) => {
   };
 
   if (router) {
-    id = router.match.params.id;
-    object = filterDataById(data, id);
+    slug = router.match.params.slug;
+    object = filterDataBySlug(data, slug);
   }
 
   // Determine which form to render
@@ -65,9 +65,9 @@ const FormPage = ({ router, formType, data }) => {
   }
 };
 
-const filterDataById = (data, id) => {
+const filterDataBySlug = (data, slug) => {
   if (data) {
-    return data.filter((data) => Number(data.id) === Number(id))[0];
+    return data.filter((data) => data.slug === slug)[0];
   }
 };
 

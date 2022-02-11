@@ -12,15 +12,15 @@ const CellDetailPage = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // Trigger dispatch in order to record the cell visit on backend
-  dispatch(loadCell(props.match.params.id));
-
   if (props.cells) {
     const cell = props.cells.filter((cell) => {
-      return cell.id === Number(props.match.params.id);
+      return cell.slug === props.match.params.slug;
     })[0];
     pageTitle = cell.name;
     document.title = pageTitle;
+
+    // Trigger dispatch in order to record the cell visit on backend
+    dispatch(loadCell(cell.id));
 
     return (
       <div>
@@ -28,7 +28,7 @@ const CellDetailPage = (props) => {
         <Button
           size="sm"
           variant="primary"
-          onClick={() => history.push(`/cells/${cell.id}/edit`)}
+          onClick={() => history.push(`/cells/${cell.slug}/edit`)}
         >
           EDIT CELL
         </Button>

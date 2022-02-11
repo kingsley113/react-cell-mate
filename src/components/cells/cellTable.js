@@ -183,11 +183,11 @@ const CellTable = (props) => {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   if (cell.column.Header === "Color") {
-                    console.log(row.original.col1);
+                    // console.log(row.original.col1);
                     return (
                       <td
                         {...cell.getCellProps()}
-                        onClick={() => handleRowClick(row.original.id)}
+                        onClick={() => handleRowClick(row.original.slug)}
                       >
                         {/* {cell.render("Cell")} */}
                         <div
@@ -200,7 +200,10 @@ const CellTable = (props) => {
                     return (
                       <td
                         {...cell.getCellProps()}
-                        onClick={() => handleRowClick(row.original.id)}
+                        onClick={() => {
+                          // console.log(row.original);
+                          handleRowClick(row.original.slug);
+                        }}
                       >
                         {cell.render("Cell")}
                       </td>
@@ -324,6 +327,7 @@ const prepareData = (cellArray) => {
   for (const cell of cellArray) {
     let dataObj = {
       id: cell.id,
+      slug: cell.slug,
       col1: cell.color,
       col2: cell.name,
       col3: cell.percent_complete,
