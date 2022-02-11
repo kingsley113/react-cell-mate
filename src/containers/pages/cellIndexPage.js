@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,11 @@ const CellIndexPage = () => {
   const allCells = useSelector((state) => state.cells.allCells);
   const pageTitle = "Cell Index";
   const history = useHistory();
+
+  useEffect(() => {
+    document.title = "Cell Index";
+  }, []);
+
   if (allCells) {
     return (
       <div>

@@ -20,6 +20,7 @@ const CellDetailPage = (props) => {
       return cell.id === Number(props.match.params.id);
     })[0];
     pageTitle = cell.name;
+    document.title = pageTitle;
 
     return (
       <div>
@@ -43,6 +44,7 @@ const CellDetailPage = (props) => {
           <CellDetailsPanel cell={cell} />
           <CellTaskPanel cell={cell} />
         </div>
+        <h3>Linked Quests</h3>
         <div>
           <QuestTable quests={cell.quests} />
         </div>

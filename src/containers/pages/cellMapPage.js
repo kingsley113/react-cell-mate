@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,10 @@ const CellMapPage = (props) => {
   const [colorMode, setColorMode] = useState("cell_color");
   const cells = useSelector((state) => state.cells.allCells);
   const history = useHistory();
+
+  useEffect(() => {
+    document.title = "Cell Map";
+  }, []);
 
   const renderColorMode = () => {
     switch (colorMode) {

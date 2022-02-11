@@ -14,6 +14,7 @@ const QuestIndexPage = () => {
 
   useEffect(() => {
     dispatch(loadQuests());
+    document.title = "Quests Index";
   }, []);
 
   if (quests) {

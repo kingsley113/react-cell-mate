@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Nav } from "react-bootstrap";
 import RedirectIfLoggedIn from "../../components/auth/redirectIfLoggedIn";
 
 const LoginPage = () => {
+  useEffect(() => {
+    document.title = "CellMate Login";
+  }, []);
+
   return (
     <div>
       <RedirectIfLoggedIn>
