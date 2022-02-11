@@ -258,9 +258,9 @@ body {
   flex-direction: row;
 }
 
-/* #summary-chart-tile {
-  flex-direction: column;
-} */
+.margin-top-20 {
+  margin-top: 20px;
+}
 
 /* Tables */
 #bootstrap-override .table-dark {
@@ -327,7 +327,7 @@ body {
   text-decoration: line-through;
 }
 
-#bootstrap-override .task-item:hover {
+#bootstrap-override .list-group-item:hover {
   background-color: var(--table-hover-bg-color);
   color: var(--table-text-hover-color);
 }

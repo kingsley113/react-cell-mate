@@ -8,7 +8,7 @@ class DashboardPage extends Component {
   render() {
     return (
       <div>
-        <h2>WELCOME TO THE PACIFIC WASTELAND</h2>
+        <h2 className="margin-top-20">WELCOME TO THE PACIFIC WASTELAND</h2>
         <MapShortcutTile />
         <SummaryChartTile cells={this.props.cells} />
         <RecentCellsTile recentCells={this.props.recentCells} />

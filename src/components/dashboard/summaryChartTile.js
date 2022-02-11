@@ -8,7 +8,10 @@ const SummaryChartTile = () => {
   if (cells) {
     const data = prepData(cells);
     return (
-      <div className="dashboard-tile details-container" id="summary-chart-tile">
+      <div
+        className="dashboard-tile details-container margin-top-20"
+        id="summary-chart-tile"
+      >
         <div>
           <h4>Cell Progress Summary</h4>
           <Chart
@@ -40,7 +43,7 @@ const options = {
   hAxis: { ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] },
   colors: [
     // "#FF3300",
-    "#ff6600",
+    // "#ff6600",
     // "#ff9900",
     // "#FFCC00",
     // "#FFFF00",
@@ -49,13 +52,32 @@ const options = {
     // "#66ff00",
     // "#33ff00",
     // "#00FF00",
+    "#cdb47d",
   ],
   histogram: {
-    bucketSize: 5,
+    bucketSize: 10,
   },
   backgroundColor: "none",
   width: "900px",
   height: "400px",
+  chartArea: { width: "95%", height: "80%" },
+  vAxis: {
+    gridlines: { color: "#38352a" },
+    minorGridlines: { color: "#38352a" },
+    text: { color: "#cdb47d" },
+    textStyle: {
+      color: "#cdb47d",
+    },
+    textPosition: "none",
+  },
+  hAxis: {
+    textStyle: {
+      color: "#cdb47d",
+    },
+    title: "Cell % Complete",
+    // viewWindowMode: "maximized",
+  },
+  // theme: "maximized",
 };
 
 export default SummaryChartTile;
