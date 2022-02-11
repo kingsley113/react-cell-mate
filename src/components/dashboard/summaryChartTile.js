@@ -5,7 +5,7 @@ import LoadingSpinner from "../../components/general/loadingSpinner";
 
 const SummaryChartTile = () => {
   const cells = useSelector((state) => state.cells.allCells);
-	
+
   if (cells) {
     const data = prepData(cells);
     return (
@@ -14,7 +14,7 @@ const SummaryChartTile = () => {
         id="summary-chart-tile"
       >
         <div>
-          <h4>Cell Progress Summary</h4>
+          <h3>Cell Progress Summary</h3>
           <Chart
             chartType="Histogram"
             data={data}

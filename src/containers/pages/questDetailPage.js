@@ -71,7 +71,7 @@ const QuestDetailPage = (props) => {
         </div>
         {/* <ListGroup.Item> */}
         <div>
-          <h4>Linked Cells:</h4>
+          <h3>Linked Cells:</h3>
           {renderCellTable()}
         </div>
         {/* </ListGroup.Item> */}

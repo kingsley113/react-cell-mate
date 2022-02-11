@@ -24,7 +24,7 @@ const CellDetailPage = (props) => {
 
     return (
       <div>
-        <h1>{pageTitle}</h1>
+        <h2>{pageTitle}</h2>
         <Button
           size="sm"
           variant="primary"
@@ -50,11 +50,10 @@ const CellDetailPage = (props) => {
         </div>
       </div>
     );
-    // TODO: url should be slug of title
   } else {
     return (
       <div>
-        <h1>{pageTitle}</h1>
+        <h2>{pageTitle}</h2>
         <LoadingSpinner />
       </div>
     );
