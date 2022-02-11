@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "../general/loadingSpinner";
 import RecentCellListItem from "./recentCellListItem";
 
 const RecentCellsTile = () => {
@@ -17,8 +18,11 @@ const RecentCellsTile = () => {
         return <RecentCellListItem cell={cell} key={cell.id} />;
       });
       return cellItems;
+    } else {
+      return <LoadingSpinner />;
     }
   };
+
   return (
     <div
       className="dashboard-tile details-container margin-top-20"
