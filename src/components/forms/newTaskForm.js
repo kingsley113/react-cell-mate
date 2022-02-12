@@ -9,8 +9,7 @@ const NewTaskForm = ({ cell }) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log("new task form submitted!");
-    // TODO: call dispatch
+
     const task = {
       name: taskName,
       cell_id: cell.id,
@@ -41,7 +40,6 @@ const NewTaskForm = ({ cell }) => {
         disabled={taskName === "" ? true : false}
         variant={taskName === "" ? "outline-secondary" : "primary"}
         id="new-task-submit-btn"
-        // variant="primary"
       >
         Add Task
       </Button>

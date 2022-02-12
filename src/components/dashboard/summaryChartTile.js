@@ -76,9 +76,7 @@ const options = {
       color: "#cdb47d",
     },
     title: "Cell % Complete",
-    // viewWindowMode: "maximized",
   },
-  // theme: "maximized",
 };
 
 export default SummaryChartTile;

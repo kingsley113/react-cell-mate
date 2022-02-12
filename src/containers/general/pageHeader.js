@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import Logo from "../../components/header/logo";
 import CurrentUserPanel from "../../components/header/userInfo";
 
@@ -19,7 +19,6 @@ class PageHeader extends Component {
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              {/* Signed in as: <a href="/user">Vault Boy</a> */}
               <CurrentUserPanel />
             </Navbar.Text>
           </Navbar.Collapse>

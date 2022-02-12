@@ -103,10 +103,6 @@ const PageContent = (props) => {
 
 export default PageContent;
 
-// TODO:
-// protected routes
-// redirect to home if already logged in
-
 // TODO: save this nugget for later when working on login
 {
   /* <Route exact path="/">

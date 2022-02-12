@@ -56,7 +56,6 @@ const LoginPage = () => {
               ></Form.Control>
             </Form.Group>
           </div>
-          {/* <Nav.Link href="http://localhost:8000/auth/discord"> */}
           <div>
             <h3>Login with Discord</h3>
             <img
