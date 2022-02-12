@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 const CellMap = ({ cells, colorMode }) => {
   const history = useHistory();
   const renderCells = (cells, mode) => {
-    let cellObjects = [];
-
     const generateCellColor = (cell, colorMode) => {
       switch (colorMode) {
         case "cell_color":
@@ -20,18 +18,14 @@ const CellMap = ({ cells, colorMode }) => {
     const cellInfoPanel = (cell) => {
       return (
         <Tooltip id="tooltip-basic">
-          {/* <Popover.Header as="h3">{cell.name}</Popover.Header> */}
-          {/* <Popover.Body className="popover-body"> */}
           <div className="tooltip-body">
             <div>{cell.name}</div>
             <div>
               X: {cell.ck_coordinate_x} Y: {cell.ck_coordinate_y}
             </div>
-            {/* Color: {cell.color} */}
             <div>User: {cell.user ? cell.user.display_name : ""}</div>
             <div>Progress: {cell.percent_complete}% Complete</div>
           </div>
-          {/* </Popover.Body> */}
         </Tooltip>
       );
     };

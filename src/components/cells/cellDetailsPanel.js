@@ -20,7 +20,6 @@ const CellDetailsPanel = ({ cell }) => {
           {cell.ck_coordinate_x}, {cell.ck_coordinate_y}
         </span>
       </ListGroup.Item>
-      {/* <ListGroup.Item>Y Coord: </ListGroup.Item> */}
       <ListGroup.Item>
         <span>Priority:</span>
         <span>{cell.priority}</span>
