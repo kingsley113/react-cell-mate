@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../general/loadingSpinner";

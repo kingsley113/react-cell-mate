@@ -20,11 +20,7 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
           action
         >
           {task.name}
-          <div onClick={() => deleteTask(task)}>
-            {/* <Button size="sm" variant="primary" onClick={() => deleteTask(task)}> */}
-            Delete
-            {/* </Button> */}
-          </div>
+          <div onClick={() => deleteTask(task)}>Delete</div>
         </ListGroup.Item>
       );
     }
@@ -32,20 +28,14 @@ const CellTaskPanel = ({ cell, markComplete, deleteTask }) => {
   };
 
   return (
-    // <div>
-    // <h4>Tasks</h4>
-    // {/* <ListGroup as="ul"> */}
     <ListGroup id="cell-tasks-panel" variant="flush">
       <h4>Tasks</h4>
 
       {renderTasks(cell.tasks)}
       <ListGroup.Item key="new">
-        {/* <ListGroup.Item as="li" key="new"> */}
         <NewTaskForm cell={cell} />
       </ListGroup.Item>
     </ListGroup>
-    // {/* TODO: add task form */}
-    // </div>
   );
 };
 

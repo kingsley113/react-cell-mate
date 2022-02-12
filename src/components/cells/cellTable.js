@@ -9,7 +9,6 @@ import {
   useTable,
   usePagination,
 } from "react-table";
-import LoadingSpinner from "../general/loadingSpinner";
 
 const CellTable = (props) => {
   const data = React.useMemo(() => prepareData(props.cells), []);
@@ -101,7 +100,6 @@ const CellTable = (props) => {
     preGlobalFilteredRows,
     setGlobalFilter,
   } = tableInstance;
-  // if (props.cells) {
   return (
     <>
       <BTable
@@ -148,13 +146,11 @@ const CellTable = (props) => {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   if (cell.column.Header === "Color") {
-                    // console.log(row.original.col1);
                     return (
                       <td
                         {...cell.getCellProps()}
                         onClick={() => handleRowClick(row.original.slug)}
                       >
-                        {/* {cell.render("Cell")} */}
                         <div
                           style={{ backgroundColor: `${row.original.col1}` }}
                           className="table-color-box"
@@ -166,7 +162,6 @@ const CellTable = (props) => {
                       <td
                         {...cell.getCellProps()}
                         onClick={() => {
-                          // console.log(row.original);
                           handleRowClick(row.original.slug);
                         }}
                       >
@@ -236,7 +231,6 @@ const CellTable = (props) => {
           style={{ width: "100px" }}
         />{" "}
         <Form.Select
-          // <select
           className="input-width-200"
           value={pageSize}
           onChange={(e) => {
@@ -248,14 +242,10 @@ const CellTable = (props) => {
               Show {pageSize} cells
             </option>
           ))}
-          {/* </select> */}
         </Form.Select>
       </div>
     </>
   );
-  // } else {
-  //   return <LoadingSpinner />;
-  // }
 };
 
 function GlobalFilter({

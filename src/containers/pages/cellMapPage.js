@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import CellMap from "../../components/cellMap/cellMap";
@@ -30,9 +29,6 @@ const CellMapPage = (props) => {
   return (
     <div>
       <h2>Cell Map - {renderColorMode()}</h2>
-      {/* <Button variant="primary" onClick={() => history.push(`/cells`)}>
-        Cell Index
-      </Button> */}
       <ColorModeSelector getModeInput={setColorMode} />
       <CellMap colorMode={colorMode} cells={cells} />
     </div>
