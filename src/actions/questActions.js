@@ -98,32 +98,32 @@ export const editQuest = (questObject) => {
   };
 };
 // delete quest
-export const deleteQuest = (questObject) => {
-  return (dispatch) => {
-    const configurationObject = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
-      },
-      body: JSON.stringify(questObject),
-    };
-    fetch(
-      `${apiURL}/api/v1/quests/${questObject.quest.id}`,
-      configurationObject
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        dispatch({ type: "DELETE_QUEST", quest: questObject });
-      })
-      .catch((response) => {
-        console.log(response);
-      });
-  };
-};
+// export const deleteQuest = (questObject) => {
+//   return (dispatch) => {
+//     const configurationObject = {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
+//       },
+//       body: JSON.stringify(questObject),
+//     };
+//     fetch(
+//       `${apiURL}/api/v1/quests/${questObject.quest.id}`,
+//       configurationObject
+//     )
+//       .then((response) => {
+//         return response.json();
+//       })
+//       .then((json) => {
+//         dispatch({ type: "DELETE_QUEST", quest: questObject });
+//       })
+//       .catch((response) => {
+//         console.log(response);
+//       });
+//   };
+// };
 
 // set active quest
 
