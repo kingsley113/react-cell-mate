@@ -4,10 +4,6 @@ function cells(state = { tasks: [] }, action) {
     case "CREATE_TASK":
     case "LOAD_TASK":
       return { allTasks: action.tasks };
-    case "EDIT_TASK":
-    case "DELETE_TASK":
-    case "SET_ACTIVE_TASK":
-    case "RESET_ACTIVE_TASK":
     default:
       return state;
   }

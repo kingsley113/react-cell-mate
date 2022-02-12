@@ -11,8 +11,6 @@ function quests(state = { quests: [] }, action) {
         return quest.id === action.quest.id ? action.quest : quest;
       });
       return { ...state, allQuests: updatedQuests };
-    case "DELETE_QUEST":
-    // TODO:
     default:
       return state;
   }
