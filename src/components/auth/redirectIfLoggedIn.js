@@ -17,5 +17,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(RedirectIfLoggedIn);
-
-// TODO: create proper localstorage for jwt
