@@ -116,7 +116,6 @@ const QuestTable = ({ quests }) => {
         </thead>
         {/* Table Body */}
         <tbody {...getTableBodyProps()}>
-          {/* {rows.map((row) => { */}
           {page.map((row, i) => {
             prepareRow(row);
             return (
@@ -267,13 +266,4 @@ const prepareData = (questArray) => {
 
 export default QuestTable;
 
-/* 
-columns:
-title
-quest type
-wiki link
-edit
-
-*/
 // TODO: find better symbol for up and down sort arrows
-// TODO: get real id of each quest and not the table row id

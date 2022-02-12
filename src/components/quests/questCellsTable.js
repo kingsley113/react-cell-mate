@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import BTable from "react-bootstrap/Table";
-import { Link, Redirect, useHistory } from "react-router-dom";
 import {
   useAsyncDebounce,
   useGlobalFilter,
@@ -10,40 +9,6 @@ import {
   usePagination,
   useRowSelect,
 } from "react-table";
-
-// TODO: reference this for styles when the time comes
-// const Styles = styled.div`
-//   padding: 1rem;
-
-//   table {
-//     border-spacing: 0;
-//     border: 1px solid black;
-
-//     tr {
-//       :last-child {
-//         td {
-//           border-bottom: 0;
-//         }
-//       }
-//     }
-
-//     th,
-//     td {
-//       margin: 0;
-//       padding: 0.5rem;
-//       border-bottom: 1px solid black;
-//       border-right: 1px solid black;
-
-//       :last-child {
-//         border-right: 0;
-//       }
-//     }
-//   }
-
-//   .pagination {
-//     padding: 0.5rem;
-//   }
-// `;
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import CellTable from "../../components/cells/cellTable";
@@ -7,10 +6,6 @@ import LoadingSpinner from "../../components/general/loadingSpinner";
 const QuestDetailPage = (props) => {
   let pageTitle = "Quest Detail Page";
   const history = useHistory();
-
-  // useEffect(() => {
-  //   document.title = "CellMate Quest";
-  // }, []);
 
   if (props.quests) {
     const quest = props.quests.filter((quest) => {
@@ -74,12 +69,10 @@ const QuestDetailPage = (props) => {
             </ListGroup.Item>
           </ListGroup>
         </div>
-        {/* <ListGroup.Item> */}
         <div>
           <h3>Linked Cells:</h3>
           {renderCellTable()}
         </div>
-        {/* </ListGroup.Item> */}
       </div>
     );
   } else {
