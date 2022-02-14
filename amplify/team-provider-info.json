@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-falloutcellmatefe-dev-181718-authRole",
+      "UnauthRoleArn": "arn:aws:iam::371909696053:role/amplify-falloutcellmatefe-dev-181718-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::371909696053:role/amplify-falloutcellmatefe-dev-181718-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-falloutcellmatefe-dev-181718-deployment",
+      "UnauthRoleName": "amplify-falloutcellmatefe-dev-181718-unauthRole",
+      "StackName": "amplify-falloutcellmatefe-dev-181718",
+      "StackId": "arn:aws:cloudformation:us-west-2:371909696053:stack/amplify-falloutcellmatefe-dev-181718/3dfce1e0-8d3c-11ec-9570-0649ed3b3209",
+      "AmplifyAppId": "d1ku4sv11cj7u8"
+    }
+  }
+}
