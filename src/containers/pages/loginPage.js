@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, Nav } from "react-bootstrap";
+import { Button, Form, Nav } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import RedirectIfLoggedIn from "../../components/auth/redirectIfLoggedIn";
 
@@ -57,13 +57,15 @@ const LoginPage = () => {
             </Form.Group>
           </div>
           <div>
-            <h3>Login with Discord</h3>
-            <img
-              src="./Discord-Logo+Wordmark-White.svg"
-              alt="Discord Logo"
-              onClick={() => handleOnClick()}
-              className="width-300"
-            />
+            <Button>
+              <h3>Login with</h3>
+              <img
+                src="./Discord-Logo+Wordmark-White.svg"
+                alt="Discord Logo"
+                onClick={() => handleOnClick()}
+                className="width-300"
+              />
+            </Button>
           </div>
           {/* </Nav.Link> */}
         </div>
