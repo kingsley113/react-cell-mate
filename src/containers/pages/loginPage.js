@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Form, Nav } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 import RedirectIfLoggedIn from "../../components/auth/redirectIfLoggedIn";
 
 const LoginPage = () => {
@@ -8,7 +7,6 @@ const LoginPage = () => {
     document.title = "CellMate Login";
   }, []);
 
-  const history = useHistory();
   const [gatewayPass, setGatewayPass] = useState("");
   const gatewayAccessCode = process.env.REACT_APP_GATEWAY_ACCESS_CODE;
 
@@ -57,17 +55,15 @@ const LoginPage = () => {
             </Form.Group>
           </div>
           <div>
-            <Button>
+            <Button onClick={() => handleOnClick()}>
               <h3>Login with</h3>
               <img
                 src="./Discord-Logo+Wordmark-White.svg"
                 alt="Discord Logo"
-                onClick={() => handleOnClick()}
                 className="width-300"
               />
             </Button>
           </div>
-          {/* </Nav.Link> */}
         </div>
       </RedirectIfLoggedIn>
     </div>
