@@ -44,7 +44,9 @@ const LoginPage = () => {
               className="mb-3 gateway-password-field"
               controlId="gateway-password"
             >
-              <Form.Label>Enter Super Top Secret Access Code:</Form.Label>
+              <Form.Label>
+                Enter really really ridiculously secure code:
+              </Form.Label>
               <Form.Control
                 type="password"
                 value={gatewayPass}
@@ -56,11 +58,11 @@ const LoginPage = () => {
           </div>
           <div>
             <Button onClick={() => handleOnClick()}>
-              <h3>Login with</h3>
+              <h4>Login with</h4>
               <img
                 src="./Discord-Logo+Wordmark-White.svg"
                 alt="Discord Logo"
-                className="width-300"
+                style={{ width: "200px" }}
               />
             </Button>
           </div>
