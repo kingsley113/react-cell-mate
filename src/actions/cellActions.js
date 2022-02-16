@@ -1,5 +1,5 @@
 import renderErrors from "../helpers/renderErrors";
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // Create cell
 export const createCell = (cellObject) => {
@@ -13,7 +13,7 @@ export const createCell = (cellObject) => {
       },
       body: JSON.stringify(cellObject),
     };
-    fetch(`${apiURL}/api/v1/cells`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/cells`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -39,7 +39,7 @@ export const loadCells = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/cells`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/cells`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -58,7 +58,10 @@ export const loadCell = (id) => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/cells/${id}`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/cells/${id}`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
@@ -80,7 +83,10 @@ export const editCell = (cellObject) => {
       },
       body: JSON.stringify(cellObject),
     };
-    fetch(`${apiURL}/api/v1/cells/${cellObject.id}`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/cells/${cellObject.id}`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
@@ -109,7 +115,7 @@ export const editCell = (cellObject) => {
 //       },
 //       body: JSON.stringify(cellObject),
 //     };
-//     fetch(`${apiURL}/api/v1/cells/${cellObject.id}`, configurationObject)
+//     fetch(`${process.env.REACT_APP_API_URL}/api/v1/cells/${cellObject.id}`, configurationObject)
 //       .then((response) => {
 //         return response.json();
 //       })

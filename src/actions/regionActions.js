@@ -1,4 +1,4 @@
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // Load Regions
 export const loadRegions = () => {
@@ -9,7 +9,10 @@ export const loadRegions = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/regions`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/regions`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })

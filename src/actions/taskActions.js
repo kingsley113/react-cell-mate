@@ -1,4 +1,4 @@
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // create task
 export const createTask = (task) => {
@@ -12,7 +12,7 @@ export const createTask = (task) => {
       },
       body: JSON.stringify(task),
     };
-    fetch(`${apiURL}/api/v1/tasks`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/tasks`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -36,7 +36,10 @@ export const completeTask = (task) => {
       },
       body: JSON.stringify(task),
     };
-    fetch(`${apiURL}/api/v1/tasks/${task.id}/complete`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/tasks/${task.id}/complete`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
@@ -61,7 +64,10 @@ export const deleteTask = (task) => {
       },
       body: JSON.stringify(task),
     };
-    fetch(`${apiURL}/api/v1/tasks/${task.id}`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/tasks/${task.id}`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })

@@ -1,4 +1,4 @@
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // Load Worldspaces
 export const loadWorldspaces = () => {
@@ -9,7 +9,10 @@ export const loadWorldspaces = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/worldspaces`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/worldspaces`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })

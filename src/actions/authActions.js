@@ -1,4 +1,4 @@
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 export const authenticateDiscord = () => {
   return (dispatch) => {
@@ -8,7 +8,10 @@ export const authenticateDiscord = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/authenticate`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/authenticate`,
+      configurationObject
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt && data.user) {

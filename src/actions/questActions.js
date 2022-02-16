@@ -1,5 +1,5 @@
 import renderErrors from "../helpers/renderErrors";
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // Create quest
 export const createQuest = (questObject) => {
@@ -13,7 +13,7 @@ export const createQuest = (questObject) => {
       },
       body: JSON.stringify({ quest: questObject }),
     };
-    fetch(`${apiURL}/api/v1/quests`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/quests`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -39,7 +39,10 @@ export const loadQuest = (id) => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/quests/${id}`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/quests/${id}`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
@@ -58,7 +61,7 @@ export const loadQuests = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/quests`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/quests`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -80,7 +83,10 @@ export const editQuest = (questObject) => {
       },
       body: JSON.stringify({ quest: questObject }),
     };
-    fetch(`${apiURL}/api/v1/quests/${questObject.id}`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/quests/${questObject.id}`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
@@ -110,7 +116,7 @@ export const editQuest = (questObject) => {
 //       body: JSON.stringify(questObject),
 //     };
 //     fetch(
-//       `${apiURL}/api/v1/quests/${questObject.quest.id}`,
+//       `${process.env.REACT_APP_API_URL}/api/v1/quests/${questObject.quest.id}`,
 //       configurationObject
 //     )
 //       .then((response) => {

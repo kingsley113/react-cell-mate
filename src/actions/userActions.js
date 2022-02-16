@@ -1,4 +1,4 @@
-import { apiURL } from "./fetchConfig";
+// import { apiURL } from "./fetchConfig";
 
 // Load Users
 export const loadUsers = () => {
@@ -9,7 +9,7 @@ export const loadUsers = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/users`, configurationObject)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/users`, configurationObject)
       .then((response) => {
         return response.json();
       })
@@ -27,7 +27,10 @@ export const loadCurrentUser = () => {
         Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
       },
     };
-    fetch(`${apiURL}/api/v1/profile`, configurationObject)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/profile`,
+      configurationObject
+    )
       .then((response) => {
         return response.json();
       })
