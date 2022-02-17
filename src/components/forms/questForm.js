@@ -120,9 +120,14 @@ class QuestForm extends Component {
               value={this.state.category}
               onChange={this.handleOnChange}
             >
-              <option value="Main">Main</option>
-              <option value="Side">Side</option>
-              <option value="Fetch">Fetch</option>
+              <option value="Prologue Quests">Prologue Quests</option>
+              <option value="Main Quests">Main Quests</option>
+              <option value="Republic of Cascadia Questline">
+                Republic of Cascadia Questline
+              </option>
+              <option value="Red Leaf Questline">Red Leaf Questline</option>
+              <option value="Ramsay Questline">Ramsay Questline</option>
+              <option value="Side Quests">Side Quests</option>
               <option value="Other">Other</option>
             </Form.Select>
           </Form.Group>
