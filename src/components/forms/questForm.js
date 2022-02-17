@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
-import { createQuest, editQuest, loadQuest } from "../../actions/questActions";
+import { createQuest, editQuest } from "../../actions/questActions";
 import QuestCellsTable from "../quests/questCellsTable";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 

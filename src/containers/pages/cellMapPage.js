@@ -1,13 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import CellMap from "../../components/cellMap/cellMap";
 import ColorModeSelector from "../../components/cellMap/colorModeSelector";
 
 const CellMapPage = (props) => {
   const [colorMode, setColorMode] = useState("cell_color");
   const cells = useSelector((state) => state.cells.allCells);
-  const history = useHistory();
 
   useEffect(() => {
     document.title = "Cell Map";

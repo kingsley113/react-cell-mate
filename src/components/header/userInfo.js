@@ -8,11 +8,7 @@ const CurrentUserPanel = () => {
     return (
       <Link to="/users/profile" id="current-user-panel">
         {display_name}
-        <img
-          src={image}
-          alt={`${display_name}'s avatar image`}
-          id="avatar-img"
-        />
+        <img src={image} alt={`${display_name}'s avatar`} id="avatar-img" />
       </Link>
     );
   } else {

@@ -1,5 +1,5 @@
-import { Button, ListGroup, ListGroupItem, Nav } from "react-bootstrap";
-import { connect, useDispatch } from "react-redux";
+import { ListGroup } from "react-bootstrap";
+import { connect } from "react-redux";
 import { completeTask, deleteTask } from "../../actions/taskActions";
 import NewTaskForm from "../forms/newTaskForm";
 

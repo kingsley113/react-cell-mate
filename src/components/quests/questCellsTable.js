@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import React from "react";
+// import { Button } from "react-bootstrap";
 import BTable from "react-bootstrap/Table";
 import {
   useAsyncDebounce,
@@ -93,7 +93,7 @@ const QuestCellsTable = (props) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    // rows,
     prepareRow,
     page,
     canPreviousPage,
@@ -106,7 +106,7 @@ const QuestCellsTable = (props) => {
     setPageSize,
     selectedFlatRows,
     state,
-    state: { pageIndex, pageSize, selectedRowIds },
+    state: { pageIndex, pageSize },
     visibleColumns,
     preGlobalFilteredRows,
     setGlobalFilter,

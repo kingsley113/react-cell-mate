@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import BTable from "react-bootstrap/Table";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   useAsyncDebounce,
   useGlobalFilter,
@@ -83,7 +83,7 @@ const CellTable = (props) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    // rows,
     prepareRow,
     page,
     canPreviousPage,

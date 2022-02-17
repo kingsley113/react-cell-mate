@@ -1,5 +1,5 @@
 import { ListGroup } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const RecentCellListItem = (cellObj) => {
   const history = useHistory();

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Chart from "react-google-charts";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../../components/general/loadingSpinner";
@@ -41,7 +41,13 @@ const prepData = (cells) => {
 const options = {
   // title: "Cell Summary by Progress",
   legend: { position: "none" },
-  hAxis: { ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] },
+  hAxis: {
+    ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+    textStyle: {
+      color: "#cdb47d",
+    },
+    title: "Cell % Complete",
+  },
   colors: [
     // "#FF3300",
     // "#ff6600",
@@ -71,12 +77,12 @@ const options = {
     },
     textPosition: "none",
   },
-  hAxis: {
-    textStyle: {
-      color: "#cdb47d",
-    },
-    title: "Cell % Complete",
-  },
+  // hAxis: {
+  //   textStyle: {
+  //     color: "#cdb47d",
+  //   },
+  //   title: "Cell % Complete",
+  // },
 };
 
 export default SummaryChartTile;

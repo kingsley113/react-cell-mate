@@ -102,10 +102,3 @@ const PageContent = (props) => {
 };
 
 export default PageContent;
-
-// TODO: save this nugget for later when working on login
-{
-  /* <Route exact path="/">
-  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-</Route> */
-}

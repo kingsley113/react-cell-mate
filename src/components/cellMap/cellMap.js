@@ -1,4 +1,4 @@
-import { OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 const CellMap = ({ cells, colorMode }) => {
@@ -91,6 +91,8 @@ const generateProgressColor = (percentComplete) => {
       return "#00FF00";
     case 100:
       return "#00FF00";
+    default:
+      return "#FF3300";
   }
 };
 
