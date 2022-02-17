@@ -10,9 +10,9 @@ const LoginPage = () => {
   const [gatewayPass, setGatewayPass] = useState("");
   const gatewayAccessCode = process.env.REACT_APP_GATEWAY_ACCESS_CODE;
 
-  useEffect(() => {
-    sessionStorage.setItem("gateway-authenticated", false);
-  }, []);
+  // useEffect(() => {
+  //   sessionStorage.setItem("gateway-authenticated", false);
+  // }, []);
 
   const handleOnChange = (event) => {
     setGatewayPass(event.target.value);
