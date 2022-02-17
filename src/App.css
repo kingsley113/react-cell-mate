@@ -214,7 +214,7 @@ body {
   width: var(--grid-width);
   /* height: calc(var(--width) * var(--aspect-ratio)); */
   height: var(--grid-height);
-  min-width: var(--min-width);
+  /* min-width: var(--min-width); */
   /* min-height: calc(var(--min-width) * var(--aspect-ratio)); */
 
   place-self: stretch;
