@@ -211,9 +211,11 @@ body {
 
   /* Aspect ratio: .84583 */
   width: var(--width);
+  /* width: var(--grid-width); */
   height: calc(var(--width) * var(--aspect-ratio));
+  /* height: var(--grid-height); */
   min-width: var(--min-width);
-  min-height: calc(var(--min-width) * var(--aspect-ratio));
+  /* min-height: calc(var(--min-width) * var(--aspect-ratio)); */
 
   place-self: stretch;
   background-image: url("./assets/images/AshTestMap2trans.png");
