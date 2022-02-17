@@ -204,21 +204,23 @@ body {
   grid-template: repeat(77, 1fr) / repeat(91, 1fr);
   gap: 0px;
 
-  /* width: var(--grid-width);
-  min-width: var(--grid-width);
-  height: var(--grid-height);
-  min-height: var(--grid-height); */
+  /* width: var(--grid-width); */
+  /* min-width: var(--grid-width); */
+  /* height: var(--grid-height); */
+  /* min-height: var(--grid-height); */
+
+  aspect-ratio: 1200 / 1015;
 
   /* Aspect ratio: .84583 */
-  /* width: var(--width); */
-  width: var(--grid-width);
-  min-width: var(--grid-width);
+  width: var(--width);
+  /* width: var(--grid-width); */
+  /* min-width: var(--grid-width); */
 
   /* height: calc(var(--width) * var(--aspect-ratio)); */
-  height: var(--grid-height);
-  min-height: var(--grid-height);
+  /* height: var(--grid-height); */
+  /* min-height: var(--grid-height); */
 
-  /* min-width: var(--min-width); */
+  min-width: var(--min-width);
   /* min-height: calc(var(--min-width) * var(--aspect-ratio)); */
 
   place-self: stretch;
