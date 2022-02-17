@@ -10,16 +10,16 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers/index"; //TODO: make this reducer index
 import { Provider } from "react-redux";
 
-let composedEnhancer;
+// let composedEnhancer;
 
-if (window.navigator.userAgent.includes("Chrome")) {
-  composedEnhancer = compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-} else {
-  composedEnhancer = compose(applyMiddleware(thunk));
-}
+// if (window.navigator.userAgent.includes("Chrome")) {
+//   composedEnhancer = compose(
+//     applyMiddleware(thunk),
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//   );
+// } else {
+const composedEnhancer = compose(applyMiddleware(thunk));
+// }
 
 let store = createStore(rootReducer, composedEnhancer);
 
