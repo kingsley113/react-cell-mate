@@ -19,7 +19,7 @@ const LoginPage = () => {
   };
 
   const handleOnClick = () => {
-    console.log(gatewayAccessCode);
+    // console.log(gatewayAccessCode);
     gatewayPass === gatewayAccessCode
       ? (window.location.href = `${process.env.REACT_APP_API_URL}/auth/discord`)
       : alert("Incorrect Access Code");
