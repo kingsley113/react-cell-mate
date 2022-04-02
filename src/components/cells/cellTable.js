@@ -33,11 +33,11 @@ const CellTable = (props) => {
         accessor: "col2",
       },
       {
-        Header: "% Complete",
+        Header: "%",
         accessor: "col3",
       },
       {
-        Header: "Open Tasks",
+        Header: "Tasks",
         accessor: "col4",
       },
       {
@@ -65,8 +65,12 @@ const CellTable = (props) => {
         accessor: "col10",
       },
       {
-        Header: "",
+        Header: "Modified",
         accessor: "col11",
+      },
+      {
+        Header: "",
+        accessor: "col12",
       },
     ],
     []
@@ -293,7 +297,8 @@ const prepareData = (cellArray) => {
       col8: cell.user ? cell.user.display_name : "",
       col9: cell.region.name,
       col10: cell.worldspace.name,
-      col11: <Link to={`/cells/${cell.slug}/edit`}>Edit</Link>,
+      col11: cell.updated_at.slice(0, 10),
+      col12: <Link to={`/cells/${cell.slug}/edit`}>Edit</Link>,
     };
 
     preppedData.push(dataObj);
