@@ -18,10 +18,12 @@ import { loadQuests } from "../actions/questActions";
 import ProtectedRoute from "../components/auth/protectedRoute";
 import PageNotFound from "./pages/pageNotFound";
 import { loadChunks } from "../actions/chunkActions";
+import ChunkDetailPage from "./pages/chunkDetailPage";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
   const cells = useSelector((state) => state.cells.allCells);
+  const chunks = useSelector((state) => state.chunks.allChunks);
   const quests = useSelector((state) => state.quests.allQuests);
 
   useEffect(() => {
@@ -66,6 +68,14 @@ const PageContent = (props) => {
                   data={cells}
                   router={routerProps}
                 />
+              )}
+            />
+            {/* Chunks */}
+            <Route
+              exact
+              path="/chunks/:slug"
+              render={(routerProps) => (
+                <ChunkDetailPage {...routerProps} chunks={chunks} />
               )}
             />
             {/* Quests */}
