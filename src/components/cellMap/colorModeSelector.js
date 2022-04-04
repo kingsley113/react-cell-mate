@@ -28,6 +28,13 @@ const ColorModeSelector = ({ getModeInput }) => {
         id="cell_progress"
         type="radio"
       />
+      <Form.Check
+        inline
+        label="Cell Chunks"
+        name="color-selector-radio"
+        id="cell_chunks"
+        type="radio"
+      />
     </Form>
   );
 };
