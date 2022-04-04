@@ -68,6 +68,10 @@ const CellMap = ({ cells, colorMode, chunks }) => {
         <Tooltip id="tooltip-basic">
           <div className="tooltip-body">
             <div>{chunk.name}</div>
+            <div>
+              User: {chunk.user ? chunk.user.display_name : "unassigned"}
+            </div>
+            <div>Status: {chunk.status}</div>
           </div>
         </Tooltip>
       );
@@ -91,7 +95,7 @@ const CellMap = ({ cells, colorMode, chunks }) => {
                 gridColumnEnd: chunk.grid_x + chunk.width_x,
                 gridRowEnd: chunk.grid_y + chunk.height_y,
               }}
-              onClick={() => console.log("TODO: clicked on :", chunk.name)}
+              onClick={() => history.push(`/chunks/${chunk.slug}`)}
             ></div>
           </OverlayTrigger>
         );
