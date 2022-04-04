@@ -30,7 +30,7 @@ const ColorModeSelector = ({ getModeInput }) => {
       />
       <Form.Check
         inline
-        label="Cell Chunks"
+        label="Chunks"
         name="color-selector-radio"
         id="cell_chunks"
         type="radio"

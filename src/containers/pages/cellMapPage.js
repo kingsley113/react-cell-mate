@@ -21,7 +21,7 @@ const CellMapPage = (props) => {
       case "cell_progress":
         return "Cell % Complete";
       case "cell_chunks":
-        return "Cell Chunk View";
+        return "Chunk View";
       default:
         return;
     }
