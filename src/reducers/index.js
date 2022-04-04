@@ -7,6 +7,7 @@ import maps from "./mapsReducer";
 import worldspaces from "./worldspacesReducer";
 import users from "./usersReducer";
 import redirects from "./redirectReducer";
+import chunks from "./chunksReducer";
 
 export default combineReducers({
   cells,
@@ -17,4 +18,5 @@ export default combineReducers({
   worldspaces,
   users,
   redirects,
+  chunks,
 });

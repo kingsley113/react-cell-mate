@@ -17,6 +17,7 @@ import { loadCurrentUser, loadUsers } from "../actions/userActions";
 import { loadQuests } from "../actions/questActions";
 import ProtectedRoute from "../components/auth/protectedRoute";
 import PageNotFound from "./pages/pageNotFound";
+import { loadChunks } from "../actions/chunkActions";
 
 const PageContent = (props) => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const PageContent = (props) => {
     dispatch(loadWorldspaces());
     dispatch(loadQuests());
     dispatch(loadCurrentUser());
+    dispatch(loadChunks());
   }, []);
 
   return (
