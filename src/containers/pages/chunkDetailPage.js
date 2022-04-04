@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import CellTable from "../../components/cells/cellTable";
 import ChunkDetailsPanel from "../../components/chunks/chunkDetailsPanel";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
@@ -13,6 +14,14 @@ const ChunkDetailPage = (props) => {
     });
     pageTitle = chunk.name;
     document.title = pageTitle;
+
+    const renderCellTable = () => {
+      if (chunk.cells) {
+        return <CellTable cells={chunk.cells} />;
+      } else {
+        return <LoadingSpinner />;
+      }
+    };
 
     return (
       <div>
@@ -33,6 +42,13 @@ const ChunkDetailPage = (props) => {
 
         <div className="details-container">
           <ChunkDetailsPanel chunk={chunk} />
+        </div>
+        <div>
+          <h3>Linked Cells:</h3>
+          <p>
+            Note: cells are automatically linked after assigning chunk to user
+          </p>
+          {renderCellTable()}
         </div>
       </div>
     );
