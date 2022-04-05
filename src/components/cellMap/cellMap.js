@@ -68,9 +68,7 @@ const CellMap = ({ cells, colorMode, chunks }) => {
         <Tooltip id="tooltip-basic">
           <div className="tooltip-body">
             <div>{chunk.name}</div>
-            <div>
-              User: {chunk.user ? chunk.user.display_name : "unassigned"}
-            </div>
+            <div>User: {chunk.user ? chunk.user.display_name : "-----"}</div>
             <div>Status: {chunk.status}</div>
           </div>
         </Tooltip>
@@ -94,6 +92,7 @@ const CellMap = ({ cells, colorMode, chunks }) => {
                 gridRowStart: chunk.grid_y,
                 gridColumnEnd: chunk.grid_x + chunk.width_x,
                 gridRowEnd: chunk.grid_y + chunk.height_y,
+                backgroundColor: setBackgroundColor(chunk),
               }}
               onClick={() => history.push(`/chunks/${chunk.slug}`)}
             ></div>
@@ -102,6 +101,19 @@ const CellMap = ({ cells, colorMode, chunks }) => {
       });
 
       return chunkElemenets;
+    }
+  };
+
+  const setBackgroundColor = (chunk) => {
+    switch (chunk.status) {
+      case "Unassigned":
+        return "#0088924d";
+      case "In Progress":
+        return "#ffd93181";
+      case "Complete":
+        return "#00ff0081";
+      default:
+        return "#0088924d";
     }
   };
 
