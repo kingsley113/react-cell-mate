@@ -25,6 +25,7 @@ const ChunkDetailPage = (props) => {
 
     return (
       <div>
+        <h2>{pageTitle}</h2>
         <Button
           size="sm"
           variant="primary"
