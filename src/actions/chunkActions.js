@@ -18,3 +18,35 @@ export const loadChunks = () => {
       });
   };
 };
+
+export const editChunk = (chunk) => {
+  return (dispatch) => {
+    const configurationObject = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("cellMateJWT")}`,
+      },
+      body: JSON.stringify(chunk),
+    };
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/chunks/${chunk.id}`,
+      configurationObject
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        if (json.errors) {
+          renderErrors(json.errors);
+        } else {
+          dispatch({ type: "EDIT_CHUNK", chunk: json });
+          dispatch({ type: "REDIRECT", url: `/chunks/${json.slug}` });
+        }
+      })
+      .catch((response) => {
+        console.log(response);
+      });
+  };
+};
