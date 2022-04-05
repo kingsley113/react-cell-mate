@@ -78,6 +78,17 @@ const PageContent = (props) => {
                 <ChunkDetailPage {...routerProps} chunks={chunks} />
               )}
             />
+            <Route
+              exact
+              path="/chunks/:slug/edit"
+              render={(routerProps) => (
+                <FormPage
+                  formType="edit-chunk"
+                  data={chunks}
+                  router={routerProps}
+                />
+              )}
+            />
             {/* Quests */}
             <Route exact path="/quests" render={() => <QuestIndexPage />} />
             <Route
