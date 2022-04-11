@@ -1,31 +1,40 @@
 import React, { Component } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import Logo from "../../components/header/logo";
 import CurrentUserPanel from "../../components/header/userInfo";
 
-class PageHeader extends Component {
-  render() {
-    return (
-      <div id="page-header">
-        <Navbar variant="dark">
-          <Navbar.Brand href="/">
-            <Logo />
-          </Navbar.Brand>
-          <Navbar.Collapse className="justify-content-center">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/map">Cell Map</Nav.Link>
-            <Nav.Link href="/cells">Cell List</Nav.Link>
-            <Nav.Link href="/quests">Quests</Nav.Link>
-          </Navbar.Collapse>
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <CurrentUserPanel />
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Navbar>
-      </div>
-    );
-  }
-}
+const PageHeader = () => {
+  const history = useHistory();
+
+  return (
+    <div id="page-header">
+      <Navbar variant="dark">
+        <Navbar.Brand href="/">
+          <Logo />
+        </Navbar.Brand>
+        <div>
+          <span className="nav-icon" onClick={() => history.push("/")}>
+            Home
+          </span>
+          <span className="nav-icon" onClick={() => history.push("/map")}>
+            Cell Map
+          </span>
+          <span className="nav-icon" onClick={() => history.push("/cells")}>
+            Cell List
+          </span>
+          <span className="nav-icon" onClick={() => history.push("/quests")}>
+            Quests
+          </span>
+        </div>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            <CurrentUserPanel />
+          </Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
+  );
+};
 
 export default PageHeader;

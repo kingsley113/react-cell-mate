@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loadCell } from "../../actions/cellActions";
+import { loadCurrentUser } from "../../actions/userActions";
 import CellDetailsPanel from "../../components/cells/cellDetailsPanel";
 import CellTaskPanel from "../../components/cells/cellTask";
 import LoadingSpinner from "../../components/general/loadingSpinner";
@@ -21,6 +23,7 @@ const CellDetailPage = (props) => {
 
     // Trigger dispatch in order to record the cell visit on backend
     dispatch(loadCell(cell.id));
+    dispatch(loadCurrentUser());
 
     return (
       <div>
