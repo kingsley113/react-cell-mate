@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetRedirect } from "../../actions/redirectActions";
 import CellForm from "../../components/forms/cellForm";
+import ChunkForm from "../../components/forms/chunkForm";
 import QuestForm from "../../components/forms/questForm";
 import LoadingSpinner from "../../components/general/loadingSpinner";
 
@@ -45,6 +46,11 @@ const FormPage = ({ router, formType, data }) => {
     case "edit-quest":
       if (object) {
         form = <QuestForm mode="edit" quest={object} />;
+      }
+      break;
+    case "edit-chunk":
+      if (object) {
+        form = <ChunkForm mode="edit" chunk={object} />;
       }
       break;
     default:

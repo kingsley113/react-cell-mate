@@ -295,7 +295,7 @@ const prepareData = (cellArray) => {
       col6: cell.ck_coordinate_x,
       col7: cell.ck_coordinate_y,
       col8: cell.user ? cell.user.display_name : "",
-      col9: cell.region.name,
+      col9: cell.region ? cell.region.name : "",
       col10: cell.worldspace.name,
       col11: cell.updated_at.slice(0, 10),
       col12: <Link to={`/cells/${cell.slug}/edit`}>Edit</Link>,
