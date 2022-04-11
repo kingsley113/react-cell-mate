@@ -138,6 +138,11 @@ body {
   align-items: center;
 }
 
+.nav-icon {
+  font-weight: bold;
+  padding: 0 20px;
+}
+
 /* Forms */
 #bootstrap-override input[type="text"],
 #bootstrap-override input[type="number"],
