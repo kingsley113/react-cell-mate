@@ -11,7 +11,7 @@ const RecentCellListItem = (cellObj) => {
       onClick={() => history.push(`/cells/${cell.id}`)}
       className="list-group-item"
     >
-      {cell.name} - {cell.region.name}
+      {cell.name} {cell.region && `- ${cell.region.name}`}
     </ListGroup.Item>
   );
 };

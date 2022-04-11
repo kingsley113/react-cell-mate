@@ -26,7 +26,7 @@ const CellDetailsPanel = ({ cell }) => {
       </ListGroup.Item>
       <ListGroup.Item>
         <span>Region:</span>
-        <span>{cell.region.name}</span>
+        <span>{cell.region ? cell.region.name : "---"}</span>
       </ListGroup.Item>
       <ListGroup.Item>
         <span>User:</span>
